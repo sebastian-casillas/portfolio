@@ -8,7 +8,7 @@
 
         <div id="general_info">
             <div v-for="c of competences" :key="c._id" class="competence_card">
-                <h4 style="margin-bottom: 14px;"> {{c.value.title}}</h4>
+                <h4 style="margin-bottom: 14px; height: 2.2em;"> {{c.value.title}}</h4>
                 <p>{{c.value.content}}</p>
         
             </div>
@@ -23,7 +23,7 @@ const thresholds = []
 
 import { ref } from 'vue'
 
-for (let i = 0; i <= 1.0; i += 0.01) {
+for (let i = 0; i <= 1.0; i += 0.05) {
   thresholds.push(i)
 }
 
@@ -65,7 +65,7 @@ export default {
     column-gap: 1.5rem;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 3rem;
-    padding: 4rem;
+    padding: 2.4rem;
 
     & .competence_card {
       padding: 10px 20px;;

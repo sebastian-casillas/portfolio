@@ -10,9 +10,11 @@
       </div>
     </div>
     
-    <q-btn flat dense size="12px" color="transparent" icon="email" label="sebastian.casillas@outlook.com" />
-    <q-btn flat dense size="12px" color="transparent" icon="linkedin" label="linkedin.com/in/sebastian-casillas/" />
-    
+    <div class="contact_buttons">
+      <q-btn flat dense size="12px" color="transparent" icon="email" label="sebastian.casillas@outlook.com" />
+      <q-btn flat dense size="12px" color="transparent" icon="linkedin" label="linkedin.com/in/sebastian-casillas" />
+    </div>
+
   </div>
 </template>
 
@@ -35,6 +37,10 @@
         margin-top: 20px;
       }
 
+    }
+
+    .contact_buttons > *{
+      display: block;
     }
 
     .q-btn__content {

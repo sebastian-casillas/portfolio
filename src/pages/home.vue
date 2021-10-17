@@ -13,9 +13,11 @@
 
 
             <q-tabs shrink>
-              <q-tab name="tab1" label="Tab 1" />
-              <q-tab name="tab2" label="Tab 2" />
-              <q-tab name="tab3" label="Tab 3" />
+              <q-tab name="tab1" label="Contact" />
+              <q-tab name="tab2" label="Competences" />
+              <q-tab name="tab3" label="Workflow" />
+              <q-tab name="tab4" label="Projects" />
+              <q-tab name="tab5" label="Background" />
             </q-tabs>
           </q-toolbar>
     </div>
@@ -26,6 +28,9 @@
       </div>
         <contact/>
         <competences :competences="curriculum?.competences"/>
+        <workflow/>
+        <projects/>
+        <background/>
     </q-scroll-area>
 
     <div class="fixed-bottom-right q-pa-md">
@@ -47,6 +52,9 @@
 
 import Contact from '@/components/home/contact.vue'
 import Competences from '@/components/home/competences.vue'
+import Workflow from '@/components/home/workflow.vue'
+import Projects from '@/components/home/projects.vue'
+import Background from '@/components/home/background.vue'
 
 import { ref } from 'vue'
 
@@ -61,7 +69,10 @@ export default {
   name: 'Home',
   components: {
     Contact,
-    Competences
+    Competences,
+    Workflow,
+    Projects,
+    Background
   },
 
   data: () => ({
@@ -140,14 +151,7 @@ export default {
       border-bottom: solid 1px #FFFA;
     }
 
-    height: 80px;
 
-    &.dense_menu{
-      height: 50px;
-      & > * {
-        max-width: 100%;
-      }
-    }
 
     
   }
