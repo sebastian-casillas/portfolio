@@ -9,20 +9,38 @@
         <h3>Casillas Perez</h3>
       </div>
     </div>
+    <div class="centered_flexbox">
+
+    </div>
     
     <div class="contact_buttons">
-      <q-btn flat dense size="12px" color="transparent" icon="email" label="sebastian.casillas@outlook.com" />
-      <q-btn flat dense size="12px" color="transparent" icon="linkedin" label="linkedin.com/in/sebastian-casillas" />
+      <q-btn  flat dense size="12px" color="transparent" icon="email" label="sebastian.casillas@outlook.com" />
+      <q-btn @click='open_linkedin' flat dense size="12px" color="transparent" icon="linkedin" label="linkedin.com/in/sebastian-casillas" />
     </div>
 
   </div>
 </template>
 
+<script>
+export default {
+    name: 'Contact',
+    methods: {
+      open_linkedin(){
+        window.open("https://linkedin.com/in/sebastian-casillas", "_blank");
+      },
+      to_clipboard(){
+        navigator.clipboard.writeText('sebastian.casillas@outlook.com');
+      }
+    }
+}
+
+</script>
+
 <style lang="scss">
   #home_title{
 
-    padding-top: 10vh;
-    padding-bottom: 10vh;
+    padding-top: 16vh;
+    padding-bottom: 14vh;
 
     display: flex;
     flex-direction: column;
@@ -41,6 +59,7 @@
 
     .contact_buttons > *{
       display: block;
+      margin-bottom: 10px;;
     }
 
     .q-btn__content {

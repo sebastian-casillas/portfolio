@@ -59,7 +59,7 @@ import Background from '@/components/home/background.vue'
 import { ref } from 'vue'
 
 const thresholds = []
-for (let i = 0; i <= 1.0; i += 0.01) {
+for (let i = 0; i <= 1.0; i += 0.05) {
   thresholds.push(i)
 }
 

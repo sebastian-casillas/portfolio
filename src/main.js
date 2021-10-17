@@ -10,11 +10,11 @@ import axios from "./plugins/axios";
 
 import './styles/main.scss'
 
-
 const app = createApp(App);
 
 app.use(router);
 app.use(Quasar, quasarUserOptions);
+
 
 app.config.globalProperties.$axios = axios;
 

@@ -1,6 +1,6 @@
 <template>
     <div id="background_div">
-
+        <h2>Background</h2>
     </div>
 </template>
 
