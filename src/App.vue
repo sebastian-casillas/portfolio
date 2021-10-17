@@ -1,39 +1,51 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header>
-      <q-toolbar>
+
+    <q-header id="app_header">
+      <q-toolbar id="app_toolbar">
 
         <q-toolbar-title>
-          Quasar App
+          <h6>
+            Sebastian C. P.
+          </h6>
+          
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+
+        <q-tabs shrink>
+          <q-tab name="tab1" label="Tab 1" />
+          <q-tab name="tab2" label="Tab 2" />
+          <q-tab name="tab3" label="Tab 3" />
+        </q-tabs>
       </q-toolbar>
     </q-header>
 
+
     <div class="fixed-bottom-right q-pa-md">
 
-    <q-fab  color="purple" icon="keyboard_arrow_up" direction="up">
-      <q-fab-action color="primary" @click="onClick" icon="mail" />
-      <q-fab-action color="secondary" @click="onClick" icon="alarm" />
-    </q-fab>
+      <q-fab  color="purple" icon="keyboard_arrow_up" direction="up">
+        <q-fab-action color="primary" @click="onClick" icon="mail" />
+        <q-fab-action color="secondary" @click="onClick" icon="alarm" />
+      </q-fab>
+      
     </div>
 
 
+
     <q-page-container>
-      <HelloWorld />
+      <router-view/>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'LayoutDefault',
 
   components: {
-    HelloWorld
+
   },
 
   data: () => ({
@@ -47,3 +59,17 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  #app_header{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+  }
+
+  #app_toolbar{
+    max-width: 1000px;
+    border-bottom: solid 1px #FFFA;
+  }
+</style>
