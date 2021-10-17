@@ -1,64 +1,88 @@
 <template>
-<div id="home">
-  <div id="home_title">
-    <div class="centered_flexbox">
-      <q-avatar size="250px">
-        <img src="/assets/profile_circle.png">
-      </q-avatar>
-      <div>
-        <h2>Sebastian</h2>
-        <h3>Casillas Perez</h3>
+  <div id="home">
+    <div id="app_header"  :style="'height: ' + menu_height">
+          <q-toolbar>
+
+            <q-toolbar-title>
+              <h6 style="margin: 0;">
+                Sebastian C. P.
+              </h6>
+              
+              
+            </q-toolbar-title>
+
+
+            <q-tabs shrink>
+              <q-tab name="tab1" label="Tab 1" />
+              <q-tab name="tab2" label="Tab 2" />
+              <q-tab name="tab3" label="Tab 3" />
+            </q-tabs>
+          </q-toolbar>
+    </div>
+
+    <q-scroll-area id="home_main" ref="home_main">
+      <div v-intersection="options" style="height: 80px;">
+        
       </div>
-    </div>
+        <contact/>
+        <competences :competences="curriculum?.competences"/>
+    </q-scroll-area>
 
+    <div class="fixed-bottom-right q-pa-md">
 
-
-    <div>
-      <q-avatar>
-          <q-icon name="email" />
-      </q-avatar>
-      <span>sebastian.casillas@outlook.com</span>
-    </div>
-    <div class="centered_flexbox">
-
-    </div>
-    <div class="centered_flexbox">
-      <q-avatar>
-          <q-icon name="mdi-linkedin" />
-      </q-avatar>
-      <span>linkedin.com/in/sebastian-casillas/</span>
-    </div>
-
-
-  </div>
-
-  <div>
-    <p>
-      A good computer system implementation involves much more than just coding.
-    </p>
-    
-  </div>
-
-  <div id="general_info">
-    <div v-for="c of curriculum.competences" :key="c._id" class="competence_card">
-      <h4> {{c.value.title}}</h4>
-      <p>{{c.value.content}}</p>
+      <q-fab  color="purple" icon="keyboard_arrow_up" direction="up" :label="v_scroll" >
+        <q-fab-action color="primary" @click="onClick" icon="mail" />
+        <q-fab-action color="secondary" @click="onClick" icon="alarm" />
+      </q-fab>
       
     </div>
   </div>
-  
-</div>
+
+
+
 
 </template>
 
 <script>
 
+import Contact from '@/components/home/contact.vue'
+import Competences from '@/components/home/competences.vue'
+
+import { ref } from 'vue'
+
+const thresholds = []
+for (let i = 0; i <= 1.0; i += 0.01) {
+  thresholds.push(i)
+}
+
+
+
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
+  components: {
+    Contact,
+    Competences
+  },
 
   data: () => ({
     curriculum: [],
+    v_scroll: 0,
+    menu: true,
   }),
+
+  setup(){
+      const percent = ref(0);
+      return {
+              percent,
+              options: {
+                  handler (entry) {
+                      const val = (entry.intersectionRatio * 100).toFixed(0)
+                      if (percent.value !== val) percent.value = val
+                  },
+                  cfg: {threshold: thresholds}
+              }
+          }
+  },
 
   async created() {
     this.$axios
@@ -71,66 +95,68 @@ export default {
             })
         .catch((e) => console.log(e));
 
+  },
+
+  computed:{
+    menu_height: function(){
+      return (40 + 40*this.percent/100) + 'px'
+    }
+  },
+
+  methods: {
+    onClick: function (e) {
+      console.log(e)
+    }
   }
 
 }
 </script>
 
-
-
 <style lang="scss">
 
-@import '@/styles/quasar.variables.scss';
-
   #home{
-    margin: 10px 20px;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  #app_header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    backdrop-filter: blur(4px);
+
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    z-index: 5;
+
+    & > * {
+      max-width: 1000px;
+      border-bottom: solid 1px #FFFA;
+    }
+
+    height: 80px;
+
+    &.dense_menu{
+      height: 50px;
+      & > * {
+        max-width: 100%;
+      }
+    }
+
+    
+  }
+  #home_main{
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  #home_title{
-    // background-color: red;
-
-
-    padding-top: 8vh;
-    padding-bottom: 8vh;
-
-    & > div{
-      margin: 10px 40px;
-
-      h2, h3{
-        margin-bottom: 20px;
-        margin-top: 20px;
-      }
-
-    }
-  }
-
-  #general_info{
-    background-color: #EEE;
-    width: 100%;
-    display: grid;
-    row-gap: 2rem;
-    column-gap: 1.5rem;
-    grid-template-columns: 1fr 1fr;
-
-    & .competence_card {
-      padding: 10px 20px;;
-
-      & > *{
-        color: black;
-      }
-      
-    }
-
-
-    
-    @media screen and (max-width: 601px){
-      grid-template-columns: 1fr;
-    }
-
-    
-  }
+  }  
 
 </style>
