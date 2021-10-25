@@ -6,7 +6,8 @@
 
 <style lang="scss" scoped>
 #background_div{
-    height: 400px;
+    margin-top:100px;
+    padding: 1em 3em;
     width: 100%;
     background-color: red;
 }

@@ -34,13 +34,12 @@
     </q-scroll-area>
 
     <div class="fixed-bottom-right q-pa-md">
-
-      <q-fab  color="purple" icon="keyboard_arrow_up" direction="up" :label="v_scroll" >
-        <q-fab-action color="primary" @click="onClick" icon="mail" />
-        <q-fab-action color="secondary" @click="onClick" icon="alarm" />
-      </q-fab>
-      
+      <q-btn fab icon="add" color="accent" @click="cv_dialog = !cv_dialog" />
     </div>
+
+    <q-dialog v-model="cv_dialog" maximized>
+      <cv/>
+    </q-dialog> 
   </div>
 
 
@@ -55,6 +54,7 @@ import Competences from '@/components/home/competences.vue'
 import Workflow from '@/components/home/workflow.vue'
 import Projects from '@/components/home/projects.vue'
 import Background from '@/components/home/background.vue'
+import CV from '@/components/cv.vue'
 
 import { ref } from 'vue'
 
@@ -72,13 +72,15 @@ export default {
     Competences,
     Workflow,
     Projects,
-    Background
+    Background,
+    cv: CV
   },
 
   data: () => ({
     curriculum: [],
     v_scroll: 0,
     menu: true,
+    cv_dialog: false
   }),
 
   setup(){
@@ -162,5 +164,11 @@ export default {
     flex-direction: column;
     align-items: center;
   }  
+
+  .q-dialog__inner{
+    overflow:hidden;
+  }
+
+
 
 </style>
