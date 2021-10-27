@@ -8,16 +8,24 @@
         <div class="info_block">
             <div class="info_block_detail"/>
             <div class="info_block_content">
-                <p v-if="experience.company">{{company}}</p>
-                <h5 v-html="experience.title"></h5>
-                <h6 v-html="experience.subtitle"></h6>
-                
-                <ul>
-                    <li v-for="item of experience.items" 
-                        :key="item"
-                        v-html="item"
-                        />
-                </ul>
+
+                <div class="content_div_title">
+                    <span class="content_title" v-html="experience.title"></span>
+                    <span class="content_subtitle" v-html="experience.subtitle"></span>
+                </div>
+
+
+
+                <p class="content_note" v-if="experience.details">
+                    <template v-for="d in experience.details" :key="d.content"> 
+                        <q-icon size="2.5mm" :name="d.icon"/><span>{{d.content}}</span>
+                    </template>
+                </p>
+                <p class="block_item" v-for="item of experience.items" 
+                    :key="item"
+                    v-html="item"
+                    />
+
             </div>
 
         </div>
@@ -38,7 +46,8 @@
     .section{
         max-width: 100%;
         display: flex;
-        margin-bottom: 3mm;
+        margin-bottom: 4mm;
+        margin-top: 2mm;
 
         .date_block{
             position: relative;
@@ -50,16 +59,17 @@
             min-width: 6mm;
 
             display:flex;
-            justify-content: flex-end;
+            justify-content: center;
             
 
-            & > .date_text{
-                font-size: 2mm;
-                font-weight: 600;
-                color: #666;
-                line-height: 2.8mm;
+            & > span.date_text{
+                font-size: 2.2mm !important;
+                line-height: 2.8mm !important;
+                font-weight: 300;
+                color: #666 !important;
+                
                 writing-mode: vertical-rl;
-                letter-spacing: .05mm;
+                letter-spacing: .05mm !important;
 
                 text-align: right;
                 transform: rotate(180deg)
@@ -73,13 +83,53 @@
 
             .info_block_detail{
                 height: .2mm; 
-                width: 10mm; 
+                width: 2mm; 
                 border-top: solid .3mm #888;
             }
 
             .info_block_content{
-                padding-left: 1.5mm;
+                margin-top: -3mm;
+                padding-left: 3mm;
                 padding-top: .8mm;
+
+                .content_div_title{
+                    padding-left: 2.2mm;
+                    display: flex;
+                    align-items: flex-end;
+                }
+
+                .content_title{
+                    
+                    font-size: 3.2mm !important;
+                    line-height: 3.8mm !important;
+                    font-weight: 300;
+                    letter-spacing: .01mm;
+                }
+
+                .content_subtitle{
+                    font-size: 2.2mm !important;
+                    line-height: 2.6mm !important;
+                    font-weight: 600;
+                    margin-left: 1mm;
+                    color: #555 !important;
+                }
+
+                .content_note{
+                    padding-left: 2mm;
+                    height: 3mm;
+                    display: flex;
+                    align-items: center;
+
+                    & > span{
+                        font-size: 2.4mm;
+                        font-weight: 600;
+                        color: #444 !important;
+
+                        margin-left: 1mm;
+                        margin-right: 2mm;
+                    }
+
+                }
             }
 
             ul{
@@ -94,6 +144,12 @@
                 letter-spacing: 0;
                 margin-bottom: .2mm;
             }
+
+                .block_item{
+                    font-size: 2.4mm !important;
+                    line-height: 2.8mm;
+                    margin-bottom: .4mm !important;
+                }
 
         }
     }
