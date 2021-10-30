@@ -9,6 +9,7 @@
 /* eslint-env node */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { configure } = require('quasar/wrappers');
+let path = require('path')
 
 module.exports = configure(function (ctx) {
   return {
@@ -75,8 +76,17 @@ module.exports = configure(function (ctx) {
 
       // https://quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
-      chainWebpack (/* chain */) {
-        //
+      extendWebpack  (cfg) {
+        cfg.resolve.alias = {
+          ...cfg.resolve.alias,
+          '@': path.resolve(__dirname, './src'),
+          '@components': path.resolve(__dirname, './src/components'),
+        }
+      //   cfg.resolve.alias = {
+      //     ...cfg.resolve.alias,
+      //     '@': path.resolve(__dirname, './src'),
+      //     '@components': path.resolve(__dirname, './src/components'),
+      //   }
       },
     },
 
@@ -89,9 +99,11 @@ module.exports = configure(function (ctx) {
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
-      config: {},
+      config: {
+        dark: true
+      },
 
-      // iconSet: 'material-icons', // Quasar icon set
+      iconSet: 'mdi-v6',
       // lang: 'en-US', // Quasar language pack
 
       // For special cases outside of where the auto-import strategy can have an impact
