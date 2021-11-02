@@ -1,7 +1,7 @@
 <template>
   <div id="home">
-    <div id="app_header"  :style="'height: ' + menu_height">
-          <q-toolbar>
+    <div id="app_header"  :style="menu_height">
+          <q-toolbar :style="menu_height">
 
             <q-toolbar-title>
               <h6 style="margin: 0;">
@@ -14,12 +14,13 @@
 
             <q-tabs shrink>
               <q-tab name="tab1" label="Contact" />
-              <q-tab name="tab2" label="Competences" />
+              <q-tab name="tab2" label="Capacity" />
               <q-tab name="tab3" label="Workflow" />
               <q-tab name="tab4" label="Projects" />
               <q-tab name="tab5" label="Background" />
+              <q-tab name="tab6" label="CV" />
             </q-tabs>
-          </q-toolbar>
+        </q-toolbar>
     </div>
 
     <q-scroll-area id="home_main" ref="home_main">
@@ -28,9 +29,16 @@
       </div>
         <contact/>
         <competences :competences="curriculum?.competences"/>
+
+
         <workflow/>
+
+        <word-cloud/> 
+
         <projects/>
+
         <background/>
+
     </q-scroll-area>
 
     <div class="fixed-bottom-right q-pa-md">
@@ -55,15 +63,9 @@ import Workflow from '@/components/home/workflow.vue'
 import Projects from '@/components/home/projects.vue'
 import Background from '@/components/home/background.vue'
 import CV from '@/components/cv.vue'
+import WordCloud from '@components/home/WordCloud.vue'
 
 import { ref } from 'vue'
-
-const thresholds = []
-for (let i = 0; i <= 1.0; i += 0.05) {
-  thresholds.push(i)
-}
-
-
 
 export default {
   name: 'Home',
@@ -73,7 +75,8 @@ export default {
     Workflow,
     Projects,
     Background,
-    cv: CV
+    cv: CV,
+    WordCloud
   },
 
   data: () => ({
@@ -85,6 +88,11 @@ export default {
 
   setup(){
       const percent = ref(0);
+
+      const thresholds = []
+      for (let i = 0; i <= 1.0; i += 0.05) 
+        thresholds.push(i)
+      
       return {
               percent,
               options: {
@@ -106,13 +114,14 @@ export default {
             this.curriculum = d;
             
             })
-        .catch((e) => console.log(e));
+        .catch( e => console.log(e));
 
   },
 
   computed:{
     menu_height: function(){
-      return (40 + 40*this.percent/100).toString() + 'px'
+      let val = (40 + 40 * this.percent/100).toString()
+      return  `height:  ${val} px; min-height: ${val} px;`
     }
   },
 
@@ -157,6 +166,7 @@ export default {
 
     
   }
+  
   #home_main{
     height: 100vh;
     width: 100vw;

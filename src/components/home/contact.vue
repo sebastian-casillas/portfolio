@@ -1,21 +1,21 @@
 <template>
   <div id="home_title">
-    <div class="centered_flexbox" style="margin-bottom: 40px;">
-      <q-avatar size="250px">
+
+    <div class="row justify-center items-center" style="margin-bottom: 40px;">
+
+      <q-avatar size="250px" class="q-mx-md">
         <img src="/assets/profile_circle.png">
       </q-avatar>
-      <div>
+
+      <div class="q-mx-md">
         <h2>Sebastian</h2>
         <h3>Casillas Perez</h3>
       </div>
     </div>
-    <div class="centered_flexbox">
 
-    </div>
-    
     <div class="contact_buttons">
-      <q-btn  flat dense size="12px" color="transparent" icon="email" label="sebastian.casillas@outlook.com" />
-      <q-btn @click='open_linkedin' flat dense size="12px" color="transparent" icon="linkedin" label="linkedin.com/in/sebastian-casillas" />
+      <q-btn @click='to_clipboard' flat dense size="12px" color="white" icon="email" class="q-px-sm" label="sebastian.casillas@outlook.com" />
+      <q-btn @click='open_linkedin' flat dense size="12px" color="white" icon="mdi-linkedin" class="q-px-sm" label="linkedin.com/in/sebastian-casillas" />
     </div>
 
   </div>
@@ -55,23 +55,11 @@ export default {
     justify-content: center;
     align-items: center;
 
-    & > *{
-      margin: 15px 20px;
-
-      h2, h3{
-        margin-bottom: 20px;
-        margin-top: 20px;
-      }
-
-    }
 
     .contact_buttons > *{
       display: block;
-      margin-bottom: 10px;;
+      margin-bottom: 10px;
     }
 
-    .q-btn__content {
-      color:white;
-    }
   }
 </style>

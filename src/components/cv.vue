@@ -183,11 +183,26 @@
                     ['Natural Language Processing', 2],
                     ['ANTLR', 3],
 
-                    
+
 
                     ['NodeJS', 3],
                     ['TypeScript', 3],
                     ['ES6', 4],
+                    ['Java Spring', 2],
+                    ['Applet', 1],
+                    ['Front End', 4],
+                    ['Javascript', 4],
+                    ['Angular', 3],
+                    ['Vue', 4],
+                    ['JQuery', 3],
+                    ['CSS', 3],
+                    ['SCSS', 2],
+                    ['HTML', 3],
+                    ['NPM', 2],
+
+                    ['Data Visualization', 4],
+                    ['D3', 4],
+                    ['ChartJS', 3],
 
                     ['Relationship DB', 2],
                     ['MySQL', 3],
@@ -195,24 +210,10 @@
                     ['Distributed DB', 2],
                     ['Galera', 3],
 
-                    ['Java Spring', 2],
-                    ['Applet', 1],
-                    ['Front End', 4],
-
-                    ['Javascript', 4],
-                    ['Angular', 3],
-                    ['Vue', 4],
-                    ['D3', 4],
-                    ['ChartJS', 3],
-                    ['JQuery', 3],
-                    ['CSS', 3],
-                    ['SCSS', 2],
-                    ['HTML', 3],
-                    ['NPM', 2],
-
                     ['VSCode', 3],
 
                     ['Python', 4],
+                    ['Data Science', 3],
                     ['Pandas', 3],
                     ['Matplotlib', 3],
                     ['Seaborn', 3],
