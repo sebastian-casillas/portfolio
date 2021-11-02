@@ -121,7 +121,7 @@ export default {
   computed:{
     menu_height: function(){
       let val = (40 + 40 * this.percent/100).toString()
-      return  `height:  ${val} px; min-height: ${val} px;`
+      return  `height:  ${val}px; min-height: ${val}px; `
     }
   },
 
