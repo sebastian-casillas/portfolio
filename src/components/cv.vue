@@ -102,7 +102,7 @@
                 </div>
 
                 <template  v-for='job of cv_data.experience' :key='job'>
-                    <my-section :experience='job' :x_spacing='job.spacing'/>
+                    <my-section :experience='job'/>
                 </template>
 
 
@@ -112,7 +112,7 @@
                 </div>
 
                 <template v-for='item of cv_data.education' :key='item'>
-                    <my-section :experience='item' :x_spacing='item.spacing'/>
+                    <my-section :experience='item'/>
                 </template>
 
                 <div class='right_col_title'>
@@ -131,7 +131,7 @@
 
 <script>
 
-    import MySection from './MySection';
+    import MySection from '@components/MySection';
     import WordCloud from 'wordcloud'
 
     export default {
@@ -274,7 +274,7 @@
                         ]
                     },
                     {
-                        title: 'Explorative Designer & Developer',
+                        title: 'Explorative Designer & Lead Developer',
                         subtitle: 'CONACyT: National Council of Science and Technology',
                         date_start: '09/2020',
                         date_end: '04/2021',
@@ -289,12 +289,11 @@
                     },
                     {
                         title: 'Project design & IT consultancy',
-                        subtitle: 'Unnamed project for legal firm',
+                        subtitle: 'Unnamed project for private legal firm',
                         details: [
                             {content: 'Mexico', icon: 'map'},
                             {content: 'Freelance', icon: 'coffee'}
                         ],
-                        company: 'Alejando Luna Mesa',
                         date_start: '07/2019',
                         items: [
                             'Software architectural design for semi-automated online legal firm',
@@ -334,7 +333,6 @@
                     {
                         title: 'Information Technology Consultant',
                         subtitle: 'BANXICO - Mexico\'s Central Bank',
-                        webpage: 'banxico.org.mx',
                         date_start: '08/2017',
                         date_end: '02/2018',
                         details: [
@@ -366,7 +364,7 @@
 
                 education:[
                     {
-                        title: 'Master\'s in Human Computer Interaction and Design',
+                        title: 'Masters in Human Computer Interaction and Design',
                         subtitle: 'EIT Digital Masters School',
                         date_start: '2020',
                         date_end: '2022',
@@ -374,12 +372,11 @@
                             {content: 'Minor in Innovation and Entrepreneurship', icon: 'push_pin'},
                             {content: 'Aalto University', icon: 'place'},
                             {content: 'University of Twente', icon: 'place'},
-                            
                         ]
                     },
 
                     {
-                        title: 'Master\'s in Information and Communication Technologies',
+                        title: 'Masters in Information and Communication Technologies',
                         subtitle: 'Aalto University',
                         date_start: '➞',
                         items: [
@@ -388,7 +385,7 @@
                         ]
                     },
                     {
-                        title: 'Master\'s in Interactive Technology',
+                        title: 'Masters in Interactive Technology',
                         subtitle: 'University of Twente',
                         date_start: '➞',
                         details: [
@@ -419,15 +416,14 @@
                             {content: 'Focus in Software Engineering and I.T. Management', icon: 'push_pin'},
                         ],
                         items: [
-                            '',
                             '○ Natural Language Processing ○ Distributed Systems ○ Networks and Telecoms ○ Algorithmia',
                             '○ Computer Architecture & Hardware Components ○ Operating systems ○ Low-level programing',
                             '○ Business ○ Finance ○ Statistics',
                         ]
                     },
                     {
-                        title: 'Exchange semester: BSc. Computer Science ',
-                        subtitle: ' Beijing Institute of Technology',
+                        title: 'Exchange semester: BSc. Computer Science',
+                        subtitle: 'Beijing Institute of Technology',
                         date_start: '➞',
                         details: [
                             {content: 'Institutional Excellence Scholarship', icon: 'star'}],

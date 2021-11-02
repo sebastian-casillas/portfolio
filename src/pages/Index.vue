@@ -31,13 +31,13 @@
         <competences :competences="curriculum?.competences"/>
 
 
-        <workflow/>
+        <workflow />
 
-        <word-cloud/> 
+        <word-cloud /> 
 
-        <projects/>
+        <projects />
 
-        <background/>
+        <background :background="curriculum?.background" />
 
     </q-scroll-area>
 
@@ -109,11 +109,7 @@ export default {
     this.$api
         .get('singletons/get/curriculum')
         .then( res => res.data )
-        .then(d => { 
-            console.log(d)
-            this.curriculum = d;
-            
-            })
+        .then(d => {  this.curriculum = d; })
         .catch( e => console.log(e));
 
   },
