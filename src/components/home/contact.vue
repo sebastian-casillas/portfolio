@@ -56,9 +56,14 @@ export default {
     align-items: center;
 
 
-    .contact_buttons > *{
-      display: block;
-      margin-bottom: 10px;
+    .contact_buttons{
+      margin: 40px 20px;
+
+      & > *{
+        display: block;
+        margin-bottom: 10px;
+      }
+
     }
 
   }
