@@ -1,4 +1,5 @@
 <template>
+<div>
     <div>
         <!-- <h6 class="q-my-sm">Computer Systems engineer</h6>
         <h6 class="q-my-sm">Human-Computer Interaction and Design student </h6> -->
@@ -18,6 +19,8 @@
         </div>
 
     </div>
+</div>
+
 </template>
 
 <script>

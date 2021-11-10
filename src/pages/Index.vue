@@ -1,53 +1,44 @@
 <template>
   <div id="home">
     <div id="app_header"  :style="menu_height">
-          <q-toolbar :style="menu_height">
+      <q-toolbar :style="menu_height">
 
-            <q-toolbar-title>
-              <h6 style="margin: 0;">
-                Sebastian C. P.
-              </h6>
-              
-              
-            </q-toolbar-title>
+        <q-toolbar-title>
+            <h6 style="margin: 0;">
+              Sebastian C. P.
+            </h6>
+        </q-toolbar-title>
 
 
-            <q-tabs shrink>
-              <q-tab name="tab1" label="Contact" />
-              <q-tab name="tab2" label="Capacity" />
-              <q-tab name="tab3" label="Workflow" />
-              <q-tab name="tab4" label="Projects" />
-              <q-tab name="tab5" label="Background" />
-              <q-tab name="tab6" label="CV" />
-            </q-tabs>
-        </q-toolbar>
+        <q-tabs shrink>
+          <q-tab name="tab1" label="Contact" @click="scrollTo('section_contact')"/>
+          <q-tab name="tab2" label="Capacity" @click="scrollTo('section_competences')"/>
+          <q-tab name="tab3" label="Workflow" @click="scrollTo('section_workflow')"/>
+          <q-tab name="tab4" label="Projects" @click="scrollTo('section_projects')"/>
+          <q-tab name="tab5" label="Background" @click="scrollTo('section_background')"/>
+          <q-btn name="tab6" label="CV" color="primary" round @click="cv_dialog = !cv_dialog"/>
+        </q-tabs>
+      </q-toolbar>
     </div>
 
-    <q-scroll-area id="home_main" ref="home_main">
-      <div v-intersection="options" style="height: 80px;">
-        
-      </div>
-        <contact/>
-        <competences :competences="curriculum?.competences"/>
 
+    <q-scroll-area id="home_main" ref="home_main" class="scroll">
 
-        <workflow />
+      <div v-intersection="options" style="height: 80px;"></div>
 
-        <word-cloud /> 
-
-        <projects />
-
-        <background :background="curriculum?.background" />
+      <contact ref="section_contact"/>
+      <competences ref="section_competences" :competences="curriculum?.competences"/>
+      <workflow ref="section_workflow"/>
+      <word-cloud ref="section_wordcloud"/> 
+      <projects ref="section_projects"/>
+      <background ref="section_background" :background="curriculum?.background" />
 
     </q-scroll-area>
-
-    <div class="fixed-bottom-right q-pa-md">
-      <q-btn fab icon="add" color="accent" @click="cv_dialog = !cv_dialog" />
-    </div>
 
     <q-dialog v-model="cv_dialog" maximized>
       <cv/>
     </q-dialog> 
+
   </div>
 
 
@@ -66,6 +57,9 @@ import CV from '@/components/cv.vue'
 import WordCloud from '@components/home/WordCloud.vue'
 
 import { ref } from 'vue'
+
+import { scroll } from 'quasar'
+const { getScrollTarget, setVerticalScrollPosition } = scroll
 
 export default {
   name: 'Home',
@@ -124,7 +118,23 @@ export default {
   methods: {
     onClick: function (e) {
       console.log(e)
+    },
+
+    scrollTo(item_id){
+      if(item_id in this.$refs){
+        let el = this.$refs[item_id].$el
+        console.log(el)
+
+        const target = getScrollTarget(el)
+        const offset = el.offsetTop
+        const duration = 600
+
+        setVerticalScrollPosition(target, offset, duration)
+      }
+
+
     }
+
   }
 
 }
