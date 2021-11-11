@@ -76,7 +76,7 @@ export default {
 
 <style lang="scss">
 #word_cloud_container{
-    margin: 3rem 0;
+    margin: 2rem 0;
     padding: 0 20px;
 
     & > div#competence_wordcloud_main{
