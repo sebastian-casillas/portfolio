@@ -16,7 +16,7 @@
           <q-tab name="tab3" label="Workflow" @click="scrollTo('section_workflow')"/>
           <q-tab name="tab4" label="Projects" @click="scrollTo('section_projects')"/>
           <q-tab name="tab5" label="Background" @click="scrollTo('section_background')"/>
-          <q-btn name="tab6" label="CV" color="primary" round @click="cv_dialog = !cv_dialog"/>
+          <q-btn name="tab6" label="CV" color="primary" round :to="'/cv'"/>
         </q-tabs>
       </q-toolbar>
     </div>

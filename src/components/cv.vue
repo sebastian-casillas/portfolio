@@ -8,7 +8,7 @@
                 <h2 style='text-align: center; letter-spacing: .3mm;'>Casillas Perez</h2>
 
                 <div class='row  content-center'>
-                    <q-avatar size='40mm' style='margin:1.5mm auto 1.5mm auto;'>
+                    <q-avatar size='40mm' style='margin:2mm auto 2mm auto;'>
                         <q-img style='height: 50mm; width: 50mm; margin-top:-5mm;' src='/assets/profile_circle.png'
 
                         />
@@ -34,7 +34,7 @@
                         <td><span class='small'>Espoo, Finland</span></td>
                     </tr>
                     <tr>
-                        <td><q-icon name='linkedin' color='grey-10'/></td>
+                        <td><q-icon name='mdi-linkedin' color='grey-10'/></td>
                         <td><span class='small'>/in/sebastian-casillas</span></td>
                     </tr>
                     <tr>
@@ -75,8 +75,9 @@
 
                 <h3>Certifications</h3>
 
-                <table class='dense'>
+                <table class='dense certifications_table'>
                     <template v-for='item of cv_data.certifications' :key='item'>
+                        <tr></tr>
                         <tr>
                             <th align='left'>{{item.title}}<span class='cert_subtitle'>{{item.subtitle}}</span></th>
                         </tr>
@@ -138,8 +139,6 @@
         name: 'Cv',
         components: {MySection},
         data: () => ({
-            WordCloud: WordCloud,
-
             cv_data :{
 
                 languages:[
@@ -153,7 +152,8 @@
                 ],
 
                 expertise:[
-                    {name: 'Interactive experiences & Data Visualization', level: 4},
+                    {name: 'Interactive & immersive experiences', level: 4},
+                    {name: 'Data Visualization', level: 4},
 
                     {name: 'User oriented research and design', level: 4},
                     {name: 'UI & UX design and development', level: 4},
@@ -275,7 +275,7 @@
                     },
                     {
                         title: 'Explorative Designer & Lead Developer',
-                        subtitle: 'CONACyT: National Council of Science and Technology',
+                        subtitle: 'CONACyT: National Council of Science & Technology',
                         date_start: '09/2020',
                         date_end: '04/2021',
                         details: [
@@ -380,8 +380,10 @@
                         subtitle: 'Aalto University',
                         date_start: '➞',
                         items: [
-                            '○ Explorative Information Visualization ○ Machine Learning: Supervised methods',
-                            'Thesis project in a real life scenario'
+                            '○ Explorative Information Visualization', 
+                            '○ Machine Learning: Supervised methods',
+                            '○ Computational User interfaces',
+                            'Thesis project: Innovation in a real life scenario'
                         ]
                     },
                     {
@@ -392,13 +394,13 @@
                             {content: 'Focus in User research, user experience, & user interfaces', icon: 'push_pin'},
                         ],
                         items: [
-                            'Immersive experiences: Human oriented design with a purpose',
-                            'Virtual/Mixed Reality: use in training & education',
-                            'Strategic technology & Innovation management'
+                            '○ Immersive experiences: Human oriented design with a purpose',
+                            '○ Virtual/Mixed Reality: use in training & education',
+                            '○ Strategic technology & Innovation management'
                         ]
                     },
                     {
-                        title: 'Media and democracy: Digital Methods Summer School 2021',
+                        title: 'Media & democracy: Digital Methods Summer School 2021',
                         subtitle: 'University of Amsterdam',
                         date_start: '➞',
                         items: [
@@ -445,7 +447,7 @@
                         ]
                     },
                     {
-                        title: 'Front-End JavaScript Frameworks',
+                        title: 'Front-End JavaScript Framework',
                         subtitle: 'Hong Kong U.',
                         details: [
                             {content: 'Coursera', icon: 'place'},
@@ -478,24 +480,20 @@
 
             },
         }),
-        mounted(){
-            let competence_wc = this.$refs.competence_wordcloud
 
-            let rate = competence_wc.clientWidth / 1024;
+        computed:{
+            rate: function (){
+                return this.$refs.competence_wordcloud.clientWidth / 1024;
+            }
+        },
+
+        mounted(){
 
             let options = {
                 list: this.cv_data.competences,
-                gridSize: Math.round(18 * rate),
-                weightFactor: size => (10 + Math.pow(size, 1.9)) * rate* 1.3,
-                fontWeight: (word, weight) => {
-                    switch(weight) {
-                        case 1:return 500
-                        case 2: return 600
-                        case 3:return 500
-                        case 4: return 600
-                        default: return 500
-                    }
-                },
+                gridSize: Math.round(18 * this.rate),
+                weightFactor: size => (10 + Math.pow(size, 1.9)) * this.rate* 1.3,
+                fontWeight: (word, weight) => [1,3].includes(weight)? 500: 600,
                 shape: 'rectangle', 
                 color: (word, weight) => (4 - weight) * 10,
                 rotateRatio: 0,
@@ -504,7 +502,6 @@
             }
 
             WordCloud(document.getElementById('competence_wordcloud'), options );
-
         }
     }
 </script>
@@ -513,8 +510,8 @@
 
     #competence_wordcloud{
         margin: .2mm 1mm;
-        width: 130mm;
-        height: 30mm;
+        width: 125mm;
+        height: 25mm;
 
     }
 
@@ -528,8 +525,8 @@
             display: none;
         }
 
-        width: 215.9mm;
-        height: 279.4mm;
+        width: 210mm;
+        height: 297mm;
         background-color: white;
 
 
@@ -546,7 +543,7 @@
         h2{
             font-size: 6mm;
             line-height: 6.8mm;
-            margin: .2mm 0 1mm 0;
+            margin: .4mm 0 2mm 0;
         }
 
         h3{
@@ -592,11 +589,11 @@
         }
 
         span.subtitle{
-            font-size: 2.2mm;
+            font-size: 2.3mm;
             font-weight: 700;
             color: #666;
             line-height: 3.6mm;
-            margin: .2mm 0 1mm 0;
+            margin: .3mm 0 1mm 0;
         }
 
         p{
@@ -608,13 +605,13 @@
 
 
         .left_column{
-            background-color: #CCCCCC;
+            background-color: #C7C7CC;
             position: absolute;
             left:0;
             margin: 0;
             top:0;
-            width: 76mm;
-            height: 279.4mm;
+            width: 77mm;
+            height: 100%;
             padding: 8mm 5mm 8mm 10mm;
 
             table{
@@ -624,12 +621,12 @@
 
                 &.dense{
                     th{
-                        font-size: 2.9mm;
+                        font-size: 3.1mm;
                         color: #444;
-                        line-height: 3.8mm;
+                        line-height: 4.2mm;
                     }
                     tr, td, span{
-                        line-height: 2mm;
+                        line-height: 2.4mm;
                     }
                 }
 
@@ -654,6 +651,10 @@
                     margin-left: 1mm;
                     
                 }
+
+                &.certifications_table tr{
+                    line-height: 3mm;
+                }
             }
             
         }
@@ -661,17 +662,17 @@
         .right_column{
             background-color: white;
             position: absolute;
-            left:76mm;
+            left:77mm;
             top:0;
             margin: 0;
-            width: 140mm;
-            height: 279.4mm;
-            padding: 6mm 6mm 6mm 3mm;
+            width: 133mm;
+            height: 100%;
+            padding: 10mm 6mm 6mm 3mm;
 
             .right_col_title{
                 display: flex;
                 align-items: center;
-                margin-bottom: 3mm;
+                margin-bottom: 4mm;
 
                 & > *{
                     margin-bottom: 0 !important;

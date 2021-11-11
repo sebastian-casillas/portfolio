@@ -47,7 +47,7 @@
         max-width: 100%;
         display: flex;
         margin-bottom: 4mm;
-        margin-top: 2mm;
+        margin-top: 4.5mm;
 
         .date_block{
             position: relative;
@@ -93,7 +93,7 @@
                 padding-top: .8mm;
 
                 .content_div_title{
-                    padding-left: 2.2mm;
+                    padding-left: 1.2mm;
                     display: flex;
                     align-items: flex-end;
                 }
@@ -103,25 +103,27 @@
                     font-size: 3.2mm !important;
                     line-height: 3.8mm !important;
                     font-weight: 300;
-                    letter-spacing: .01mm;
+                    letter-spacing: .005mm;
                 }
 
                 .content_subtitle{
-                    font-size: 2.2mm !important;
+                    font-size: 2.3mm !important;
                     line-height: 2.6mm !important;
                     font-weight: 600;
-                    margin-left: 1mm;
+                    margin-left: .8mm;
                     color: #555 !important;
+                    letter-spacing: .005mm;
                 }
 
                 .content_note{
-                    padding-left: 2mm;
-                    height: 3mm;
+                    padding-left: 1.4mm;
+                    height: 2.6mm;
                     display: flex;
                     align-items: center;
 
                     & > span{
                         font-size: 2.4mm;
+                        line-height: 2.6;
                         font-weight: 600;
                         color: #444 !important;
 
