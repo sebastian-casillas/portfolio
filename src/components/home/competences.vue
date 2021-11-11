@@ -3,7 +3,7 @@
     <div>
         <!-- <h6 class="q-my-sm">Computer Systems engineer</h6>
         <h6 class="q-my-sm">Human-Computer Interaction and Design student </h6> -->
-        <p class="text-italic text-center"> A good computer system implementation involves much more than just coding.</p>  
+        <p class="text-italic text-center"> A good computer system implementation involves much more than just code</p>  
     </div>
 
     <div id="competences_div" v-intersection="options" :style="'margin: 40px ' + (  6 - 6*percent/100 ) + 'rem'">

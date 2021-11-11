@@ -27,7 +27,7 @@ export default {
     }),
     methods:{
         downloadCV(){
-            saveAs('https://casillas.dev/api/storage/uploads/2021/11/11/CV_SebastianCasillas_uid_618cc3b71d3de.pdf', "hello world.txt");
+            saveAs('https://casillas.dev/api/storage/uploads/2021/11/11/CV_SebastianCasillas_uid_618cc3b71d3de.pdf', 'cv_SebastianCasillas.pdf');
         }
 
     }
