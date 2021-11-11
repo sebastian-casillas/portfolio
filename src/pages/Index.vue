@@ -5,7 +5,7 @@
 
         <q-toolbar-title>
             <h6 style="margin: 0;">
-              Sebastian C. P.
+              Sebastian Casillas
             </h6>
         </q-toolbar-title>
 
@@ -112,7 +112,8 @@ export default {
     menu_height: function(){
       let val = (40 + 40 * this.percent/100).toString()
       return  `height:  ${val}px; min-height: ${val}px; `
-    }
+    },
+
   },
 
   methods: {
@@ -156,6 +157,8 @@ export default {
     width: 100%;
 
     backdrop-filter: blur(4px);
+
+    background-color: #2223;
 
     display:flex;
     flex-wrap: wrap;
