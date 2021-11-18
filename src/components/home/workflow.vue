@@ -2,7 +2,20 @@
     <div id="workflow_div">
 
         <div class="workflow_grid">
+
             <div class="medium_item" style="background-color: #456">
+                <h4 class="q-mt-sm" >Programming languages</h4>
+
+                <div class="small_grid">
+                    <div v-for="l of p_languages" :key="l" >
+                        <h6 class="q-my-md q-px-md" style="height: 40px;">
+                            {{l.name}}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="medium_item" style="background-color: #654">
                 <h4 class="q-mt-sm" >Languages</h4>
                 <div class="small_grid">
                     <div v-for="l of languages" :key="l" >
@@ -25,17 +38,7 @@
                     </table>
                 </div> -->
             </div>
-            <div class="medium_item" style="background-color: #654">
-                <h4 class="q-mt-sm" >Programming languages</h4>
 
-                <div class="small_grid">
-                    <div v-for="l of p_languages" :key="l" >
-                        <h6 class="q-my-md q-px-md" style="height: 40px;">
-                            {{l.name}}
-                        </h6>
-                    </div>
-                </div>
-            </div>
             <!-- <div class="large_item">
                 <h5>Geeky developer looking for his next challenging project</h5>
                 <p>
@@ -110,7 +113,7 @@ export default {
         row-gap: 4rem;
 
         & > .medium_item{
-            padding: 20px;
+            padding: 30px;
 
             @media screen and (max-width: 651px){
                 grid-column: 1 / span 2;
