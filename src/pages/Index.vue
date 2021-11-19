@@ -46,10 +46,10 @@
 
 <script>
 
-import Contact from '@/components/home/contact.vue'
-import Competences from '@/components/home/competences.vue'
-import Projects from '@/components/home/projects.vue'
-import Background from '@/components/home/background.vue'
+import Contact from '@/components/home/Contact.vue'
+import Competences from '@/components/home/Competences.vue'
+import Projects from '@/components/home/Projects.vue'
+import Background from '@/components/home/Background.vue'
 import CV from '@/components/cv.vue'
 import WordCloud from '@components/home/WordCloud.vue'
 
