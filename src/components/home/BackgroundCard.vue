@@ -6,15 +6,20 @@
     >
 
         <template #>
-            <div>
+            <div class="">
                 <p class="content_title">{{data.title}}</p>
-                <p class="content_subtitle">{{data.subtitle}}</p>
+            
+                <div class="content_notes">  
+                    <q-chip 
+                        v-for="d in data.details" :key="d.content"
+                        color="teal-6" size="md" square dense outline 
+                        :icon="d.value.icon"
+                        class="q-px-sm"
+                        >
+                        {{d.value.content}}
+                            
+                    </q-chip>
 
-                <div class="content_note" v-show="layout !== 'loose'">  
-                    <div v-for="d in data.details" :key="d.content" class="item_chip">
-                        <q-icon :name="d.value.icon" color="gray-9" size="1rem" />
-                        <span>{{d.value.content}}</span>
-                    </div>
                 </div>
             
                 <p class="block_item" v-for="item of data.items" 
@@ -24,15 +29,9 @@
             </div>
         </template>
 
-        <template #subtitle>
-            <div class="date_subtitle">{{data.date_init}}</div>
-            <div class="content_note_subtitle" v-show="layout === 'loose'"> 
 
-                <div v-for="d in data.details" :key="d.content" class="item_chip">
-                    <q-icon :name="d.value.icon" color="gray-9" size="1rem" />
-                    <span>{{d.value.content}}</span>
-                </div>
-            </div>
+        <template #subtitle>
+            {{data.subtitle}}<br>{{data.date_init}}
         </template>
 
 
@@ -64,69 +63,38 @@ export default {
 </script>
 
 <style lang="scss">
+
+
+
+
+
+
+
 .my-timeline-entry{
+
     .q-timeline__title{
         margin-bottom: 0;
     }
 
     .content_title{
-        font-size: 1.2rem !important;
-        line-height: 1.4rem !important;
+        font-size: 1.6rem !important;
+        line-height: 1.7rem !important;
         font-weight: 300;
-        color: #333 !important;
+        letter-spacing: .003rem;
+        color: #111 !important;
         margin-bottom: .4rem;
     }
 
-    .content_subtitle{
-        font-size: 1.1rem !important;
-        line-height: 1.2rem;
-        min-height: 1.4rem;
-    }
 
-    .content_note{
+    .content_notes{
         margin-bottom: 1rem;
         display: flex;
-        flex-wrap: wrap;
         justify-content: flex-start;
-
-            & > div.item_chip{
-                margin: 2px 2px 2px 0;
-            }
-    }
-
-    .content_note_subtitle{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        flex: wrap;
-        text-transform: unset !important;
-    }
-
-
-    &.q-timeline__entry--right{
-
-        .content_note_subtitle{
-            align-items: flex-end;
-            margin: 4px 0 4px 4px;
+        flex-wrap: wrap;
 
             & > div.item_chip{
                 margin: 2px 0 2px 2px;
             }
-        }
-
-    }
-
-    &.q-timeline__entry--left{
-
-        .content_note_subtitle{
-            align-items: flex-start;
-            margin: 4px 4px 4px 0;
-
-            & > div.item_chip{
-                margin: 2px 2px 2px 0;
-            }
-        }
-
     }
 
     .item_chip{
@@ -155,7 +123,18 @@ export default {
 }
 
 
+.q-timeline--loose{
+    .q-timeline__entry--left{
+        .content_notes{
+            justify-content: flex-end;
 
+            & > div.item_chip{
+                margin: 2px 2px 2px 0;
+            }
+        }
+
+    }
+}
 
 
 
