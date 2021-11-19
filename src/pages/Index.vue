@@ -16,7 +16,7 @@
           <q-tab name="tab3" label="Workflow" @click="scrollTo('section_workflow')"/>
           <q-tab name="tab4" label="Projects" @click="scrollTo('section_projects')"/>
           <q-tab name="tab5" label="Background" @click="scrollTo('section_background')"/>
-          <q-btn name="tab6" label="CV" color="primary" round :to="'/cv'"/>
+          <q-btn name="tab6" label="CV" flat :style="scrollbased_transparency" round :to="'/cv'"/>
         </q-tabs>
       </q-toolbar>
     </div>
@@ -114,6 +114,11 @@ export default {
       return  `height:  ${val}px; min-height: ${val}px; `
     },
 
+    scrollbased_transparency: function(){
+      let val = (254* this.percent/100).toString()
+      console.log(val)
+      return  `background-color: rgba(68, 85,102, ${val});`
+    }
   },
 
   methods: {
