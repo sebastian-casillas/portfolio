@@ -12,8 +12,7 @@
 
         <q-tabs shrink>
           <q-tab name="tab1" label="Contact" @click="scrollTo('section_contact')"/>
-          <q-tab name="tab2" label="Capacity" @click="scrollTo('section_competences')"/>
-          <q-tab name="tab3" label="Workflow" @click="scrollTo('section_workflow')"/>
+          <q-tab name="tab2" label="Workflow" @click="scrollTo('section_competences')"/>
           <q-tab name="tab4" label="Projects" @click="scrollTo('section_projects')"/>
           <q-tab name="tab5" label="Background" @click="scrollTo('section_background')"/>
           <q-btn name="tab6" label="CV" flat :style="scrollbased_transparency" round :to="'/cv'"/>
@@ -28,7 +27,6 @@
 
       <contact ref="section_contact" :percent="percent"/>
       <competences ref="section_competences" :competences="curriculum?.competences"/>
-      <workflow ref="section_workflow"/>
       <word-cloud ref="section_wordcloud"/> 
       <projects ref="section_projects"/>
       <background ref="section_background" :background="curriculum?.background" />
@@ -50,7 +48,6 @@
 
 import Contact from '@/components/home/contact.vue'
 import Competences from '@/components/home/competences.vue'
-import Workflow from '@/components/home/workflow.vue'
 import Projects from '@/components/home/projects.vue'
 import Background from '@/components/home/background.vue'
 import CV from '@/components/cv.vue'
@@ -66,7 +63,6 @@ export default {
   components: {
     Contact,
     Competences,
-    Workflow,
     Projects,
     Background,
     cv: CV,
@@ -126,7 +122,7 @@ export default {
     scrollTo(item_id){
       if(item_id in this.$refs){
         let el = this.$refs[item_id].$el
-        
+
         const target = getScrollTarget(el)
         const offset = el.offsetTop
         const duration = 600

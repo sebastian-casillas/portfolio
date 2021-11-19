@@ -1,12 +1,11 @@
 <template>
 <div>
+
     <div>
-        <!-- <h6 class="q-my-sm">Computer Systems engineer</h6>
-        <h6 class="q-my-sm">Human-Computer Interaction and Design student </h6> -->
         <p class="text-italic text-center"> A good computer system implementation involves much more than just code</p>  
     </div>
 
-    <div id="competences_div" v-intersection="options" :style="'margin: 40px ' + (  6 - 6*percent/100 ) + 'rem'">
+    <div id="competences_div">
 
 
 
@@ -14,9 +13,37 @@
             <div v-for="c of competences" :key="c._id" class="competence_card">
                 <h5 style=" margin-top: 0; margin-bottom: 1em; height: 2.2em;"> {{c.value.title}}</h5>
                 <p style="height: 4em;">{{c.value.content}}</p>
-        
             </div>
+
+            <div class="medium_item" style="background-color: #456">
+                <h4 class="q-mt-sm" >Programming languages</h4>
+
+                <div class="small_grid">
+                    <div v-for="l of p_languages" :key="l" >
+                        <h6 class="q-my-md q-px-md" style="height: 40px;">
+                            {{l.name}}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="medium_item" style="background-color: #654">
+                <h4 class="q-mt-sm" >Languages</h4>
+                <div class="small_grid">
+                    <div v-for="l of languages" :key="l" >
+                        <h6 class="q-my-md q-px-md" style="height: 40px;">
+                            {{l.name}}
+                        </h6>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+
+
+
+
 
     </div>
 </div>
@@ -24,16 +51,6 @@
 </template>
 
 <script>
-
-const thresholds = []
-
-import { ref } from 'vue'
-
-for (let i = 0; i <= 1.0; i += 0.05) {
-  thresholds.push(i)
-}
-
-
 
 export default {
     name: 'Competences',
@@ -43,20 +60,32 @@ export default {
             default: () => [],
         },
     },
-    setup(){
-        const percent = ref(0);
+    data() {
         return {
-                percent,
-                options: {
-                    handler (entry) {
-                        const val = (entry.intersectionRatio * 100).toFixed(0)
-                        if (percent.value !== val) percent.value = val
-                    },
-                    cfg: {threshold: thresholds}
-                }
-            }
-    },
+                languages:[
+                    {name: 'Spanish', level: 4, note: 'Mother-tongue'},
+                    {name: 'English', level: 4, note: 'IELTS 2020 - CERF C1'},
 
+                    {name: 'German', level: 2, note: 'Deutschotek: A2'},
+                    {name: 'Chinese', level: 1, note: 'BIT:Mandarin Basic'},
+                    {name: 'Dutch'},
+                    {name: 'Finnish'}
+                ],
+                p_languages:[
+                    {name: 'Javascript', level: 4},
+                    {name: 'Python', level: 4},
+                    {name: 'PHP', level: 4},
+
+                    {name: 'Java', level: 4},
+                    {name: 'C/C++', level: 3},
+                    {name: 'SQL', level: 3},
+
+                    {name: 'R', level: 2},
+                    {name: 'Low level: ASM, VHDL', level: 2},
+                ]
+
+        }
+    },
 }
 </script>
 
