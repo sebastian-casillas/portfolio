@@ -71,6 +71,7 @@ export default {
 
 
 .my-timeline-entry{
+    padding-bottom: 2rem !important;
 
     .q-timeline__title{
         margin-bottom: 0;
