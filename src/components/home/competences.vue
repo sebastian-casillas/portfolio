@@ -7,15 +7,15 @@
 
     <div id="competences_div">
 
-
-
-        <div id="general_info" >
+        <div class="simple_grid q-mb-lg">
             <div v-for="c of competences" :key="c._id" class="competence_card">
-                <h5 style=" margin-top: 0; margin-bottom: 1em; height: 2.2em;"> {{c.value.title}}</h5>
-                <p style="height: 4em;">{{c.value.content}}</p>
+                <h5 class="q-my-md" style="line-height: 2rem;"> {{c.value.title}}</h5>
+                <p style="line-height: 1rem;">{{c.value.content}}</p>
             </div>
+        </div>
 
-            <div class="medium_item" style="background-color: #456">
+        <div class="simple_grid">
+            <div class="q-ma-md q-pa-lg" style="background-color: #456">
                 <h4 class="q-mt-sm" >Programming languages</h4>
 
                 <div class="small_grid">
@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <div class="medium_item" style="background-color: #654">
+            <div class="q-ma-md q-pa-lg" style="background-color: #654">
                 <h4 class="q-mt-sm" >Languages</h4>
                 <div class="small_grid">
                     <div v-for="l of languages" :key="l" >
@@ -37,11 +37,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-
 
 
 
@@ -90,15 +86,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
-#general_info{
-    background-color: #EEE;
-    width: 100%;
+.simple_grid{
     display: grid;
     row-gap: 2rem;
     column-gap: 1.5rem;
     grid-template-columns: 1fr 1fr;
+
+
+    @media screen and (max-width: 651px){
+      grid-template-columns: 1fr;
+    }
+}
+
+#competences_div{
+    background-color: #EEE;
+    width: 100%;
     margin-bottom: 3rem;
     padding: 2.4rem;
 
@@ -113,9 +115,7 @@ export default {
 
 
     
-    @media screen and (max-width: 651px){
-      grid-template-columns: 1fr;
-    }
+
 
     
   }

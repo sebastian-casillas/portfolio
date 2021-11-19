@@ -13,9 +13,9 @@
         <q-tabs shrink>
           <q-tab name="tab1" label="Contact" @click="scrollTo('section_contact')"/>
           <q-tab name="tab2" label="Workflow" @click="scrollTo('section_competences')"/>
-          <q-tab name="tab4" label="Projects" @click="scrollTo('section_projects')"/>
-          <q-tab name="tab5" label="Background" @click="scrollTo('section_background')"/>
-          <q-btn name="tab6" label="CV" flat :style="scrollbased_transparency" round :to="'/cv'"/>
+          <q-tab name="tab3" label="Projects" @click="scrollTo('section_projects')"/>
+          <q-tab name="tab4" label="Background" @click="scrollTo('section_background')"/>
+          <q-btn name="tab5" label="CV" flat :style="scrollbased_transparency" round :to="'/cv'"/>
         </q-tabs>
       </q-toolbar>
     </div>
