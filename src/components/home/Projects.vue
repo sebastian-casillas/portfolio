@@ -1,12 +1,37 @@
 <template>
     <div id="projects_div">
         <h2>Projects</h2>
-        <div class="project_contents">
-            <q-icon name="mdi-account-hard-hat" size="20vw"/>
-            <h3>Section under construction</h3>
+        <div class="project_contents q-pa-lg row wrap">
+                
+
+            <q-card class="my-card" v-for="p of projects" :key="p._id">
+            <q-img :src="'https://casillas.dev/' + p.gallery[0].path">
+                <div class="absolute-bottom text-h6">
+                {{p.title}}
+                </div>
+            </q-img>
+
+            <q-card-section style="color: black;">
+                <p class="">{{p.context}}</p>
+                <p>{{p.description}}</p>
+            </q-card-section>
+            </q-card>
+
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    props: {
+        projects: {
+            type: Array,
+            default: () => []
+        }
+    }
+
+}
+</script>
 
 <style lang="scss">
 #projects_div{
@@ -15,10 +40,12 @@
     width: 100%;
 
     .project_contents{
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
+
     }
+}
+
+.my-card{
+    height: 500px; width: 500px;
+     background-color: white;
 }
 </style>

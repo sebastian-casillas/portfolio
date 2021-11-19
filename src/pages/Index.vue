@@ -25,10 +25,10 @@
 
       <div v-intersection="options" style="height: 80px;"></div>
 
-      <contact ref="section_contact" :percent="percent"/>
+      <contact ref="section_contact" :max_width="max_width"/>
       <competences ref="section_competences" :competences="curriculum?.competences"/>
       <word-cloud ref="section_wordcloud"/> 
-      <projects ref="section_projects"/>
+      <projects ref="section_projects" :projects="curriculum?.featured_projects"/>
       <background ref="section_background" :background="curriculum?.background" />
 
     </q-scroll-area>
@@ -97,14 +97,16 @@ export default {
 
   created() {
     this.$api
-        .get('singletons/get/curriculum')
+        .post('singletons/get/curriculum', { populate: 1 })
         .then( res => res.data )
         .then(d => {  this.curriculum = d; })
         .catch( e => console.log(e));
-
   },
 
   computed:{
+    percent_u: function(){
+      return this.percent / 100;
+    },
     menu_height: function(){
       let val = (40 + 40 * this.percent/100).toString()
       return  `height:  ${val}px; min-height: ${val}px; `
@@ -112,8 +114,13 @@ export default {
 
     scrollbased_transparency: function(){
       let val = (254* this.percent/100).toString()
-      console.log(val)
       return  `background-color: rgba(68, 85,102, ${val});`
+    },
+
+    max_width: function(){
+      let calc_width = (740 + this.percent_u * 60).toString()
+
+      return 'width:' + calc_width + 'px;';
     }
   },
 

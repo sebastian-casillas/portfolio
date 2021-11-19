@@ -1,29 +1,32 @@
 <template>
   <div id="contact_component" class="full-width row justify-center items-center content-center">
 
-    <q-responsive class="presentation_background" :ratio="2.2" style="width: 100%; max-width: 800px;">
+    <div class="presentation_background" :style="max_width">
+      <q-responsive  :ratio="2.2"  >
 
-      <div class="row pressentation_card">
-
-
-        <q-avatar size="250px" class="q-mx-xl">
-          <img src="/assets/profile_circle.png">
-        </q-avatar>
-
-        <div class="q-mx-md col-grow">
-          <h2 class="q-ma-sm">Sebastian</h2>
-          <h3 class="q-ma-sm">Casillas Perez</h3>
+        <div class="row pressentation_card">
 
 
-          <div class="contact_buttons q-mt-lg q-ml-md">
-            <q-btn @click='to_clipboard' flat dense size="12px" icon="email" class="q-px-sm" label="sebastian.casillas@outlook.com" />
-            <q-btn @click='open_linkedin' flat dense size="12px"  icon="mdi-linkedin" class="q-px-sm" label="linkedin.com/in/sebastian-casillas" />
+          <q-avatar size="250px" class="q-mx-xl col-grow">
+            <img src="/assets/profile_circle.png">
+          </q-avatar>
+
+          <div class="q-mx-md col-grow">
+            <h2 class="q-ma-sm">Sebastian</h2>
+            <h3 class="q-ma-sm">Casillas Perez</h3>
+
+
+            <div class="contact_buttons q-mt-lg q-ml-md">
+              <q-btn @click='to_clipboard' flat dense size="12px" icon="email" class="q-px-sm" label="sebastian.casillas@outlook.com" />
+              <q-btn @click='open_linkedin' flat dense size="12px"  icon="mdi-linkedin" class="q-px-sm" label="linkedin.com/in/sebastian-casillas" />
+            </div>
           </div>
+
         </div>
 
-      </div>
+      </q-responsive>
+    </div>
 
-    </q-responsive>
 
 
   </div>
@@ -34,6 +37,12 @@ import { copyToClipboard } from 'quasar'
 
 export default {
     name: 'Contact',
+    props: {
+        max_width: {
+            type: String,
+            default: 'width: 800px;'
+        },
+    },
     methods: {
       open_linkedin(){
         window.open('https://linkedin.com/in/sebastian-casillas', '_blank');
@@ -56,9 +65,9 @@ export default {
   #contact_component{
 
     .presentation_background{
-// box-shadow: -2px 48px 317px 59px rgba(255,255,255,0.26);
-// -webkit-box-shadow: -2px 48px 317px 59px rgba(255,255,255,0.26);
-// -moz-box-shadow: -2px 48px 317px 59px rgba(255,255,255,0.26);
+      box-shadow: 0px 48px 317px 59px rgba(122, 75, 75, 0.05);
+      -webkit-box-shadow: 0px 48px 317px 59px rgba(255,255,255,0.05);
+      -moz-box-shadow: 0px 48px 317px 59px rgba(255,255,255,0.05);
     }
 
 
