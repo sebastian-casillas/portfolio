@@ -1,22 +1,30 @@
 <template>
-  <div id="home_title">
+  <div id="contact_component" class="full-width row justify-center items-center content-center">
 
-    <div class="row justify-center items-center" style="margin-bottom: 40px;">
+    <q-responsive class="presentation_background" :ratio="2.2" style="width: 100%; max-width: 800px;">
 
-      <q-avatar size="250px" class="q-mx-md">
-        <img src="/assets/profile_circle.png">
-      </q-avatar>
+      <div class="row pressentation_card">
 
-      <div class="q-mx-md">
-        <h2>Sebastian</h2>
-        <h3>Casillas Perez</h3>
+
+        <q-avatar size="250px" class="q-mx-xl">
+          <img src="/assets/profile_circle.png">
+        </q-avatar>
+
+        <div class="q-mx-md col-grow">
+          <h2 class="q-ma-sm">Sebastian</h2>
+          <h3 class="q-ma-sm">Casillas Perez</h3>
+
+
+          <div class="contact_buttons q-mt-lg q-ml-md">
+            <q-btn @click='to_clipboard' flat dense size="12px" icon="email" class="q-px-sm" label="sebastian.casillas@outlook.com" />
+            <q-btn @click='open_linkedin' flat dense size="12px"  icon="mdi-linkedin" class="q-px-sm" label="linkedin.com/in/sebastian-casillas" />
+          </div>
+        </div>
+
       </div>
-    </div>
 
-    <div class="contact_buttons">
-      <q-btn @click='to_clipboard' flat dense size="12px" color="white" icon="email" class="q-px-sm" label="sebastian.casillas@outlook.com" />
-      <q-btn @click='open_linkedin' flat dense size="12px" color="white" icon="mdi-linkedin" class="q-px-sm" label="linkedin.com/in/sebastian-casillas" />
-    </div>
+    </q-responsive>
+
 
   </div>
 </template>
@@ -45,25 +53,49 @@ export default {
 </script>
 
 <style lang="scss">
-  #home_title{
+  #contact_component{
 
-    padding-top: 16vh;
-    padding-bottom: 14vh;
+    .presentation_background{
+// box-shadow: -2px 48px 317px 59px rgba(255,255,255,0.26);
+// -webkit-box-shadow: -2px 48px 317px 59px rgba(255,255,255,0.26);
+// -moz-box-shadow: -2px 48px 317px 59px rgba(255,255,255,0.26);
+    }
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
+
+    padding-top: 24vh;
+    padding-bottom: 24vh;
+
+    .pressentation_card{
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: white; 
+      height: 100%; 
+      width: 100%;
+      color: black;
+
+box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
+-webkit-box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
+-moz-box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
+    }
 
     .contact_buttons{
-      margin: 40px 20px;
 
       & > *{
         display: block;
         margin-bottom: 10px;
       }
 
+    }
+
+    .background_radial{
+      height: 100%;
+      position:relative;
+      background-color: red;
+      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
     }
 
   }

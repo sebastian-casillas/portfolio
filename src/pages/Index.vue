@@ -26,7 +26,7 @@
 
       <div v-intersection="options" style="height: 80px;"></div>
 
-      <contact ref="section_contact"/>
+      <contact ref="section_contact" :percent="percent"/>
       <competences ref="section_competences" :competences="curriculum?.competences"/>
       <workflow ref="section_workflow"/>
       <word-cloud ref="section_wordcloud"/> 
@@ -122,15 +122,11 @@ export default {
   },
 
   methods: {
-    onClick: function (e) {
-      console.log(e)
-    },
 
     scrollTo(item_id){
       if(item_id in this.$refs){
         let el = this.$refs[item_id].$el
-        console.log(el)
-
+        
         const target = getScrollTarget(el)
         const offset = el.offsetTop
         const duration = 600
