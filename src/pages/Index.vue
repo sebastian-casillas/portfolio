@@ -28,7 +28,7 @@
       <contact ref="section_contact" :max_width="max_width"/>
       <competences ref="section_competences" :competences="curriculum?.competences"/>
       <word-cloud ref="section_wordcloud"/> 
-      <projects ref="section_projects" :projects="curriculum?.featured_projects"/>
+      <projects ref="section_projects" :projects="curriculum?.featured_projects" @select-project="select_project"/>
       <background ref="section_background" :background="curriculum?.background" />
 
     </q-scroll-area>
@@ -36,6 +36,10 @@
     <q-dialog v-model="cv_dialog" maximized>
       <cv/>
     </q-dialog> 
+
+    <q-dialog :model-value="is_project_selected" @update:model-value="project_show = null">
+      <div>Hello world</div>
+    </q-dialog>
 
   </div>
 
@@ -73,7 +77,8 @@ export default {
     curriculum: [],
     v_scroll: 0,
     menu: true,
-    cv_dialog: false
+    cv_dialog: false,
+    project_show: null
   }),
 
   setup(){
@@ -121,6 +126,9 @@ export default {
       let calc_width = (740 + this.percent_u * 60).toString()
 
       return 'width:' + calc_width + 'px;';
+    },
+    is_project_selected: function(){
+      return this.project_show !== null
     }
   },
 
@@ -138,7 +146,11 @@ export default {
       }
 
 
-    }
+    },
+    
+    select_project(project){
+      this.project_show = project;
+    } 
 
   }
 
@@ -152,6 +164,11 @@ export default {
     max-width: 100%;
     height: 100vh;
     overflow: hidden;
+  }
+
+  #home_main{
+    max-width: 100%;
+    overflow: none;
   }
 
   #app_header{
