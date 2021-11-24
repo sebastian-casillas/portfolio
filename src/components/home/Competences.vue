@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="max-width: 100vw;">
 
     <div>
         <p class="text-italic text-center"> A good computer system implementation involves much more than just code</p>  
@@ -7,7 +7,7 @@
 
     <div id="competences_div" class="q-pa-lg">
 
-        <div class="row q-mb-lg">
+        <div class="row q-mb-xl">
 
             <div v-for="c of competences" :key="c._id" 
                  class="col-md-6 col-sm-12 col-xs-12 q-pa-md competence_card">
@@ -16,29 +16,48 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12 q-pa-lg" id="planguage_card">
+        <div class="row q-mb-xl">
+            <div class="col-md-6 col-sm-12 col-xs-12 q-pa-xl" id="language_icon_p">
                 <h4 class="q-mt-sm" >Programming languages</h4>
 
 
-                <div v-for="l of p_languages" :key="l" >
-                    <h6 class="q-my-md q-px-md" style="height: 40px;">
-                        {{l.name}}
-                    </h6>
+
+                <div v-for="l of p_languages" :key="l" class="row wrap items-center content-center q-mb-md">
+
+
+                    <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.value.language}}</span>
+
+                    
+
+                    <span class="col-grow"></span>
+
+                    <q-rating  class="col-shrink q-mx-sm" icon="mdi-label-variant" readonly  v-model='l.value.level' size='1.3rem' color='deep-orange-3' :max='4'/>
+                    <q-icon name="mdi-clock" size='1.3rem'></q-icon>
+
+
                 </div>
 
+                <p class="text-overline q-mt-xl q-mb-md" style="line-height: 1rem;">{{p_languages_note}}</p>
 
             </div>
 
-            <div class="col-md-6 col-sm-12 col-xs-12 q-pa-lg" id="language_card">
+            <div class="col-md-6 col-sm-12 col-xs-12 q-pa-xl" id="language_icon_l">
 
                 <h4 class="q-mt-sm" >Languages</h4>
 
+                <div v-for="l of languages" :key="l" class="row wrap items-center content-center q-mb-md">
 
-                <div v-for="l of languages" :key="l">
-                    <h6 class="q-my-md q-px-md" style="height: 40px;">
-                        {{l.name}}
-                    </h6>
+
+                    <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.value.language}}</span>
+
+                    <span class="col-grow"></span>
+
+                    <span class="col-shrink text-overline q-mx-sm" style="color: #fffA" v-if="l.value.level >= 2">{{l.value.subtitle}}</span>
+                    <span class="col-shrink text-overline q-mx-sm " v-else  >...In progress</span>
+
+                    <q-rating  class="col-shrink q-mx-sm" v-if="l.value.level >= 2" readonly   v-model='l.value.level' size='1.3rem' color='deep-orange-3' :max='4'/>
+
+
                 </div>
 
             </div>
@@ -60,48 +79,53 @@ export default {
             type: Array,
             default: () => [],
         },
-    },
-    data() {
-        return {
-                languages:[
-                    {name: 'Spanish', level: 4, note: 'Mother-tongue'},
-                    {name: 'English', level: 4, note: 'IELTS 2020 - CERF C1'},
-
-                    {name: 'German', level: 2, note: 'Deutschotek: A2'},
-                    {name: 'Chinese', level: 1, note: 'BIT:Mandarin Basic'},
-                    {name: 'Dutch'},
-                    {name: 'Finnish'}
-                ],
-                p_languages:[
-                    {name: 'Javascript', level: 4},
-                    {name: 'Python', level: 4},
-                    {name: 'PHP', level: 4},
-
-                    {name: 'Java', level: 4},
-                    {name: 'C/C++', level: 3},
-                    {name: 'SQL', level: 3},
-
-                    {name: 'R', level: 2},
-                    {name: 'Low level: ASM, VHDL', level: 2},
-                ]
-
+        languages: {
+            type: Array,
+            default: () => [],  
+        },
+        p_languages: {
+            type: Array,
+            default: () => [], 
+        },
+        p_languages_note: {
+            type: String,
+            default: ''
         }
     },
 }
 </script>
 
 <style lang="scss" scoped>
-#language_card{
-    background-color: #654;
-    background-image: url(/assets/background_lang.svg);
-    background-repeat: no-repeat;
-    background-size: 50%;
-    background-position: right bottom;
 
+
+#language_icon_p{
+    background-color: #456;
+
+    background-image: url(/assets/background_coding.svg);
+
+    background-position: right top;
+
+    background-repeat: no-repeat;
+    background-size: 20%;
+
+    & > *{
+        background-color: #4566;
+    }
 }
 
-#planguage_card{
-        background-color: #456;
+#language_icon_l{
+    background-color: #654;
+
+    background-image: url(/assets/background_lang.svg);
+
+    background-position: right top;
+
+    background-repeat: no-repeat;
+    background-size: 20%;
+
+    & > *{
+        background-color: #6546;
+    }
 }
 
 #competences_div{
@@ -112,11 +136,5 @@ export default {
     & .competence_card > *{
         color: black;
     }
-
-
-    
-
-
-    
-  }
+}
 </style>

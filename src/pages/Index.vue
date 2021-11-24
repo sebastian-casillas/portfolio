@@ -26,7 +26,7 @@
       <div v-intersection="options" style="height: 80px;"></div>
 
       <contact ref="section_contact" :max_width="max_width"/>
-      <competences ref="section_competences" :competences="curriculum?.competences"/>
+      <competences ref="section_competences" :competences="curriculum?.competences" :languages="curriculum?.language" :p_languages="curriculum?.programming_languages" :p_languages_note="curriculum?.p_languages_note"/>
       <word-cloud ref="section_wordcloud"/> 
       <projects ref="section_projects" :projects="curriculum?.featured_projects" @select-project="select_project"/>
       <background ref="section_background" :background="curriculum?.background" />
