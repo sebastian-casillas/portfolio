@@ -37,8 +37,8 @@
       <cv/>
     </q-dialog> 
 
-    <q-dialog :model-value="is_project_selected" @update:model-value="project_show = null">
-      <div>Hello world</div>
+    <q-dialog :model-value="is_project_selected" @update:model-value="project_show = null" full-width  >
+      <project-view :selected_project="project_show"  @hide-dialog="hide_project_dialog"/>
     </q-dialog>
 
   </div>
@@ -56,6 +56,7 @@ import Projects from '@/components/home/Projects.vue'
 import Background from '@/components/home/Background.vue'
 import CV from '@/components/cv.vue'
 import WordCloud from '@components/home/WordCloud.vue'
+import ProjectView from '@components/home/ProjectView.vue'
 
 import { ref } from 'vue'
 
@@ -70,7 +71,8 @@ export default {
     Projects,
     Background,
     cv: CV,
-    WordCloud
+    WordCloud,
+    ProjectView
   },
 
   data: () => ({
@@ -150,7 +152,11 @@ export default {
     
     select_project(project){
       this.project_show = project;
-    } 
+    },
+
+    hide_project_dialog(){
+      this.project_show = null
+    }
 
   }
 

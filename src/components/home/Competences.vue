@@ -5,37 +5,42 @@
         <p class="text-italic text-center"> A good computer system implementation involves much more than just code</p>  
     </div>
 
-    <div id="competences_div">
+    <div id="competences_div" class="q-pa-lg">
 
-        <div class="simple_grid q-mb-lg">
-            <div v-for="c of competences" :key="c._id" class="competence_card">
+        <div class="row q-mb-lg">
+
+            <div v-for="c of competences" :key="c._id" 
+                 class="col-md-6 col-sm-12 col-xs-12 q-pa-md competence_card">
                 <h5 class="q-my-md" style="line-height: 2rem;"> {{c.value.title}}</h5>
                 <p style="line-height: 1rem;">{{c.value.content}}</p>
             </div>
         </div>
 
-        <div class="simple_grid">
-            <div class="q-ma-md q-pa-lg" style="background-color: #456">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12 q-pa-lg" id="planguage_card">
                 <h4 class="q-mt-sm" >Programming languages</h4>
 
-                <div class="small_grid">
-                    <div v-for="l of p_languages" :key="l" >
-                        <h6 class="q-my-md q-px-md" style="height: 40px;">
-                            {{l.name}}
-                        </h6>
-                    </div>
+
+                <div v-for="l of p_languages" :key="l" >
+                    <h6 class="q-my-md q-px-md" style="height: 40px;">
+                        {{l.name}}
+                    </h6>
                 </div>
+
+
             </div>
 
-            <div class="q-ma-md q-pa-lg" style="background-color: #654">
+            <div class="col-md-6 col-sm-12 col-xs-12 q-pa-lg" id="language_card">
+
                 <h4 class="q-mt-sm" >Languages</h4>
-                <div class="small_grid">
-                    <div v-for="l of languages" :key="l" >
-                        <h6 class="q-my-md q-px-md" style="height: 40px;">
-                            {{l.name}}
-                        </h6>
-                    </div>
+
+
+                <div v-for="l of languages" :key="l">
+                    <h6 class="q-my-md q-px-md" style="height: 40px;">
+                        {{l.name}}
+                    </h6>
                 </div>
+
             </div>
         </div>
 
@@ -86,31 +91,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.simple_grid{
-    display: grid;
-    row-gap: 2rem;
-    column-gap: 1.5rem;
-    grid-template-columns: 1fr 1fr;
+#language_card{
+    background-color: #654;
+    background-image: url(/assets/background_lang.svg);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: right bottom;
 
+}
 
-    @media screen and (max-width: 651px){
-      grid-template-columns: 1fr;
-    }
+#planguage_card{
+        background-color: #456;
 }
 
 #competences_div{
     background-color: #EEE;
     width: 100%;
     margin-bottom: 3rem;
-    padding: 2.4rem;
 
-    & .competence_card {
-      padding: 10px 20px;;
-
-      & > *{
+    & .competence_card > *{
         color: black;
-      }
-      
     }
 
 
