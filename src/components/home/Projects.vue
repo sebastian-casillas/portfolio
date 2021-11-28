@@ -3,36 +3,35 @@
         <h2 class="q-mb-md">Projects</h2>
         <div class="project_contents q-pa-lg row wrap justify-center">
                 
+            <project-card 
+                v-for="p of projects" 
+                :key="p._id" 
+                :project="p"
+                />
 
-            <q-card class="my-card" v-for="p of projects" :key="p._id" style="height: 450px; width: 450px;" @click="select_project(p)">
-                <q-img :src="'https://casillas.dev/' + p.cover.path" ratio="1" style="height: 100%; width: 100%;">
-                    <div class="absolute-bottom text-h6">
-                    {{p.title}}
-                    <div class="text-caption">{{p.context}}</div>
-                    </div>
-                </q-img>
-            </q-card>
 
+        </div>
+        <div class="row justify-center q-py-md">
+            <q-btn icon="mdi-dots-grid" flat to="/projects">
+                <span class="q-mx-sm">View all</span>
+            </q-btn>
         </div>
     </div>
 </template>
 
 <script>
+import ProjectCard from '@/components/home/ProjectCard.vue'
+
 export default {
+    components: {
+        ProjectCard
+    },
     props: {
         projects: {
             type: Array,
             default: () => []
         }
     },
-    methods:{
-        select_project: function(p){
-            this.$emit('select-project', p)
-
-        }
-        
-    }
-
 }
 </script>
 
@@ -47,8 +46,5 @@ export default {
     }
 }
 
-.my-card{
-    height: 500px; width: 500px;
-     background-color: white;
-}
+
 </style>
