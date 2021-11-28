@@ -8,8 +8,16 @@
 
         <q-space/>
 
-        <q-btn flat icon="mdi-home-circle" class="text-white" color="grey-0" @click="$router.push({name: 'home'})"></q-btn>
-        <q-btn flat icon="mdi-dots-grid" class="text-white" color="grey-0" @click="$router.push({name: 'Project'})"></q-btn>
+        <q-btn flat icon="mdi-home-circle" class="text-white" color="grey-0" @click="$router.push({name: 'home'})">
+          <q-tooltip>
+            Home
+          </q-tooltip>
+        </q-btn>
+        <q-btn flat icon="mdi-dots-grid" class="text-white" color="grey-0" @click="$router.push({name: 'Project'})">
+          <q-tooltip>
+            Portfolio
+          </q-tooltip>
+        </q-btn>
 
         <q-space/>
 

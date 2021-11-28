@@ -30,7 +30,7 @@
             <q-card-section class="q-mt-md">
                 <div id="project_gallery" :style="gallery_columns">
 
-                    <q-btn flat v-for="i of gallery" :key="i._id" class="my-gallery-item q-pa-none">
+                    <q-btn flat v-for="(i, index) of gallery" :key="i._id" class="my-gallery-item q-pa-none" @click="toggle_lightbox(index)">
                         <q-card  flat style="background: transparent; width: 100%;">
                             <q-img :src="'https://casillas.dev' + i.picture.path" scale-down/>
 
@@ -50,6 +50,17 @@
                 </div>
             </q-card-section>
         </q-card>
+
+    <vue-easy-lightbox
+      scrollDisabled
+      escDisabled
+      moveDisabled
+      :visible="lightbox_visible"
+      :imgs="lightbox_gallery"
+      :index="lightbox_index"
+      @hide="handleHide"
+    ></vue-easy-lightbox>
+
     </div>
 
 </template>
@@ -68,7 +79,9 @@ export default {
   },
   data: () => ({
     selected_project: undefined,
-    nothing_found: false
+    nothing_found: false,
+    lightbox_visible: false,
+    lightbox_index: 0
   }),
   mounted(){
       this.load_project(this.selected_slug)
@@ -85,7 +98,15 @@ export default {
                     this.nothing_found = true
                 })
             .catch( e => console.log(e));
+      },
+      toggle_lightbox(index = 0){
+          this.lightbox_index = index
+          this.lightbox_visible = !this.lightbox_visible
+      },
+      handleHide(){
+          this.lightbox_visible = false;
       }
+      
   },
   watch: {
     selected_slug: function (val) {
@@ -97,6 +118,9 @@ export default {
   computed:{
       gallery: function (){
         return this.selected_project? this.selected_project.gallery.map(r => r.value): []
+      },
+      lightbox_gallery: function(){
+          return this.gallery.map(d=> 'https://casillas.dev' + d.picture.path)
       },
       gallery_columns: function(){
           if (Screen.lg) return 'grid-template-columns: 1fr 1fr 1fr;'
