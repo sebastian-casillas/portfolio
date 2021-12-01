@@ -1,5 +1,5 @@
 <template>
-    <div class="q-pa-md">
+    <div>
 
         <q-card class="my_project_card text-black" style="background: white">
             <q-card-section>
@@ -29,21 +29,22 @@
 
             <q-separator :dark="false" inset/>
 
-            <q-card-section class="q-mt-md">
-                <div id="project_gallery" :style="gallery_columns">
+            <q-card-section class="q-mt-md" id="project_gallery" :style="gallery_columns">
 
-                    <q-btn v-for="(i, index) of gallery" :key="i._id" 
-                           flat class="my-gallery-item q-pa-none" 
-                           @click="toggle_lightbox(index)"
-                           >
+                    <q-btn v-for="(i) of gallery" :key="i.asset" 
+                            flat class="my-gallery-item q-pa-none" 
+                            @click="lightbox_panel = i.asset"
+                            >
+
+      
                         <q-card  flat style="background: transparent; width: 100%;">
-                            <q-img :src="'https://casillas.dev' + i.picture.path" 
-                                   scale-down
-                                   alt="i.description"/>
+                            <q-img :src="i.src" :alt="i.caption"
+                                    scale-down
+                                    />
 
                             <q-card-section>
                                 <div style="color:black;" class="text-caption">
-                                    {{ i.description }}
+                                    {{ i.caption }}
                                 </div>
                             </q-card-section>
 
@@ -52,19 +53,53 @@
 
                     <q-skeleton v-show="!selected_project" class="col-sm-6 col-md-4 col-xs-12" />
 
-                </div>
+
             </q-card-section>
         </q-card>
 
-    <vue-easy-lightbox
-      scrollDisabled
-      escDisabled
-      moveDisabled
-      :visible="lightbox_visible"
-      :imgs="lightbox_gallery"
-      :index="lightbox_index"
-      @hide="handleHide"
-    ></vue-easy-lightbox>
+        <q-dialog
+            v-model="lightbox_visible"
+            persistent maximized
+            transition-show="slide-up"
+            transition-hide="slide-down"
+            >
+            <div style="height: 100vh; width: 100vw">
+
+                <q-carousel
+                    style="height: 100%; width: 100%;"
+                    :swipeable="false"
+
+                    arrows padding
+                    control-color="white"
+                    animated
+                    infinite
+                    id="my_carousel"
+                    v-model="lightbox_panel"
+                    >
+
+                        <q-carousel-slide 
+                            v-for="(i) of gallery" :key="i.asset" 
+                            class="q-pt-xl"
+                            :name="i.asset"
+                            >
+
+                            <intersection-img @mounted_element="init_panzoom" :src="i.src" :asset="i.asset" />
+
+
+                        </q-carousel-slide>
+
+
+                </q-carousel>
+
+                <q-btn class="fixed-top-right q-ma-sm" round color="white" style="color: black" size=".8rem" @click="lightbox_panel = ''">
+                    <q-icon name="mdi-close" color="black"/>
+                </q-btn>
+
+
+            </div>
+
+
+    </q-dialog>
 
     </div>
 
@@ -73,9 +108,12 @@
 <script>
 
 import { Screen } from 'quasar'
+import panzoom from '@panzoom/panzoom'
+import IntersectionImg from '@/components/home/IntersectionImg.vue'
 
 export default {
   name: 'ProjectView',
+  components: {IntersectionImg},
   props: {
       selected_slug :{
           type: String,
@@ -83,49 +121,69 @@ export default {
       }
   },
   data: () => ({
-    selected_project: undefined,
+    selected_project: null,
     nothing_found: false,
+
     lightbox_visible: false,
-    lightbox_index: 0
+    lightbox_panel: '',
+    panzoom_instance: undefined,
   }),
   mounted(){
       this.load_project(this.selected_slug)
   },
   methods:{
-      load_project(slug){
+    load_project(slug){
         this.$api
             .post('collections/get/project?filter[slug][$eq]=' + slug, { populate: 1 })
             .then( res => res.data )
             .then( d => { 
-                if(d.entries.length > 0){
+                if(d.entries.length > 0)
                     this.selected_project = d.entries[0]
-                } 
                 else
                     this.nothing_found = true
                 })
             .catch( e => console.log(e));
-      },
-      toggle_lightbox(index = 0){
-          this.lightbox_index = index
-          this.lightbox_visible = !this.lightbox_visible
-      },
-      handleHide(){
-          this.lightbox_visible = false;
-      }
-      
+        },
+    
+    init_panzoom(el, parent){
+        
+        if (this.panzoom_instance)
+            this.panzoom_instance.destroy()
+
+        this.panzoom_instance = panzoom(el.$el, { maxScale: 3, minScale: 1 })
+
+        parent.$el.addEventListener('wheel', this.panzoom_instance.zoomWithWheel)
+    }
   },
   watch: {
-    selected_slug: function (val) {
-        this.load_project(val)
-    },
+    lightbox_panel: function(val){
+        this.lightbox_visible = (val !== '')? true: false
+    }
   },
   computed:{
       gallery: function (){
-        return this.selected_project? this.selected_project.gallery.map(r => r.value): []
+            let res = []
+
+
+            if( this.selected_project && 'gallery' in this.selected_project ) 
+                res =  this.selected_project
+                           .gallery
+                           .filter(d => !('path' in d.value) )
+                           .map( d => {
+                                return {
+                                    type: 'image',
+                                    asset: d.meta.asset,
+                                    thumb: 'https://casillas.dev' + d.value.picture.path,
+                                    src: 'https://casillas.dev' + d.value.picture.path,
+                                    caption: d.value.description
+                                }
+                          })
+
+            return res
+
+        
       },
-      lightbox_gallery: function(){
-          return this.gallery.filter(d => 'path' in d.picture).map(d=> 'https://casillas.dev' + d.picture)
-      },
+      
       gallery_columns: function(){
           if (Screen.lg) return 'grid-template-columns: 1fr 1fr 1fr;'
           else if (Screen.xs) return 'grid-template-columns: 1fr;'
