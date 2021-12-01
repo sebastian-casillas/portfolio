@@ -12,7 +12,7 @@
 
         </div>
         <div class="row justify-center q-py-md">
-            <q-btn icon="mdi-dots-grid" flat to="/projects">
+            <q-btn icon="mdi-dots-grid" flat to="/projects" size="1.2rem">
                 <span class="q-mx-sm">View all</span>
             </q-btn>
         </div>
