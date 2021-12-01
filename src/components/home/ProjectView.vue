@@ -1,8 +1,7 @@
 <template>
     <div class="q-pa-md">
 
-
-        <q-card class="my-card text-black" style="background: white">
+        <q-card class="my_project_card text-black" style="background: white">
             <q-card-section>
                 <div class="fill-width row">
                     <div class="col-md-6 col-sm-12 col-xs-12">
@@ -10,11 +9,14 @@
                         <q-skeleton v-else style="height: 100%; width: 100%;" />
                     </div>
 
-                    <div class="col-md-6 col-sm-12 col-xs-12" v-if="selected_project">
-                        <h3  style="color:black" class="q-mb-md">{{selected_project.title}}</h3>
-                        <p v-if="selected_project" style="color:black">{{selected_project.context}}</p>
-                        <p v-if="selected_project" style="color:black">{{selected_project.description}}</p>
-                        <div v-if="selected_project" class="row wrap">
+                    <div class="col-md-6 col-sm-12 col-xs-12 q-pa-lg" v-if="selected_project">
+                        <h3  style="color:black" class="q-mb-sm">{{selected_project.title}}</h3>
+                        <p v-if="selected_project" class="text-overline" style="color:black">{{selected_project.context}}</p>
+                        <div>
+                            <vue3-markdown-it :source="selected_project.description" />
+                        </div>
+                        <!-- <p v-if="selected_project" style="color:black">{{selected_project.description}}</p> -->
+                        <div v-if="selected_project" class="row wrap q-mt-md">
                             <q-chip v-for="c of selected_project.knowledge_applied" :key="c">
                                 {{c}}
                             </q-chip>
@@ -30,17 +32,20 @@
             <q-card-section class="q-mt-md">
                 <div id="project_gallery" :style="gallery_columns">
 
-                    <q-btn flat v-for="(i, index) of gallery" :key="i._id" class="my-gallery-item q-pa-none" @click="toggle_lightbox(index)">
+                    <q-btn v-for="(i, index) of gallery" :key="i._id" 
+                           flat class="my-gallery-item q-pa-none" 
+                           @click="toggle_lightbox(index)"
+                           >
                         <q-card  flat style="background: transparent; width: 100%;">
-                            <q-img :src="'https://casillas.dev' + i.picture.path" scale-down/>
+                            <q-img :src="'https://casillas.dev' + i.picture.path" 
+                                   scale-down
+                                   alt="i.description"/>
 
                             <q-card-section>
                                 <div style="color:black;" class="text-caption">
                                     {{ i.description }}
                                 </div>
                             </q-card-section>
-
-                                
 
                         </q-card>
                     </q-btn>
@@ -92,8 +97,9 @@ export default {
             .post('collections/get/project?filter[slug][$eq]=' + slug, { populate: 1 })
             .then( res => res.data )
             .then( d => { 
-                if(d.entries.length > 0)
+                if(d.entries.length > 0){
                     this.selected_project = d.entries[0]
+                } 
                 else
                     this.nothing_found = true
                 })
@@ -111,8 +117,6 @@ export default {
   watch: {
     selected_slug: function (val) {
         this.load_project(val)
-
-        // $q.screen.sm
     },
   },
   computed:{
@@ -120,7 +124,7 @@ export default {
         return this.selected_project? this.selected_project.gallery.map(r => r.value): []
       },
       lightbox_gallery: function(){
-          return this.gallery.map(d=> 'https://casillas.dev' + d.picture.path)
+          return this.gallery.filter(d => 'path' in d.picture).map(d=> 'https://casillas.dev' + d.picture)
       },
       gallery_columns: function(){
           if (Screen.lg) return 'grid-template-columns: 1fr 1fr 1fr;'
@@ -133,6 +137,10 @@ export default {
 </script>
 
 <style lang="scss">
+
+.my_project_card{
+    margin-bottom: 50px;
+}
 
 #project_gallery{
     display: grid;
