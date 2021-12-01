@@ -1,6 +1,5 @@
 <template>
-
-<q-img style="max-height: 100%;" :src="src" :ref="asset" :id="'c_' + asset" fit="contain"/>
+    <q-img style="max-height: 100%;" :src="src" :ref="asset" :id="'c_' + asset" fit="contain"/>
 </template>
 
 <script>

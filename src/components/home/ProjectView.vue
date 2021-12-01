@@ -31,9 +31,9 @@
 
             <q-card-section class="q-mt-md" id="project_gallery" :style="gallery_columns">
 
-                    <q-btn v-for="(i) of gallery" :key="i.asset" 
+                    <q-btn v-for="(i, index) of gallery" :key="i._id" 
                             flat class="my-gallery-item q-pa-none" 
-                            @click="lightbox_panel = i.asset"
+                            @click="lightbox_panel = ('c_' + index)"
                             >
 
       
@@ -78,12 +78,12 @@
                     >
 
                         <q-carousel-slide 
-                            v-for="(i) of gallery" :key="i.asset" 
+                            v-for="(i, index) of gallery" :key="i._id" 
                             class="q-pt-xl"
-                            :name="i.asset"
+                            :name="'c_' + index"
                             >
 
-                            <intersection-img @mounted_element="init_panzoom" :src="i.src" :asset="i.asset" />
+                            <intersection-img @mounted_element="init_panzoom" :src="i.src" :asset="'c_' + index" />
 
 
                         </q-carousel-slide>
@@ -137,6 +137,7 @@ export default {
             .post('collections/get/project?filter[slug][$eq]=' + slug, { populate: 1 })
             .then( res => res.data )
             .then( d => { 
+                console.log(d)
                 if(d.entries.length > 0)
                     this.selected_project = d.entries[0]
                 else
@@ -172,7 +173,7 @@ export default {
                            .map( d => {
                                 return {
                                     type: 'image',
-                                    asset: d.meta.asset,
+                                    // asset: d.meta.asset,
                                     thumb: 'https://casillas.dev' + d.value.picture.path,
                                     src: 'https://casillas.dev' + d.value.picture.path,
                                     caption: d.value.description

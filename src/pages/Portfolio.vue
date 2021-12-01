@@ -28,6 +28,7 @@
 
         </div>
 
+        <div style="width: 100%" class="row">
         <project-card 
             class="col-md-4 col-lg-3 col-sm-6"
             v-for="p of projects" 
@@ -36,7 +37,11 @@
             :project="p"
             />
 
+        </div>
+
+
         <project-view 
+            v-if="selected_slug"
             :selected_slug="selected_slug"
             />
 
