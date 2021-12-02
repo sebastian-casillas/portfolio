@@ -1,30 +1,31 @@
 <template>
   <div id="contact_component" class="full-width row justify-center items-center content-center">
 
-    <div class="presentation_background" :style="max_width">
 
 
-        <div class="row pressentation_card q-pa-xl">
 
-          <div class="col-md-5 col-sm-12 col-xs-12 row justify-center align-center">
-            <q-avatar size="250px" >
-              <img src="/assets/profile_circle.png">
-            </q-avatar>
-          </div>
+    <div class="presentation_background">
+
+      <div class="row q-pa-md justify-center items-center" style="background-color: white;">
 
 
-          <div class="q-pl-md col-md-7 col-sm-12 col-xs-12 row align-center">
-            <h2 class="q-ma-sm">Sebastian</h2>
-            <h3 class="q-ma-sm">Casillas Perez</h3>
-
-
-            <div class="contact_buttons q-mt-lg q-ml-md">
-              <q-btn @click='to_clipboard' flat dense size="12px" icon="email" class="q-px-sm" label="sebastian.casillas@outlook.com" />
-              <q-btn @click='open_linkedin' flat dense size="12px"  icon="mdi-linkedin" class="q-px-sm" label="linkedin.com/in/sebastian-casillas" />
-            </div>
-          </div>
-
+        <div class="col-grow column items-center">
+          <img class="items-center q-pa-md" style="height:250px; width: 250px;" src="/assets/profile_circle.png">
         </div>
+        
+
+
+
+        <div class="card_text col-md-7 col-sm-12">
+          <h2  :class="{'text-center': $q.screen.lt.md}">Sebastian</h2>
+          <h3  :class="{'text-center': $q.screen.lt.md}">Casillas Perez</h3>
+          <div class="contact_buttons"  :class="{'column items-center': $q.screen.lt.md}">
+            <q-btn @click='to_clipboard' flat dense size="12px" icon="email" class="q-px-sm" label="sebastian.casillas@outlook.com" />
+            <q-btn @click='open_linkedin' flat dense size="12px"  icon="mdi-linkedin" class="q-px-sm" label="linkedin.com/in/sebastian-casillas" />
+          </div>
+        </div>
+
+      </div>
 
     </div>
 
@@ -71,8 +72,6 @@ export default {
       -moz-box-shadow: 0px 48px 317px 59px rgba(255,255,255,0.05);
     }
 
-
-
     padding-top: 24vh;
     padding-bottom: 24vh;
 
@@ -86,16 +85,34 @@ export default {
       box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
       -webkit-box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
       -moz-box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
+
+ 
     }
 
-    .contact_buttons{
 
-      & > *{
-        display: block;
-        margin-bottom: 10px;
+  }
+
+  .card_text{
+    margin: 2rem 0;
+
+     h2{
+       color: #333;
+       margin-top: 1rem;
+       margin-bottom: 1rem;
+     } 
+     
+     h3{
+        color: #333;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
       }
 
-    }
+      span{
+        color: #444;
+      }
+  }
 
+  .text-center{
+    text-align: center;
   }
 </style>
