@@ -41,9 +41,6 @@ export default {
     padding: 1em 3em;
     width: 100%;
 
-    .project_contents{
-
-    }
 }
 
 

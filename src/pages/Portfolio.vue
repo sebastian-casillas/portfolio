@@ -28,9 +28,9 @@
 
         </div>
 
-        <div style="width: 100%" class="row">
+        <div  class="row justify-center">
         <project-card 
-            class="col-md-4 col-lg-3 col-sm-6"
+            class="col-md-4 col-lg-3 col-sm-6 q-mt-md"
             v-for="p of projects" 
             :key="p._id" 
             v-show="!selected_slug"
@@ -87,11 +87,14 @@ export default {
   computed:{
     selected_slug: function(){
       return this.$route.params.slug || undefined
-    }
+    },
   }
 }
 </script>
 
 <style>
+.this_grid {
+  display: grid;
 
+}
 </style>

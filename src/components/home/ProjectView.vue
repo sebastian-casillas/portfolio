@@ -186,8 +186,8 @@ export default {
       },
       
       gallery_columns: function(){
-          if (Screen.lg) return 'grid-template-columns: 1fr 1fr 1fr;'
-          else if (Screen.xs) return 'grid-template-columns: 1fr;'
+          if (Screen.gt.lg) return 'grid-template-columns: 1fr 1fr 1fr;'
+          else if (Screen.lt.xs) return 'grid-template-columns: 1fr;'
           else return 'grid-template-columns: 1fr 1fr;'
       }
   }
