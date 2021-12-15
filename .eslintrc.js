@@ -89,6 +89,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/restrict-plus-operands': 'off',
     'vue/no-unused-components': 'off',
+    '@typescript-eslint/no-var-requires': "off",
 
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
