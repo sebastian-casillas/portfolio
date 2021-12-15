@@ -1,6 +1,6 @@
 <template>
     <g style="fill: white; stroke:black;">
-        <path :d="my_path"></path>
+        <path :d="d"></path>
     </g>
 </template>
 
@@ -18,36 +18,34 @@ export default {
             type: Function,
             required: true
         },
+        data:{
+            type: Object,
+            required: true
+        },
+        capitals:{
+            type: Object,
+            required: true
+        }
     },
     data() { return {
-        my_path: null
+        path: null
     }},
     created(){
-
-        let pr = d3.geoPath().projection(this.my_projection)
-
-        pr = pr(this.country)
-
-        console.log(pr)
-
-        this.my_path = pr
-
-
-        // svg.append('g')
-        //     .data(this.country.features)
-        //     .join('path')
-        //     .attr('fill', '#b8b8b8')
-        //     .attr('d', pr)
-        //     .style('stroke', 'black')
-        //     .style('opacity', .3)
-
+        this.path = d3.geoPath().projection(this.my_projection)
     },
-    methods:{
+    mounted(){
+        console.log(this.capital)
+    },
+    watch:{
 
     },
     computed:{
-        my_d3(){
-            return this.$parent.d3_instance
+        d(){
+            return this.path(this.country)
+        },
+        capital(){
+            let loc = this.my_projection(this.capitals[this.country.id])
+            return loc
         }
     }
 }
