@@ -3,15 +3,16 @@
     <g :transform="'translate(' + capital[0] +','+capital[1] +')'" :id="'capital_'+country.id">
         <foreignObject x="-10" y="-10" width="28px" height="28px">
             <q-circular-progress
+                show-value
                 :value="value_dep"
-                size="26px"
-                :thickness="0.3"
-                font-size="8px"
+                size="30px"
+                :thickness="0.2"
+                font-size="10px"
                 color="light-blue"
                 center-color="grey-9"
                 >
                 <span style="color:white;">
-                    {{value_dep}}
+                    {{value_obs}}
                 </span>
                 
             </q-circular-progress>
@@ -76,6 +77,14 @@ export default {
             let loc = this.capitals[this.country.id]
             let x = this.my_projection([loc.long, loc.lat])
             return x
+        },
+        value_obs(){
+            return (   this.country.id in this.data
+                && this.filter_sex in this.data[this.country.id]
+                && this.filter_activity in this.data[this.country.id][this.filter_sex])?
+                    this.data[this.country.id][this.filter_sex][this.filter_activity]['t_2010']
+                    :
+                    null
         },
         value_dep(){
             return (   this.country.id in this.data

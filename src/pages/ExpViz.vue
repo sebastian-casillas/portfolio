@@ -38,6 +38,9 @@
 
             </svg>
         </q-responsive>
+        <div class="q-my-sm row justify-end text-bold" style="width: 300px; padding:10px; border: solid #666 4px; background-color: red;" :style="'background: linear-gradient(90deg,' + color_init +' 0%, '+ color_final +' 100%);'">
+            Self-assess chronical depression <br> max value: 30% of the population
+        </div>
         <div>
             <h5>Filters:</h5>
         </div>
@@ -105,6 +108,7 @@ import * as d3 from 'd3';
 import Country from '@/components/data_viz/Country.vue'
 import CountryData from '@/components/data_viz/CountryData.vue'
 
+import { colors } from 'quasar'
 
 export default {
     components: {
@@ -167,10 +171,16 @@ export default {
 
             filter_year: '2019',
             filter_sex: 'T',
-            filter_activity: 'AC01'
+            filter_activity: 'AC01',
+
+            color_init: null,
+            color_final: null
         }
     },
     mounted(){
+        this.color_init = colors.rgbToHex({r: 40, g: 120, b: 30})
+        this.color_final = colors.rgbToHex({r: 254, g: 120, b: 30})
+
         this.d3_instance = d3;
         this.my_svg = d3.select('svg');
 
