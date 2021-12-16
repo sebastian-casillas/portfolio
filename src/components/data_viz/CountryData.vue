@@ -1,16 +1,20 @@
 <template>
 
     <g :transform="'translate(' + capital[0] +','+capital[1] +')'" :id="'capital_'+country.id">
-        <foreignObject x="-10" y="-10" width="24px" height="24px">
+        <foreignObject x="-10" y="-10" width="28px" height="28px">
             <q-circular-progress
-                reverse
                 :value="value_dep"
-                size="20px"
-                :thickness="0.6"
-                font-size="20px"
+                size="26px"
+                :thickness="0.3"
+                font-size="8px"
                 color="light-blue"
                 center-color="grey-9"
-                />
+                >
+                <span style="color:white;">
+                    {{value_dep}}
+                </span>
+                
+            </q-circular-progress>
         </foreignObject>
 
     </g>
@@ -45,6 +49,10 @@ export default {
         filter_sex:{
             type: String,
             required: true
+        },
+        filter_activity:{
+            type: String,
+            required: true
         }
     },
     data() { return {
@@ -52,6 +60,13 @@ export default {
     }},
     created(){
         this.path = d3.geoPath().projection(this.my_projection)
+    },
+    methods:{
+        hour_to_12(val){
+            let items = val.split(':')
+            let percentage = (parseInt(items[0]) + items[1]/60) * 100 / 12
+            return percentage 
+        }
     },
     computed:{
         d(){
@@ -63,12 +78,11 @@ export default {
             return x
         },
         value_dep(){
-            return (
-                this.country.id in this.data
-                && this.filter_year in this.data[this.country.id]
-                && this.filter_sex in this.data[this.country.id][this.filter_year]
-                )?
-                this.data[this.country.id][this.filter_year][this.filter_sex]['OBS_VALUE']
+            return (   this.country.id in this.data
+                && this.filter_sex in this.data[this.country.id]
+                && this.filter_activity in this.data[this.country.id][this.filter_sex])?
+                    
+                this.hour_to_12(this.data[this.country.id][this.filter_sex][this.filter_activity]['t_2010'])
                 :
                 null
         }
