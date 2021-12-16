@@ -1,11 +1,11 @@
 <template>
     <q-scroll-area id="curriculum_scroll_widget">
         <div id="curriculum_scroll_area">
-            <q-toolbar class="text-primary q-my-lg q-px-lg">
+            <!-- <q-toolbar class="text-primary q-my-lg q-px-lg">
                 <q-btn flat round color="white" icon="mdi-arrow-u-left-top-bold" size="1.2rem" to="/"/>
                 <q-space />
                 <q-btn  flat round color="white" icon="download" size="1.2rem" @click="downloadCV()"/>
-            </q-toolbar>
+            </q-toolbar> -->
 
             <curriculum/>
         </div>
@@ -43,7 +43,7 @@ export default {
     #curriculum_scroll_area{
         min-width: 100%;
         min-height: 100%;
-        padding: 20px 30px;
+        padding: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;

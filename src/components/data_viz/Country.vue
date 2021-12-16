@@ -1,6 +1,8 @@
 <template>
     <g style="fill: white; stroke:black;">
-        <path :d="d"></path>
+
+        <path :d="d" ></path>
+        
     </g>
 </template>
 
@@ -33,21 +35,24 @@ export default {
     created(){
         this.path = d3.geoPath().projection(this.my_projection)
     },
-    mounted(){
-        console.log(this.capital)
-    },
-    watch:{
-
-    },
     computed:{
         d(){
             return this.path(this.country)
         },
         capital(){
-            let loc = this.my_projection(this.capitals[this.country.id])
-            return loc
+            let loc = this.capitals[this.country.id]
+            let x = this.my_projection([loc.long, loc.lat])
+            return x
         }
     }
 }
 
 </script>
+
+<style lang="scss">
+    .capital:hover{
+        transform: scale(3);
+        fill:green;
+    }
+
+</style>
