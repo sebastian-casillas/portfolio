@@ -22,16 +22,15 @@ export default {
     name: 'MyComponent',
     components:{BackgroundCard},
     props: {
-        background: {
-            type: Array,
-            default: () => [],
-        },
+        curriculum:{
+            type: Object,
+            default: null
+        }
     },
-
-    data: () => ({
-        
-    }),
     computed:{
+        background: function(){
+            return this.curriculum.background || [];
+        },
         layout: function () {
             return this.$q.screen.lt.sm ? 'dense' : (this.$q.screen.lt.md ? 'comfortable' : 'loose')
         }

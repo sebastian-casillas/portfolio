@@ -1,56 +1,26 @@
 <template>
-  <q-layout view="hHh lpR fFf" style="overflow: hidden; max-width: 100vw;">
+
+  <div class="q-pt-lg">
+
+    <div  class="row justify-center">
+      <project-card 
+          class="col-md-4 col-lg-3 col-sm-6 q-mt-md"
+          v-for="p of projects" 
+          :key="p._id" 
+          v-show="!selected_slug"
+          :project="p"
+          />
+
+    </div>
 
 
+    <project-view 
+        v-if="selected_slug"
+        :selected_slug="selected_slug"
+        />
 
-    <!-- <q-drawer show-if-above v-model="leftDrawerOpen" side="left">
+  </div>
 
-    </q-drawer> -->
-
-    <q-page-container style="max-width: 100vw;">
-
-      <q-scroll-area style="height: 100vh;">
-
-        <div stretch class="row q-py-sm justify-center">
-          <!-- <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" /> -->
-
-          <q-btn flat round icon="mdi-home-circle" class="text-white q-mx-sm" color="grey-0" size="18px" @click="$router.push({name: 'home'})">
-            <q-tooltip>
-              Home
-            </q-tooltip>
-          </q-btn>
-
-          <q-btn flat round icon="mdi-dots-grid" class="text-white q-mx-sm" color="grey-0" size="18px" @click="$router.push({name: 'Project'})">
-            <q-tooltip>
-              Portfolio
-            </q-tooltip>
-          </q-btn>
-
-        </div>
-
-        <div  class="row justify-center">
-        <project-card 
-            class="col-md-4 col-lg-3 col-sm-6 q-mt-md"
-            v-for="p of projects" 
-            :key="p._id" 
-            v-show="!selected_slug"
-            :project="p"
-            />
-
-        </div>
-
-
-        <project-view 
-            v-if="selected_slug"
-            :selected_slug="selected_slug"
-            />
-
-      </q-scroll-area>
-
-
-    </q-page-container>
-
-  </q-layout>
 </template>
 
 <script>

@@ -1,10 +1,6 @@
 <template>
 <div style="max-width: 100vw;">
 
-    <div>
-        <p class="text-italic text-center"> A good computer system implementation involves much more than just code</p>  
-    </div>
-
     <div id="competences_div" class="q-pa-lg">
 
         <div class="row q-mb-xl">
@@ -89,22 +85,28 @@
 export default {
     name: 'Competences',
     props: {
-        competences: {
-            type: Array,
-            default: () => [],
-        },
-        languages: {
-            type: Array,
-            default: () => [],  
-        },
-        p_languages: {
-            type: Array,
-            default: () => [], 
-        },
-        p_languages_note: {
-            type: String,
-            default: ''
+        curriculum:{
+            type: Object,
+            default: null
         }
+    },
+
+    computed:{
+        competences: function(){
+            return this.curriculum.competences || [];
+        },
+
+        languages: function(){
+            return this.curriculum.languages || [];
+        },
+
+        p_languages: function(){
+            return this.curriculum.p_languages || [];
+        },
+
+        p_languages_note: function(){
+            return this.curriculum.p_languages_note || [];
+        },
     },
 }
 </script>

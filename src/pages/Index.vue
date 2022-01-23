@@ -37,10 +37,6 @@
                 />
 
 
-          <!-- <q-tab name="tab1" label="Contact" @click="scrollTo('section_contact')"/>
-          <q-tab name="tab2" label="Workflow" @click="scrollTo('section_competences')"/>
-          <q-tab name="tab3" label="Projects" @click="scrollTo('section_projects')"/>
-          <q-tab name="tab4" label="Background" @click="scrollTo('section_background')"/> -->
             <q-btn name="tab5" label="CV" flat :style="scrollbased_transparency" round :to="'/cv'"/>
         </q-tabs>
       </q-toolbar>
@@ -49,16 +45,9 @@
 
     <q-scroll-area id="home_main" ref="home_main" class="scroll">
 
-
       <div v-intersection="options" style="height: 80px;"></div>
 
-      <router-view ></router-view>
-
-      <!-- <contact ref="section_contact" style="max-width: 100vw;" :max_width="max_width"/>
-      <competences ref="section_competences" :competences="curriculum?.competences" :languages="curriculum?.language" :p_languages="curriculum?.programming_languages" :p_languages_note="curriculum?.p_languages_note"/>
-      <word-cloud ref="section_wordcloud"/> 
-      <projects ref="section_projects" style="max-width: 100vw;" :projects="curriculum?.featured_projects" @select-project="select_project"/>
-      <background ref="section_background" :background="curriculum?.background" /> -->
+      <router-view :curriculum="curriculum"></router-view>
 
     </q-scroll-area>
 
@@ -79,29 +68,18 @@
 
 <script>
 
-import Contact from '@/pages/Contact.vue'
-import Competences from '@/pages/Competences.vue'
-import Projects from '@/components/home/Projects.vue'
-import Background from '@/pages/Background.vue'
 import CV from '@/components/cv.vue'
 import WordCloud from '@components/home/WordCloud.vue'
-import ProjectView from '@components/home/ProjectView.vue'
+import ProjectView from '@/components/home/ProjectView.vue'
 
 import { ref } from 'vue'
-
-import { scroll } from 'quasar'
-const { getScrollTarget, setVerticalScrollPosition } = scroll
 
 export default {
   name: 'Home',
   components: {
-    Contact,
-    Competences,
-    Projects,
-    Background,
     cv: CV,
-    WordCloud,
-    ProjectView
+    ProjectView,
+    WordCloud
   },
 
   data: () => ({
@@ -164,32 +142,15 @@ export default {
   },
 
   methods: {
-
-    scrollTo(item_id){
-      if(item_id in this.$refs){
-        let el = this.$refs[item_id].$el
-
-        const target = getScrollTarget(el)
-        const offset = el.offsetTop
-        const duration = 600
-
-        setVerticalScrollPosition(target, offset, duration)
-      }
-
-
-    },
-    
     select_project(project){
       this.project_show = project;
     },
-
     hide_project_dialog(){
       this.project_show = null
     }
-
   }
-
 }
+
 </script>
 
 <style lang="scss">

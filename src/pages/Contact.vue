@@ -1,9 +1,6 @@
 <template>
   <div id="contact_component" class="full-width row justify-center items-center content-center">
 
-
-
-
     <div class="presentation_background">
 
       <div class="row q-pa-md justify-center items-center" style="background-color: white;">
@@ -27,9 +24,11 @@
 
       </div>
 
+      <div>
+        <p class="text-italic text-center q-my-sm"> A good computer system implementation involves much more than just code</p>  
+      </div>
+
     </div>
-
-
 
   </div>
 </template>
