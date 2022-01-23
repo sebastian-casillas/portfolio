@@ -13,11 +13,11 @@ declare module '@vue/runtime-core' {
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ baseURL: 'https://casillas.dev/api/api/' });
+const api = axios.create({ baseURL: 'https://api.casillas.dev/api/' });
 
 api.defaults.headers.common = {
-  'Authorization': 'Bearer 906bebf1da7b09f57df305b4a920c4',
-  'Cockpit-Token': '906bebf1da7b09f57df305b4a920c4',
+  'Authorization': 'Bearer 831c41d41e310f9c44194d5e0fba6b',
+  'Cockpit-Token': '831c41d41e310f9c44194d5e0fba6b',
   'Content-Type': 'application/json',
 }
 
