@@ -83,18 +83,13 @@ module.exports = configure(function (ctx) {
           '@': path.resolve(__dirname, './src'),
           '@components': path.resolve(__dirname, './src/components'),
         }
-      //   cfg.resolve.alias = {
-      //     ...cfg.resolve.alias,
-      //     '@': path.resolve(__dirname, './src'),
-      //     '@components': path.resolve(__dirname, './src/components'),
-      //   }
       },
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       https: false,
-      port: 8080,
+      port: 80,
       open: true // opens browser window automatically
     },
 
