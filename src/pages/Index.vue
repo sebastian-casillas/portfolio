@@ -10,12 +10,38 @@
         </q-toolbar-title>
 
 
+
         <q-tabs shrink>
-          <q-tab name="tab1" label="Contact" @click="scrollTo('section_contact')"/>
+            <q-route-tab
+                label="Contact"
+                to="/"
+                exact
+                />
+
+            <q-route-tab
+                label="Workflow"
+                to="/workflow"
+                exact
+                />
+
+            <q-route-tab
+                label="Projects"
+                to="/projects"
+                exact
+                />
+
+            <q-route-tab
+                label="Background"
+                to="/background"
+                exact
+                />
+
+
+          <!-- <q-tab name="tab1" label="Contact" @click="scrollTo('section_contact')"/>
           <q-tab name="tab2" label="Workflow" @click="scrollTo('section_competences')"/>
           <q-tab name="tab3" label="Projects" @click="scrollTo('section_projects')"/>
-          <q-tab name="tab4" label="Background" @click="scrollTo('section_background')"/>
-          <q-btn name="tab5" label="CV" flat :style="scrollbased_transparency" round :to="'/cv'"/>
+          <q-tab name="tab4" label="Background" @click="scrollTo('section_background')"/> -->
+            <q-btn name="tab5" label="CV" flat :style="scrollbased_transparency" round :to="'/cv'"/>
         </q-tabs>
       </q-toolbar>
     </div>
@@ -23,13 +49,16 @@
 
     <q-scroll-area id="home_main" ref="home_main" class="scroll">
 
+
       <div v-intersection="options" style="height: 80px;"></div>
 
-      <contact ref="section_contact" style="max-width: 100vw;" :max_width="max_width"/>
+      <router-view ></router-view>
+
+      <!-- <contact ref="section_contact" style="max-width: 100vw;" :max_width="max_width"/>
       <competences ref="section_competences" :competences="curriculum?.competences" :languages="curriculum?.language" :p_languages="curriculum?.programming_languages" :p_languages_note="curriculum?.p_languages_note"/>
       <word-cloud ref="section_wordcloud"/> 
       <projects ref="section_projects" style="max-width: 100vw;" :projects="curriculum?.featured_projects" @select-project="select_project"/>
-      <background ref="section_background" :background="curriculum?.background" />
+      <background ref="section_background" :background="curriculum?.background" /> -->
 
     </q-scroll-area>
 
@@ -50,10 +79,10 @@
 
 <script>
 
-import Contact from '@/components/home/Contact.vue'
-import Competences from '@/components/home/Competences.vue'
+import Contact from '@/pages/Contact.vue'
+import Competences from '@/pages/Competences.vue'
 import Projects from '@/components/home/Projects.vue'
-import Background from '@/components/home/Background.vue'
+import Background from '@/pages/Background.vue'
 import CV from '@/components/cv.vue'
 import WordCloud from '@components/home/WordCloud.vue'
 import ProjectView from '@components/home/ProjectView.vue'
