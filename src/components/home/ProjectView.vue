@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div v-if="selected_project">
 
         <q-card class="my_project_card text-black" style="background: white">
             <q-card-section>
                 <div class="fill-width row">
                     <div class="col-md-6 col-sm-12 col-xs-12">
-                        <q-img v-if="selected_project" :src="'https://casillas.dev' + selected_project.cover.path" scale-down style="height: 100%; width: 100%;"></q-img>
+                        <q-img v-if="selected_project" :src="'https://api.casillas.dev' + selected_project.cover.path" scale-down style="height: 100%; width: 100%;"></q-img>
                         <q-skeleton v-else style="height: 100%; width: 100%;" />
                     </div>
 
@@ -31,30 +31,28 @@
 
             <q-card-section class="q-mt-md" id="project_gallery" :style="gallery_columns">
 
-                    <q-btn v-for="(i, index) of gallery" :key="i._id" 
-                            flat class="my-gallery-item q-pa-none" 
-                            @click="lightbox_panel = ('c_' + index)"
-                            >
+                <q-btn v-for="i in selected_project.gallery" :key="i.meta.asset" 
+                       flat class="my-gallery-item q-pa-none" 
+                       @click="lightbox_panel = ('c_' + i.meta.asset)"
+                       >
 
-      
-                        <q-card  flat style="background: transparent; width: 100%;">
-                            <q-img :src="i.src" :alt="i.caption"
-                                    scale-down
-                                    />
+    
+                    <q-card  flat style="background: transparent; width: 100%;">
+                        <q-img :src="'https://api.casillas.dev/' + i.path" :alt="i.meta.title"
+                                scale-down
+                                />
 
-                            <q-card-section>
-                                <div style="color:black;" class="text-caption">
-                                    {{ i.caption }}
-                                </div>
-                            </q-card-section>
+                        <q-card-section>
+                            <div style="color:black;" class="text-caption">
+                                {{ i.meta.title }}
+                            </div>
+                        </q-card-section>
 
-                        </q-card>
-                    </q-btn>
-
-                    <q-skeleton v-show="!selected_project" class="col-sm-6 col-md-4 col-xs-12" />
-
+                    </q-card>
+                </q-btn>
 
             </q-card-section>
+
         </q-card>
 
         <q-dialog
@@ -78,12 +76,12 @@
                     >
 
                         <q-carousel-slide 
-                            v-for="(i, index) of gallery" :key="i._id" 
+                            v-for="i in selected_project.gallery" :key="i.meta.asset" 
                             class="q-pt-xl"
-                            :name="'c_' + index"
+                            :name="'c_' + i.meta.asset"
                             >
 
-                            <intersection-img @mounted_element="init_panzoom" :src="i.src" :asset="'c_' + index" />
+                            <intersection-img @mounted_element="init_panzoom" :src="'https://api.casillas.dev/'+ i.path" :asset="'c_' + i.meta.asset" />
 
 
                         </q-carousel-slide>
@@ -162,29 +160,7 @@ export default {
     }
   },
   computed:{
-      gallery: function (){
-            let res = []
 
-
-            if( this.selected_project && 'gallery' in this.selected_project ) 
-                res =  this.selected_project
-                           .gallery
-                           .filter(d => !('path' in d.value) )
-                           .map( d => {
-                                return {
-                                    type: 'image',
-                                    // asset: d.meta.asset,
-                                    thumb: 'https://casillas.dev' + d.value.picture.path,
-                                    src: 'https://casillas.dev' + d.value.picture.path,
-                                    caption: d.value.description
-                                }
-                          })
-
-            return res
-
-        
-      },
-      
       gallery_columns: function(){
           if (Screen.gt.lg) return 'grid-template-columns: 1fr 1fr 1fr;'
           else if (Screen.lt.xs) return 'grid-template-columns: 1fr;'
