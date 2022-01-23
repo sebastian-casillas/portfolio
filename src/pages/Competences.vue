@@ -26,6 +26,7 @@
 
         </div>
 
+
         <div class="row q-mb-xl">
             <div class="col-md-6 col-sm-12 col-xs-12 q-pa-xl" id="language_icon_p">
                 <h4 class="q-mt-sm" >Programming languages</h4>
@@ -97,11 +98,11 @@ export default {
         },
 
         languages: function(){
-            return this.curriculum.languages || [];
+            return this.curriculum.language || [];
         },
 
         p_languages: function(){
-            return this.curriculum.p_languages || [];
+            return this.curriculum.programming_languages || [];
         },
 
         p_languages_note: function(){
