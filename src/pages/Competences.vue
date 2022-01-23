@@ -1,5 +1,5 @@
 <template>
-<div style="max-width: 100vw;">
+<div style="max-width: 100vw;" class="q-pt-xl">
 
     <div id="competences_div" class="q-pa-lg">
 
