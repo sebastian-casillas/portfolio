@@ -7,7 +7,7 @@
 
 
         <div class="col-grow column items-center">
-          <img class="items-center q-pa-md" style="height:250px; width: 250px;" src="/assets/profile_circle.png">
+          <img class="items-center q-pa-md" style="height:250px; width: 250px;" src="/assets/profile_circle.jpg">
         </div>
         
 
