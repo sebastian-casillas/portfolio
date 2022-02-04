@@ -9,8 +9,6 @@
             </h6>
         </q-toolbar-title>
 
-
-
         <q-tabs shrink>
             <q-route-tab
                 label="Contact"
@@ -31,7 +29,11 @@
                 />
 
 
-            <q-btn name="tab5" label="CV" flat :style="scrollbased_transparency" round :to="'/cv'"/>
+            <q-btn name="tab5" label="CV" flat 
+                   class="q-mx-sm"
+                   :style="scrollbased_transparency" 
+                   round 
+                   :to="'/cv'"/>
         </q-tabs>
       </q-toolbar>
     </div>

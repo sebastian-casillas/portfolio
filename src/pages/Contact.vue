@@ -75,14 +75,16 @@ export default {
 <style lang="scss">
   #contact_component{
 
+
     .presentation_background{
       box-shadow: 0px 48px 317px 59px rgba(122, 75, 75, 0.05);
       -webkit-box-shadow: 0px 48px 317px 59px rgba(255,255,255,0.05);
       -moz-box-shadow: 0px 48px 317px 59px rgba(255,255,255,0.05);
+
+      margin-bottom: 10rem;
     }
 
     padding-top: 24vh;
-    padding-bottom: 24vh;
 
     .pressentation_card{
 
