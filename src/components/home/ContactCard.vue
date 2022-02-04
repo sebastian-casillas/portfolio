@@ -75,7 +75,7 @@ export default {
         height: 340px; 
         width: 680px;
 
-        padding: 24px 40px;
+        padding: 30px 50px;
 
         box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
         -webkit-box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
