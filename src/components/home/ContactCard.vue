@@ -1,35 +1,30 @@
 <template>
     <div class="presentation_background">
 
-      <div class="row q-pa-md justify-center items-center" style="background-color: white;">
+        <div class="presentation_card">
+
+            <div class="card_picture">
+                <img style="height: 100%; width: 100%; object-fit: contain;" src="/assets/profile_circle.jpg">
+            </div>
 
 
-        <div class="col-grow column items-center">
-          <img class="items-center q-pa-md" style="height:250px; width: 250px;" src="/assets/profile_circle.jpg">
-        </div>
-        
+            <div class="card_text">
+                <h2>Sebastian</h2>
+                <h4>Casillas Perez</h4>
 
+                <div class="contact_buttons">
+                    <q-btn @click='to_clipboard' flat dense size="12px" icon="email"  label="sebastian.casillas@outlook.com" />
+                    <q-btn @click="open_link('https://linkedin.com/in/sebastian-casillas')" flat dense size="12px"  icon="mdi-linkedin"  label="linkedin.com/in/sebastian-casillas" />
+                    <q-btn @click="open_link('https://github.com/Bastian-Kass')" flat dense size="12px"  icon="mdi-github" label="github.com/Bastian-Kass" />
+                    <q-btn @click="open_link('https://www.hackerrank.com/bastian_kass')" flat dense size="12px"  icon="mdi-code-greater-than-or-equal" label="hackerrank.com/bastian_kass" />
+                </div>
 
-
-        <div class="card_text col-md-7 col-sm-12">
-          <h2  :class="{'text-center': $q.screen.lt.md}">Sebastian</h2>
-          <h3  :class="{'text-center': $q.screen.lt.md}">Casillas Perez</h3>
-          <div class="contact_buttons column" :class="{'items-center': $q.screen.lt.md}">
-            <q-btn @click='to_clipboard' flat dense size="12px" icon="email" class="q-px-sm" label="sebastian.casillas@outlook.com" />
-            <q-btn @click="open_link('https://linkedin.com/in/sebastian-casillas')" flat dense size="12px"  icon="mdi-linkedin" class="q-px-sm" label="linkedin.com/in/sebastian-casillas" />
-            <q-btn @click="open_link('https://github.com/Bastian-Kass')" flat dense size="12px"  icon="mdi-github" class="q-px-sm" label="github.com/Bastian-Kass" />
-            <q-btn @click="open_link('https://www.hackerrank.com/bastian_kass')" flat dense size="12px"  icon="mdi-code-greater-than-or-equal" class="q-px-sm" label="hackerrank.com/bastian_kass" />
-          
-
-          
-          </div>
+            </div>
         </div>
 
-      </div>
-
-      <div>
-        <p class="text-italic text-center q-my-sm"> A good computer system implementation involves much more than just code</p>  
-      </div>
+        <div class="card_motto">
+            <p class="text-italic text-center q-my-sm"> A good computer system implementation involves much more than just code</p>  
+        </div>
 
     </div>
 
@@ -69,42 +64,99 @@ export default {
       margin-bottom: 10rem;
     }
 
-    .pressentation_card{
 
-      background-color: white; 
-      height: 100%; 
-      width: 100%;
-      color: black;
 
-      box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
-      -webkit-box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
-      -moz-box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
 
- 
+    .presentation_card{
+        background-color: white; 
+        color: black;
+        vertical-align: middle;
+
+        height: 340px; 
+        width: 680px;
+
+        padding: 24px 40px;
+
+        box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
+        -webkit-box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
+        -moz-box-shadow: 16px 24px 50px -11px rgba(0,0,0,0.76);
+
+        .card_picture{
+            display: inline-block;
+            
+            width: 250px; 
+            height: 250px;
+        }
+
+        .card_text{
+            display: inline-block;
+            width: 300px;
+            color: #333;
+            padding: 0 .5rem;
+            margin-left: 24px;
+            margin-top: 10px;
+
+                h2{
+                    margin-top: 0rem;
+                    margin-bottom: .5rem;
+                } 
+            
+                h4{
+                    margin-top: .5rem;
+                    margin-bottom: 1.2rem;
+                }
+
+                .contact_buttons{
+                    margin-top: 20px;
+                    width: 300px;
+                }
+
+            .contact_buttons > button{
+
+                width: 100%;
+                display: block;
+                margin-top: 6px;
+                
+                span.q-btn__content{
+                    padding: 2px 4px;
+                    width: 100%;
+                    justify-content: start;
+                }
+            }
+        }
+
     }
 
 
-  .card_text{
-    margin: 2rem 0;
 
-     h2{
-       color: #333;
-       margin-top: 1rem;
-       margin-bottom: 1rem;
-     } 
-     
-     h3{
-        color: #333;
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-      }
 
-      span{
-        color: #444;
-      }
-  }
 
-  .text-center{
-    text-align: center;
-  }
+
+    @media (max-width: 700px){
+        .presentation_card{
+            height: 100%; 
+            width: 100%;
+
+            .card_picture{
+                margin: auto;
+                display:block;
+            }
+
+            .card_text{
+                padding-top:20px;
+                display:block;
+                margin: auto;
+                text-align: center;
+            }
+        }
+
+        .card_motto{
+            margin: 0 20px;
+            width: 95%;
+            text-align: center;
+        }
+
+
+    }
+
 </style>
