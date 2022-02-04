@@ -70,7 +70,7 @@
 
 import CV from '@/components/cv.vue'
 import WordCloud from '@components/home/WordCloud.vue'
-import ProjectView from '@/components/home/ProjectView.vue'
+import ProjectView from '@/components/portfolio/ProjectView.vue'
 
 import { ref } from 'vue'
 

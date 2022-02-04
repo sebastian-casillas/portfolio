@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import ProjectCard from '@/components/home/ProjectCard.vue'
-import ProjectView from '@/components/home/ProjectView.vue'
+import ProjectCard from '@/components/portfolio/ProjectCard.vue'
+import ProjectView from '@/components/portfolio/ProjectView.vue'
 
 export default {
   components:{
