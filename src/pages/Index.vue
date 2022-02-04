@@ -45,7 +45,7 @@
 
       <router-view v-slot="{ Component }">
         <transition name="slide-fade">
-          <component :is="Component" :curriculum="curriculum" />
+          <component :is="Component" />
         </transition>
       </router-view>
 
@@ -83,7 +83,6 @@ export default {
   },
 
   data: () => ({
-    curriculum: [],
     v_scroll: 0,
     menu: true,
     cv_dialog: false,
@@ -107,14 +106,6 @@ export default {
                   cfg: {threshold: thresholds}
               }
           }
-  },
-
-  created() {
-    this.$api
-        .post('singletons/get/curriculum', { populate: 1 })
-        .then( res => res.data )
-        .then(d => {  this.curriculum = d; })
-        .catch( e => console.log(e));
   },
 
   computed:{

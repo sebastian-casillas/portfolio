@@ -2,11 +2,10 @@
     <div id="background_div">
         <h2 style="color: #000;">Background</h2>
 
-
         <div class="q-px-lg q-pb-md">
             <q-timeline color="secondary" :layout="layout">
 
-                <background-card v-for="(value, name) of background" :key="name" :data="value.value" />
+                <background-card v-for="(value, name) of background" :key="name" :data="value" />
 
             </q-timeline>
         </div>
@@ -21,16 +20,17 @@ import BackgroundCard from '@/components/home/BackgroundCard.vue'
 export default {
     name: 'MyComponent',
     components:{BackgroundCard},
-    props: {
-        curriculum:{
-            type: Object,
-            default: null
-        }
+    data: () => ({
+        background: [],
+    }),
+    created() {
+        this.$api
+            .post('collections/get/background')
+            .then( res => res.data?.entries )
+            .then(d => {  this.background = d; })
+            .catch( e => console.log(e));
     },
     computed:{
-        background: function(){
-            return this.curriculum.background || [];
-        },
         layout: function () {
             return this.$q.screen.lt.sm ? 'dense' : (this.$q.screen.lt.md ? 'comfortable' : 'loose')
         }
