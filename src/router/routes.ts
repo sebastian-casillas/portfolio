@@ -11,7 +11,6 @@ const routes: RouteRecordRaw[] = [
         component: () => import('pages/Index.vue'),
         children: [
           { path: '', name: 'Contact', component:  () => import('pages/Contact.vue')},
-          { path: 'workflow', name: 'Workflow', component:  () => import('pages/Competences.vue')},
           { path: 'projects/:slug?', name: 'Project', component:  () => import('pages/Portfolio.vue')},
           { path: 'background', name: 'Background', component:  () => import('pages/Background.vue')},
           

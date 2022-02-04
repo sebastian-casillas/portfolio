@@ -30,19 +30,29 @@
 
     </div>
 
+    <workflow :curriculum="curriculum"></workflow>
+
   </div>
 </template>
 
 <script>
 import { copyToClipboard } from 'quasar'
+import Workflow from '@/components/home/Workflow.vue'
 
 export default {
     name: 'Contact',
+    components: {
+      Workflow
+    },
     props: {
         max_width: {
             type: String,
             default: 'width: 800px;'
         },
+        curriculum: {
+          type: Object,
+          default: () => {}
+        }
     },
     methods: {
       open_linkedin(){

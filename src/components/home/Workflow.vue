@@ -84,7 +84,7 @@
 <script>
 
 export default {
-    name: 'Competences',
+    name: 'Workflow',
     props: {
         curriculum:{
             type: Object,
