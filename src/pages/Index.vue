@@ -53,10 +53,6 @@
         </transition>
       </router-view>
 
-      <!-- <transition >
-        <router-view  ></router-view>
-      </transition> -->
-
     </q-scroll-area>
 
     <q-dialog v-model="cv_dialog" maximized>
