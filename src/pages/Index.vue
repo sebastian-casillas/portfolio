@@ -22,13 +22,6 @@
                 exact
                 />
 
-            <q-route-tab
-                label="Background"
-                to="/background"
-                exact
-                />
-
-
             <q-btn name="tab5" label="CV" flat 
                    class="q-mx-sm"
                    :style="scrollbased_transparency" 

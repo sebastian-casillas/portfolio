@@ -3,12 +3,38 @@
 
     <contact-card/>
 
-    <workflow :competences="competences" 
-              :programming_lang="programming_lang" 
-              :international_lang="international_lang"
-              :programming_lang_note="programming_lang_note"
-              :international_lang_note="international_lang_note"
-              />
+    <q-tabs
+        v-model="tab"
+        dense
+        class="text-grey"
+        active-color="primary"
+        indicator-color="primary"
+        align="justify"
+        narrow-indicator
+        style="width: 100vw; padding: 0;"
+      >
+        <q-tab name="workflow" label="Workflow" />
+        <q-tab name="background" label="Background" />
+      </q-tabs>
+
+      <q-separator />
+
+      <q-tab-panels animated v-model="tab" style="width: 100vw; padding: 0;">
+        <q-tab-panel name="workflow" style="width: 100vw; padding: 0;">
+          <workflow :competences="competences" 
+                    :programming_lang="programming_lang" 
+                    :international_lang="international_lang"
+                    :programming_lang_note="programming_lang_note"
+                    :international_lang_note="international_lang_note"
+                    />
+        </q-tab-panel>
+
+        <q-tab-panel name="background" style="width: 100vw; padding: 0;">
+          <background></background>
+        </q-tab-panel>
+      </q-tab-panels>
+
+
 
   </div>
 </template>
@@ -17,12 +43,14 @@
 import { copyToClipboard } from 'quasar'
 import ContactCard from '@/components/home/ContactCard.vue'
 import Workflow from '@/components/home/Workflow.vue'
+import Background from '@/components/home/Background.vue'
 
 export default {
     name: 'Contact',
     components: {
       Workflow,
-      ContactCard
+      ContactCard, 
+      Background
     },
     props: {
         max_width: {
@@ -35,7 +63,8 @@ export default {
       programming_lang: [],
       international_lang: [],
       programming_lang_note: '',
-      international_lang_note: ''
+      international_lang_note: '',
+      tab: 'workflow'
     }),
 
 
