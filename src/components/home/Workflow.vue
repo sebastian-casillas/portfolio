@@ -6,13 +6,13 @@
         <div class="row q-mb-xl q-pa-md">
 
             <div v-for="c of competences" :key="c._id" 
-                 class="col-md-6 col-sm-12 col-xs-12 q-pa-lg competence_card">
+                 class="col-md-6 col-sm-12 col-xs-12 q-px-xl q-my-sm competence_card">
                 <h5 class="q-my-md" style="line-height: 2rem;"> {{c.value.title}}</h5>
                 <p style="line-height: 1rem;">{{c.value.content}}</p>
             </div>
 
 
-            <div class="col-md-6 col-sm-12 col-xs-12 q-pa-lg competence_card">
+            <div class="col-md-6 col-sm-12 col-xs-12 q-px-xl q-my-sm competence_card">
                 <h5 class="q-my-md" style="line-height: 2rem;">Keep updated and relevant, always!</h5>
                 <div style="height: 80px; width: 100%; padding: 10px; background-color: #333;">
                     <p style="line-height: 1rem; color: #CCC; font-family: consolas; font-weight: 600;">
