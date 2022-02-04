@@ -33,7 +33,7 @@
 
 
 
-                <div v-for="l of p_languages" :key="l" class="row wrap items-center content-center q-mb-md">
+                <div v-for="l of programming_lang" :key="l" class="row wrap items-center content-center q-mb-md">
 
 
                     <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.value.language}}</span>
@@ -48,7 +48,7 @@
 
                 </div>
 
-                <p class="text-overline q-mt-xl q-mb-md" style="line-height: 1rem;">{{p_languages_note}}</p>
+                <p class="text-overline q-mt-xl q-mb-md" style="line-height: 1rem;">{{programming_lang_note}}</p>
 
             </div>
 
@@ -56,7 +56,7 @@
 
                 <h4 class="q-mt-sm" >Languages</h4>
 
-                <div v-for="l of languages" :key="l" class="row wrap items-center content-center q-mb-md">
+                <div v-for="l of international_lang" :key="l" class="row wrap items-center content-center q-mb-md">
 
 
                     <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.value.language}}</span>
@@ -86,29 +86,28 @@
 export default {
     name: 'Workflow',
     props: {
-        curriculum:{
-            type: Object,
+        competences:{
+            type: Array,
+            default: () => []
+        },
+        programming_lang:{
+            type: Array,
+            default: () => []
+        },
+        programming_lang_note:{
+            type: String,
             default: null
-        }
-    },
-
-    computed:{
-        competences: function(){
-            return this.curriculum.competences || [];
         },
-
-        languages: function(){
-            return this.curriculum.language || [];
+        international_lang:{
+            type: Array,
+            default: () => []
         },
-
-        p_languages: function(){
-            return this.curriculum.programming_languages || [];
-        },
-
-        p_languages_note: function(){
-            return this.curriculum.p_languages_note || [];
+        international_lang_note:{
+            type: String,
+            default: null
         },
     },
+
 }
 </script>
 

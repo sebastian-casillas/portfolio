@@ -3,7 +3,12 @@
 
     <contact-card/>
 
-    <workflow :curriculum="curriculum"/>
+    <workflow :competences="competences" 
+              :programming_lang="programming_lang" 
+              :international_lang="international_lang"
+              :programming_lang_note="programming_lang_note"
+              :international_lang_note="international_lang_note"
+              />
 
   </div>
 </template>
@@ -24,11 +29,31 @@ export default {
             type: String,
             default: 'width: 800px;'
         },
-        curriculum: {
-          type: Object,
-          default: () => {}
-        }
     },
+    data: () => ({
+      competences: [],
+      programming_lang: [],
+      international_lang: [],
+      programming_lang_note: '',
+      international_lang_note: ''
+    }),
+
+
+    created() {
+      this.$api
+          .post('singletons/get/contact', { populate: 1 })
+          .then( res => res.data )
+          .then( d => {  
+            if('competences' in d) this.competences = d.competences;
+            if('programming_lang' in d) this.programming_lang = d.programming_lang;
+            if('international_lang' in d) this.international_lang = d.international_lang;
+            if('programming_lang_note' in d) this.programming_lang_note = d.programming_lang_note;
+            if('international_lang_note' in d) this.international_lang_note = d.international_lang_note; 
+            })
+          .catch( e => console.log(e));
+
+    },
+
     methods: {
       open_link(webpage){
         window.open(webpage, '_blank');
