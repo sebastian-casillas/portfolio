@@ -3,15 +3,16 @@
         class="my-timeline-entry"
         :icon="icon"
         :side="side"
+        :title="data.subtitle"
     >
 
         <template #>
-            <div class="">
+            <div >
                 <p class="content_title">{{data.title}}</p>
-            
+
                 <div class="content_notes">  
                     <q-chip 
-                        v-for="d in data.details" :key="d.content"
+                        v-for="d in data.tags" :key="d.content"
                         color="teal-6" size="md" square dense outline 
                         :icon="d.value.icon"
                         class="q-px-sm"
@@ -22,16 +23,18 @@
 
                 </div>
             
-                <p class="block_item" v-for="item of data.items" 
-                    :key="item.value.content"
-                    v-text="item.value.content"
-                    />
+                <p class="block_item">
+                    {{this.data.content}}
+                </p>
             </div>
         </template>
 
-
         <template #subtitle>
-            {{data.subtitle}}<br>{{data.date_init}}
+            <div class="subtitle_div">
+                <span class="subtitle_span" v-show="data.date_init">{{data.date_init || ''}}</span>
+                <span class="subtitle_span" v-show="data.date_end">{{data.date_end || ''}}</span>
+            </div>
+
         </template>
 
 
@@ -49,14 +52,24 @@ export default {
 
     computed:{
         icon: function(){
-            if ( !this.data.date_init) return null
-            else return  (this.data.category === 'Education')? 'school' : 'mdi-briefcase'
+            if ( !this.data.date_init) return undefined
+            else return  (this.data.type === 'Education')? 'school' : 'mdi-briefcase'
         },
         side: function(){
-            return (this.data.category === 'Education')? 'left' : 'right'
+            return (this.data.type === 'Education')? 'left' : 'right'
         },
         layout: function(){
             return this.$parent.layout
+        },
+        date: function(){
+            let res = '';
+            if(this.data.date_init){
+                res += this.data.date_init;
+                if(this.data.date_end);
+                    res += '\n' + this.data.date_end;
+            }
+            return res;
+                
         }
     }
 }
@@ -64,25 +77,40 @@ export default {
 
 <style lang="scss">
 
-
-
-
-
-
-
 .my-timeline-entry{
     padding-bottom: 2rem !important;
 
     .q-timeline__title{
-        margin-bottom: 0;
+        color: #555;
+        font-size: .8rem;
+        line-height: .8rem;
+        margin: .3rem 0;
+    }
+
+    .subtitle_div span{
+        display: inline-block;
+
+        &:nth-child(2){
+            margin-left: .6rem;
+        }
+        
+    }
+
+    .q-timeline__subtitle{
+        color: #222;
+        padding-top: 1px;
+        line-height: 20px !important;
+        margin-bottom: .2rem;
+
     }
 
     .content_title{
         font-size: 1.6rem !important;
         line-height: 1.7rem !important;
+
         font-weight: 300;
-        letter-spacing: .003rem;
-        color: #111 !important;
+        letter-spacing: .2pt;
+        color: #333 !important;
         margin-bottom: .4rem;
     }
 
@@ -121,10 +149,32 @@ export default {
     }
 
 
+    &.q-timeline__entry--icon{
+        .q-timeline__title{
+            margin: .8rem 0 .6 0;
+        }
+    }
+
+
 }
 
 
+.q-timeline--loose, .q-timeline--comfortable{
+
+    .subtitle_div span{
+        display: block;
+        &:nth-child(2){
+            margin-left: 0rem;
+        }
+    }
+
+    .q-timeline__content{
+        padding-top: 0 !important;
+    }
+}
+
 .q-timeline--loose{
+
     .q-timeline__entry--left{
         .content_notes{
             justify-content: flex-end;
@@ -135,7 +185,11 @@ export default {
         }
 
     }
+
+
 }
+
+
 
 
 

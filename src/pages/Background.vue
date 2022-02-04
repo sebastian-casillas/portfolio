@@ -3,7 +3,7 @@
         <h2 style="color: #000;">Background</h2>
 
         <div class="q-px-lg q-pb-md">
-            <q-timeline color="secondary" :layout="layout">
+            <q-timeline color="secondary" :dark="false" :layout="layout">
 
                 <background-card v-for="(value, name) of background" :key="name" :data="value" />
 
