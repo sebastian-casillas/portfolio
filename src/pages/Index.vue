@@ -18,7 +18,7 @@
 
             <q-route-tab
                 label="Projects"
-                to="/projects"
+                to="/portfolio"
                 exact
                 />
 
