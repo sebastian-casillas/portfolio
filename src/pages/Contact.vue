@@ -18,7 +18,7 @@
           style="width: 400px; padding: 0;"
         >
           <q-tab name="workflow" label="Workflow" icon="mdi-console-network"/>
-          <q-tab name="background" label="Background" icon="alarm" />
+          <q-tab name="background" label="Background" icon="mdi-check-network" />
         </q-tabs>
     </div>
 
