@@ -1,5 +1,5 @@
 <template>
-    <q-card class="my-card q-mx-md q-mb-sm"  @click="$router.push({name: 'Project', params: { slug: project.slug }})">
+    <q-card class="my-card q-mx-md q-mb-sm"  @click="$router.push({name: 'Portfolio', params: { slug: project.slug }})">
         <q-img :src="'https://api.casillas.dev/' + project.cover.path" ratio="1" style="height: 100%; width: 100%;">
             <div class="absolute-bottom text-h6">
             {{project.title}}

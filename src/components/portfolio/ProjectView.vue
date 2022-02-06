@@ -3,6 +3,17 @@
 
         <q-card class="my_project_card text-black" style="background: white">
             <q-card-section>
+                <q-bar>
+                <q-space />
+
+                <q-btn dense flat icon="close" @click="$router.push({name: 'Portfolio'})">
+                    <q-tooltip class="bg-white text-primary">Close</q-tooltip>
+                </q-btn>
+                </q-bar>
+                
+            </q-card-section>
+
+            <q-card-section>
                 <div class="fill-width row">
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <q-img v-if="selected_project" :src="'https://api.casillas.dev' + selected_project.cover.path" scale-down style="height: 100%; width: 100%;"></q-img>
