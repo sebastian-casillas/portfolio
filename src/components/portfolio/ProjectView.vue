@@ -4,11 +4,12 @@
         <q-card class="my_project_card text-black" style="background: white">
             <q-card-section>
                 <q-bar>
-                <q-space />
+                    <q-space />
 
-                <q-btn dense flat icon="close" @click="$router.push({name: 'Portfolio'})">
-                    <q-tooltip class="bg-white text-primary">Close</q-tooltip>
-                </q-btn>
+                    <q-btn flat round size=".8rem"
+                        icon="close" 
+                        @click="$router.push({name: 'Portfolio'})"
+                        />
                 </q-bar>
                 
             </q-card-section>
