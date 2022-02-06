@@ -23,6 +23,8 @@
 
                 </div>
             
+
+                <!-- <vue3-markdown-it :source="selected_project.description" /> -->
                 <p class="block_item">
                     {{this.data.content}}
                 </p>
