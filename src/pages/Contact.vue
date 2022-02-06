@@ -23,7 +23,11 @@
     </div>
 
 
-    <q-tab-panels animated v-model="tab" style="width: 100vw; padding: 0;">
+    <q-tab-panels 
+      animated 
+      transition-prev="slide-right"
+      transition-next="slide-left"
+      v-model="tab" style="width: 100vw; padding: 0;">
       <q-tab-panel name="workflow" style="width: 100vw; padding: 0;">
         <workflow :competences="competences" 
                   :programming_lang="programming_lang" 
@@ -34,7 +38,7 @@
       </q-tab-panel>
 
       <q-tab-panel name="background" style="width: 100vw; padding: 0;">
-        <background></background>
+        <background :background="background"></background>
       </q-tab-panel>
     </q-tab-panels>
 
@@ -68,6 +72,7 @@ export default {
       international_lang: [],
       programming_lang_note: '',
       international_lang_note: '',
+      background: [],
       tab: 'workflow'
     }),
 
@@ -83,6 +88,12 @@ export default {
             if('programming_lang_note' in d) this.programming_lang_note = d.programming_lang_note;
             if('international_lang_note' in d) this.international_lang_note = d.international_lang_note; 
             })
+          .catch( e => console.log(e));
+
+      this.$api
+          .post('collections/get/background')
+          .then( res => res.data?.entries )
+          .then(d => {  this.background = d; })
           .catch( e => console.log(e));
 
     },

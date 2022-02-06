@@ -20,15 +20,11 @@ import BackgroundCard from '@/components/home/BackgroundCard.vue'
 export default {
     name: 'MyComponent',
     components:{BackgroundCard},
-    data: () => ({
-        background: [],
-    }),
-    created() {
-        this.$api
-            .post('collections/get/background')
-            .then( res => res.data?.entries )
-            .then(d => {  this.background = d; })
-            .catch( e => console.log(e));
+    props: {
+        background: {
+            type: Object,
+            default: () => {}
+        },
     },
     computed:{
         layout: function () {
