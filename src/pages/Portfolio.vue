@@ -34,12 +34,8 @@
       transition-show="slide-up"
       transition-hide="slide-down"
     >
-      <div >
-
-
-        <q-card-section v-if="selected_slug">
-          <project-view :selected_slug="selected_slug"></project-view>
-        </q-card-section>
+      <div v-if="selected_slug">
+        <project-view :selected_slug="selected_slug"></project-view>
       </div>
     </q-dialog>
 
