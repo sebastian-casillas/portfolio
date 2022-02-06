@@ -1,38 +1,42 @@
 <template>
   <div id="contact_component" class="full-width row justify-center items-center content-center">
 
-    <contact-card/>
+    <div >
+      <contact-card/>
+    </div>
+    
 
-    <q-tabs
-        v-model="tab"
-        dense shrink
-        class="text-grey"
-        active-color="white"
-        indicator-color="white"
-        align="justify"
-        narrow-indicator
-        style="width: 400px; padding: 0;"
-      >
-        <q-tab name="workflow" label="Workflow" icon="mdi-console-network"/>
-        <q-tab name="background" label="Background" icon="alarm" />
-      </q-tabs>
+    <div class="row justify-center" style="width: 100%;">
+      <q-tabs
+          v-model="tab"
+          dense shrink
+          class="text-grey row"
+          active-color="white"
+          indicator-color="white"
+          align="justify"
+          narrow-indicator
+          style="width: 400px; padding: 0;"
+        >
+          <q-tab name="workflow" label="Workflow" icon="mdi-console-network"/>
+          <q-tab name="background" label="Background" icon="alarm" />
+        </q-tabs>
+    </div>
 
-      <q-separator />
 
-      <q-tab-panels animated v-model="tab" style="width: 100vw; padding: 0;">
-        <q-tab-panel name="workflow" style="width: 100vw; padding: 0;">
-          <workflow :competences="competences" 
-                    :programming_lang="programming_lang" 
-                    :international_lang="international_lang"
-                    :programming_lang_note="programming_lang_note"
-                    :international_lang_note="international_lang_note"
-                    />
-        </q-tab-panel>
+    <q-tab-panels animated v-model="tab" style="width: 100vw; padding: 0;">
+      <q-tab-panel name="workflow" style="width: 100vw; padding: 0;">
+        <workflow :competences="competences" 
+                  :programming_lang="programming_lang" 
+                  :international_lang="international_lang"
+                  :programming_lang_note="programming_lang_note"
+                  :international_lang_note="international_lang_note"
+                  />
+      </q-tab-panel>
 
-        <q-tab-panel name="background" style="width: 100vw; padding: 0;">
-          <background></background>
-        </q-tab-panel>
-      </q-tab-panels>
+      <q-tab-panel name="background" style="width: 100vw; padding: 0;">
+        <background></background>
+      </q-tab-panel>
+    </q-tab-panels>
 
 
 
