@@ -5,16 +5,16 @@
 
     <q-tabs
         v-model="tab"
-        dense
+        dense shrink
         class="text-grey"
-        active-color="primary"
-        indicator-color="primary"
+        active-color="white"
+        indicator-color="white"
         align="justify"
         narrow-indicator
-        style="width: 100vw; padding: 0;"
+        style="width: 400px; padding: 0;"
       >
-        <q-tab name="workflow" label="Workflow" />
-        <q-tab name="background" label="Background" />
+        <q-tab name="workflow" label="Workflow" icon="mdi-console-network"/>
+        <q-tab name="background" label="Background" icon="alarm" />
       </q-tabs>
 
       <q-separator />

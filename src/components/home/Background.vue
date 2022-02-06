@@ -40,8 +40,9 @@ export default {
 
 <style lang="scss" scoped>
 #background_div{
-    margin-top:100px;
-    padding: 1em 3em;
+    padding-top: 1rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
     width: 100%;
     background-color: white;
 

@@ -1,5 +1,5 @@
 <template>
-<div style="max-width: 100vw;" class="q-pt-xl">
+<div style="max-width: 100vw;">
 
     <div id="competences_div" class="q-pt-lg">
 
@@ -27,7 +27,7 @@
         </div>
 
 
-        <div class="row q-mb-xl">
+        <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12 q-pa-xl" id="language_icon_p">
                 <h4 class="q-mt-sm" >Programming languages</h4>
 
@@ -147,7 +147,6 @@ export default {
 #competences_div{
     background-color: #EEE;
     width: 100%;
-    margin-bottom: 3rem;
 
     & .competence_card > *{
         color: black;
