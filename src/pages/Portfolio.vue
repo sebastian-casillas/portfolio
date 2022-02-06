@@ -3,6 +3,18 @@
   <div class="q-pt-lg">
 
     <div  class="row justify-center">
+
+      <div>
+        <q-circular-progress
+          v-show="!projects.length"
+          indeterminate
+          size="50px"
+          :thickness="0.22"
+          color="primary"
+          track-color="grey-3"
+          class="q-ma-md"
+        />
+      </div>
       <project-card 
           class="col-md-4 col-lg-3 col-sm-6 q-mt-md"
           v-for="p of projects" 
