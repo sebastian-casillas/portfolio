@@ -4,54 +4,38 @@
     <div id='cv_page' ref='cv_page'>
             <div class='left_column'>
 
-                <h1 style='text-align: center;'>Sebastian</h1>
-                <h2 style='text-align: center; letter-spacing: .3mm;'>Casillas Perez</h2>
-
                 <div class='row  content-center'>
-                    <q-avatar size='40mm' style='margin:2mm auto 2mm auto;'>
-                        <q-img style='height: 50mm; width: 50mm; margin-top:-5mm;' src='/assets/profile_circle.png'
-                        />
+                    <q-avatar size='35mm' style='margin:2mm auto 2mm auto;'>
+                        <q-img style='height: 40mm; width: 40mm; margin-top:-3mm;' src='/assets/profile_circle.png'/>
                     </q-avatar>
                 </div>
 
-                <table class='dense'>
-                    <tr>
-                        <td><img src="https://api.casillas.dev/storage/uploads/2022/03/02/email-outline_uid_621f377a08e96.svg" height="14" width="14"/></td>
-                        <td><span class='small'>Sebastian.Casillas@outlook.com</span></td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://api.casillas.dev/storage/uploads/2022/03/02/phone_uid_621f367f96581.svg" height="14" width="14"/></td>
-                        <td><span class='small'>+31 06 82777956 / +358 041 496 1148</span></td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://api.casillas.dev/storage/uploads/2022/03/02/map-marker-outline_uid_621f380d1de41.svg" height="14" width="14"/></td>
-                        <td><span class='small'>Espoo, Finland</span></td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://api.casillas.dev/storage/uploads/2022/03/02/at_uid_621f377a631a5.svg" height="14" width="14"/></td>
-                        <td><span class='small'>casillas.dev</span></td>
-                    </tr>
-                    <tr>
-                        <td><img src="https://api.casillas.dev/storage/uploads/2022/03/02/icons8-linkedin-2_uid_621f3ae64f634.svg" height="14" width="14"/></td>
-                        <td><span class='small'>/in/sebastian-casillas</span></td>
-                    </tr>
+                <p id="first_name">Sebastian</p>
+                <p id="last_name">Casillas Perez</p>
 
-                    <tr>
-                        <td><img src="https://api.casillas.dev/storage/uploads/2022/03/02/icons8-git_uid_621f3b197b9f3.svg" height="14" width="14"/></td>
-                        <td><span class='small'>github.com/Bastian-Kass</span></td>
-                    </tr>
+                <table class='dense align-top'>
+                    <template v-for="d in cv_data.contact" :key="d.content">
+                        <tr v-if="d.show">
+                            <th><img class="small_icon" :src="d.icon"/> </th>
+                            <td><span>{{d.content}}</span></td>
+                        </tr>
+                    </template>
                 </table>
 
                 <h3>Languages</h3>
 
                 <table class='dense'>
                     <tr v-for='language of cv_data.languages' :key='language'>
-                        <th align='left'>{{language.name}}</th>
+                        <th align='left'><span class="text-bold">{{language.name}}</span></th>
                         
-                        <td v-if='language.note' align='right'><span class='subtitle' >{{language.note}}</span></td>
+                        <td v-if='language.note' align='right'><span class='subtitle'>{{language.note}}</span></td>
                         <td v-else align='right'><span class='subtitle' >In progress</span></td>
-                        <td v-if='language.level' align='right' style='width:13mm;'><q-rating v-model='language.level' size='2.5mm' color='grey-10' :max='4'/></td>
-                        <td v-else align='left'><span style='margin-left: 2.5mm'>...</span></td>
+
+                        <td v-if='language.level' align='right' style='width:10mm;' >
+                            <span v-for="l in language.level" :key="l" style="color: #444">★</span> 
+                            <span v-for="l in 4-language.level" :key="l" style="color: #999">★</span> 
+                        </td>
+                        <td v-else align='left'><span style='margin-left: 1.5mm'>...</span></td>
                     </tr>
                 </table>
 
@@ -59,7 +43,7 @@
 
                 <table class='dense'>
                     <tr v-for='e of cv_data.expertise' :key='e'>
-                        <th align='left'>{{e.name}}</th>
+                        <th align='left'><p>{{e.name}}</p></th>
                     </tr>
                 </table>
 
@@ -67,24 +51,31 @@
 
                 <table class='dense'>
                     <tr v-for='language of cv_data.p_languages' :key='language'>
-                        <th align='left'>{{language.name}}</th>
-                        <td align='right'><q-rating v-model='language.level' size='2.5mm' color='grey-9' :max='4'/></td>
+                        <th align='left'><span class="text-bold">{{language.name}}</span></th>
+                        <td v-if='language.level' align='right' style='width:10mm;'>
+                            <span v-for="l in language.level" :key="l" style="color: #444">★</span> 
+                            <span v-for="l in 4-language.level" :key="l" style="color: #999">★</span> 
+                        </td>
                     </tr>
                 </table>
 
                 <h3>Certifications</h3>
 
-                <table class='dense certifications_table'>
+                <table class='dense'>
                     <template v-for='item of cv_data.certifications' :key='item'>
                         <tr></tr>
                         <tr>
-                            <th align='left'>{{item.title}}<span class='cert_subtitle'>{{item.subtitle}}</span></th>
+                            <th align='left'>
+                                <span class="text-bold mr_small">{{item.title}}</span>
+                                <span class='subtitle'>{{item.subtitle}}</span>
+                            </th>
                         </tr>
                         <tr>
-                            <th align='left' class='cert_details'>
+                            <th align='left'>
 
                                 <template v-for='d of item.details' :key='d'>
-                                    <q-icon size='2.5mm' :name='d.icon' color='grey-9'/><span>{{d.content}}</span>
+                                    <img class="inline_icon" :src='d.icon' />
+                                    <span style="vertical-align: middle;">{{d.content}}</span>
                                 </template>
                                 
                             </th>
@@ -96,8 +87,10 @@
 
             <div class='right_column'>
 
+                <div id='competence_wordcloud' ref='competence_wordcloud'></div>
+
                 <div class='right_col_title'>
-                    <img src="https://api.casillas.dev/storage/uploads/2022/03/02/briefcase_uid_621f2d01ed702.svg" width="16" height="16">
+                    <img class="big_icon" src="https://api.casillas.dev/storage/uploads/2022/03/02/briefcase_uid_621f2d01ed702.svg">
                     <h2>Work</h2>
                 </div>
 
@@ -107,22 +100,13 @@
 
 
                 <div class='right_col_title'>
-                    <img src="https://api.casillas.dev/storage/uploads/2022/03/02/school_uid_621f3281cf784.svg" width="16" height="16">
+                    <img class="big_icon" src="https://api.casillas.dev/storage/uploads/2022/03/02/school_uid_621f3281cf784.svg">
                     <h2>Education</h2>
                 </div>
 
                 <template v-for='item of cv_data.education' :key='item'>
                     <my-section :experience='item'/>
                 </template>
-
-                <div class='right_col_title'>
-                    <img src="https://api.casillas.dev/storage/uploads/2022/03/02/dumbbell_uid_621f32816d6af.svg" width="16" height="16">
-                    <h2>Expertise</h2>
-                </div>
-
-                
-
-                <div id='competence_wordcloud' ref='competence_wordcloud'></div>
 
             </div>
     </div>
@@ -140,6 +124,43 @@
         data: () => ({
             cv_data :{
 
+                contact:[
+                    {
+                        show: true,
+                        icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/email-outline_uid_621f377a08e96.svg',
+                        content: 'Sebastian.Casillas@outlook.com'
+                    },
+                    {
+                        show: true,
+                        icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/phone_uid_621f367f96581.svg',
+                        content: '(+358) 041 496 1148'
+                    },
+                    {
+                        show: true,
+                        icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/phone_uid_621f367f96581.svg',
+                        content: '(+31) 06 8277 7956'
+                    },
+                    {
+                        show: false,
+                        icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker-outline_uid_621f380d1de41.svg',
+                        content: 'Espoo, Finland'
+                    },
+                    {
+                        show: true,
+                        icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/at_uid_621f377a631a5.svg',
+                        content: 'casillas.dev'
+                    },
+                    {
+                        show: true,
+                        icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/icons8-linkedin-2_uid_621f3ae64f634.svg',
+                        content: '/in/sebastian-casillas'
+                    },
+                    {
+                        icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/icons8-git_uid_621f3b197b9f3.svg',
+                        content: 'github.com/Bastian-Kass'
+                    }
+                ],
+
                 languages:[
                     {name: 'Spanish', level: 4, note: 'Mother-tongue'},
                     {name: 'English', level: 4, note: 'IELTS 2020 - CERF C1'},
@@ -153,9 +174,7 @@
                 expertise:[
                     {name: 'Interactive & immersive experiences', level: 4},
                     {name: 'Data Visualization', level: 4},
-
-                    {name: 'User oriented research and design', level: 4},
-                    {name: 'UI & UX design and development', level: 4},
+                    {name: 'UI & UX research, design & development', level: 4},
 
                     {name: 'IT proj. architecture design & management', level: 4},
                     {name: 'Data architecture, storage, access', level: 4},
@@ -248,7 +267,8 @@
                     {name: 'Python', level: 4},
                     {name: 'PHP', level: 4},
 
-                    {name: 'Java', level: 4},
+                    {name: 'Java', level: 3},
+                    {name: 'C#', level: 4},
                     {name: 'C/C++', level: 3},
                     {name: 'SQL', level: 3},
 
@@ -259,7 +279,7 @@
                 experience:[
                     {
                         title: 'Product Owner/Developer & IT Consultant',
-                        subtitle: 'The Center for Multilateral Negotiations',
+                        subtitle: 'Center for Multilateral Negotiations',
                         date_start: '09/2017',
                         date_end: 'Today',
                         details: [
@@ -269,12 +289,12 @@
                         ],
                         items: [
                             'Software architecture and implementation for custom media platform',
-                            '○ Requiremenets gathering ○ Web implementation ○ General I.T. Management'
+                            '○ Requirements specification ○ Web implementation ○ General I.T. Management'
                         ]
                     },
                     {
                         title: 'Explorative Designer & Lead Developer',
-                        subtitle: 'CONACyT: National Council of Science & Technology',
+                        subtitle: 'CONACyT & CNB ',
                         date_start: '09/2020',
                         date_end: '04/2021',
                         details: [
@@ -301,7 +321,7 @@
                     },
                     {
                         title: 'IT Manager, Product Designer & Lead Developer',
-                        subtitle: 'Wellstar Trading International Ltd.',
+                        subtitle: 'Wellstar Trading Int. Ltd.',
                         date_start: '10/2018',
                         date_end: '12/2019',
                         details: [
@@ -312,7 +332,7 @@
                             'Design/Implement/Support company-wide tools with a heavy user oriented assessment',
                             '○ Chat system ○ File system ○ Erp progress tracking system',
                             'Actively participated in a paradigm shift to new technologies that took under six months',
-                            'Restructure/Maintainance of Database servicing thousands of users'
+                            'Restructure/Maintenance of Database servicing thousands of users'
                         ]
                     },
                     {
@@ -418,7 +438,7 @@
                         ],
                         items: [
                             '○ Natural Language Processing ○ Distributed Systems ○ Networks and Telecoms ○ Algorithmia',
-                            '○ Computer Architecture & Hardware Components ○ Operating systems ○ Low-level programing',
+                            '○ Computer Architecture & Hardware Components ○ Operating systems ○ Low-level programming',
                             '○ Business ○ Finance ○ Statistics',
                         ]
                     },
@@ -440,17 +460,14 @@
                     {
                         title: 'IELTS CERF C1',
                         subtitle: 'British Council',
-                        details: [
-                            {content: 'Mexico', icon: 'place'},
-                            // {content: '2020', icon: 'calendar'}
-                        ]
+                        details: []
                     },
                     {
-                        title: 'Front-End JavaScript Framework',
+                        title: 'Front-End JS Framework',
                         subtitle: 'Hong Kong U.',
                         details: [
-                            {content: 'Coursera', icon: 'place'},
-                            {content: 'Angular', icon: 'verified'},
+                            {content: 'Coursera', icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
+                            {content: 'Angular', icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/check-decagram_uid_621f90c9737cc.svg'},
                             // {content: '2018', icon: 'calendar'},
                         ]
                     },
@@ -458,7 +475,7 @@
                         title: 'German A2 intensive',
                         subtitle: 'Deutschotek',
                         details: [
-                            {content: 'Vienna', icon: 'place'},
+                            {content: 'Vienna', icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
                             // {content: '2018', icon: 'calendar'},
                         ]
                     },
@@ -466,9 +483,9 @@
                         title: 'Big Data Micromasters',
                         subtitle: 'U. of Adelaide',
                         details: [
-                            {content: 'EDx', icon: 'place'},
-                            {content: 'Programming', icon: 'verified'},
-                            {content: 'Computational Thinking', icon: 'verified'},
+                            {content: 'EDx', icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
+                            // {content: 'Programming', icon: 'verified'},
+                            {content: 'Computational Thinking', icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/check-decagram_uid_621f90c9737cc.svg'},
                             // {content: '2018', icon: 'calendar'},
                         ]
                     },
@@ -479,7 +496,6 @@
 
             },
         }),
-
         computed:{
             rate: function (){
                 return this.$refs.competence_wordcloud.clientWidth / 1024;
@@ -507,6 +523,17 @@
 
 <style lang='scss'>
 
+    @page {
+        size: A4 portrait;
+        margin: 0;
+        break-inside: always;
+        display: none;
+
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+
     #competence_wordcloud{
         margin: .2mm 1mm;
         width: 125mm;
@@ -514,93 +541,102 @@
 
     }
 
+
+
     #cv_page{
         position: relative;
-
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
-
         width: 210mm;
         height: 297mm;
         background-color: white;
 
-
-        p, h1, h2, h3, h4, h5, h6, span, i{
-            color: #222;
+        p, h1, h2, h3, span, i{
+            color: #333;
         }
 
         h1{
-            font-size: 9mm;
+            font-size: 7mm;
             line-height: 9.4mm;
-            margin: 0 0 1mm 0;
+            margin: 0 0 .8mm 0mm;
+            font-weight: 500;
         }
 
         h2{
-            font-size: 6mm;
-            line-height: 6.8mm;
-            margin: 1mm 0 1mm 2mm;
+            font-size: 5.4mm;
+            line-height: 5.8mm;
+            margin: 2.4mm 0 0 0;
+            font-weight: 500;
         }
 
         h3{
-            font-size: 4.5mm;
-            line-height: 5.2mm;
-            margin: 3mm 0 0mm 0;
-            font-weight: 600;
-        }
-
-        h4{
-            font-size: 3mm;
-            line-height: 4mm;
-            margin: .2mm 0 1mm 0;
-        }
-
-        h5{
-            font-size: 3.6mm;
-            line-height: 4.2mm;
-            margin: .2mm 0 1mm 0;
-        }
-
-        h5{
-            font-size: 3.4mm;
-            line-height: 4mm;
-            margin: .2mm 0 1mm 0;
-        }
-
-        h6{
-            font-size: 3mm;
-            line-height: 3.6mm;
-            margin: .2mm 0 1mm 0;
+            font-size: 5mm;
+            line-height: 5.6mm;
+            margin: 4mm 0 .8mm 0mm;
+            font-weight: 500;
         }
 
         span{
-            font-size: 2.6mm;
-            line-height: 2.4;   
+            vertical-align: text-bottom;
+            font-size: 3.5mm;
+            line-height: 3.6mm;
+            letter-spacing: .02mm;
+            font-weight:400;
+            color: #111;
         }
 
-        span.small{
-            font-size: 2.2mm;
-            line-height: 2.4; 
-            letter-spacing: .2mm;
+        span.text-bold{
             font-weight: 500;
         }
 
         span.subtitle{
-            font-size: 2.3mm;
+            font-size: 2.9mm;
             font-weight: 700;
             color: #666;
             line-height: 3.6mm;
-            margin: .3mm 0 1mm 0;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        *.mr_small{
+            margin-right: 1mm;
+        }
+
+        #first_name, #last_name{
+            font-size: 7mm;
+            line-height: 9.4mm;
+            margin: 0 0 1mm 0;
+            font-weight: 500;
+            line-height: 7.4mm;
+        }
+
+        #last_name{
+            margin-bottom: 2mm;
         }
 
         p{
-            font-size: 3.2mm;
+            font-size: 3.4mm;
+            line-height: 3.6mm;
             font-weight: 400;
             letter-spacing: .02mm;
             margin: .2mm 0 1mm 0;
+        }
+
+        img.inline_icon{
+            height: 3mm;
+            width: 3mm;
+            margin-right: .8mm;
+            margin-left: .8mm;
+        }
+
+        img.small_icon{
+            margin-right: 1mm;
+            margin-bottom: .3mm;
+            height: 4mm;
+            width: 4mm;
+        }
+
+        img.big_icon{
+            height: 4.5mm;
+            width: 4.5mm;
+            margin-right: 1.4mm;
         }
 
 
@@ -621,41 +657,32 @@
 
                 &.dense{
                     th{
-                        font-size: 3.1mm;
-                        color: #444;
-                        line-height: 4.2mm;
+                        font-size: 3.4mm;
+                        color: #343434;
+                        line-height: 5mm;
+                        padding: 0;
+                        vertical-align: text-bottom;
                     }
                     tr, td, span{
                         line-height: 2.4mm;
+                        vertical-align: bottom;
                     }
+                    span{
+                        line-height: 2.4mm;
+                        vertical-align: text-bottom;
+                    }
+
                 }
 
-                .cert_details{
-                    display:flex;
-                    align-items:center;
-                    height: 3mm;
-                    margin: 0 0 1.2mm 0;
-
-                    & > span{
-                        margin-right: .4mm;
-                        margin-left: .2mm;
-                        font-weight: 400;
+                &.align-top{
+                    tr, td, span {
+                        vertical-align: text-top;
                     }
-                }
-
-                .cert_subtitle{
-                    color: #666;
-                    font-size: 2.2mm; 
-                    line-height: 2.4mm;
-                    font-weight: 600;
-                    margin-left: 1mm;
                     
                 }
 
-                &.certifications_table tr{
-                    line-height: 3mm;
-                }
             }
+
             
         }
 
