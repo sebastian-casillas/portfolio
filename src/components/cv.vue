@@ -16,31 +16,28 @@
 
                 <table class='dense'>
                     <tr>
-                        <td><q-icon name='mail' color='grey-10'/></td>
+                        <td><img src="https://api.casillas.dev/storage/uploads/2022/03/02/email-outline_uid_621f377a08e96.svg" height="14" width="14"/></td>
                         <td><span class='small'>Sebastian.Casillas@outlook.com</span></td>
                     </tr>
                     <tr>
-                        <td><q-icon name='phone' color='grey-10'/></td>
-                        <td><span class='small'>+358 041 496 1148</span></td>
+                        <td><img src="https://api.casillas.dev/storage/uploads/2022/03/02/phone_uid_621f367f96581.svg" height="14" width="14"/></td>
+                        <td><span class='small'>+31 06 82777956 / +358 041 496 1148</span></td>
                     </tr>
                     <tr>
-                        <td><q-icon name='phone' color='grey-10'/></td>
-                        <td><span class='small'>+31 06 82777956</span></td>
-                    </tr>
-                    <tr>
-                        <td><q-icon name='map' color='grey-10'/></td>
+                        <td><img src="https://api.casillas.dev/storage/uploads/2022/03/02/map-marker-outline_uid_621f380d1de41.svg" height="14" width="14"/></td>
                         <td><span class='small'>Espoo, Finland</span></td>
                     </tr>
                     <tr>
-                        <td><q-icon name='mdi-linkedin' color='grey-10'/></td>
-                        <td><span class='small'>/in/sebastian-casillas</span></td>
-                    </tr>
-                    <tr>
-                        <td><q-icon name='language' color='grey-10'/></td>
+                        <td><img src="https://api.casillas.dev/storage/uploads/2022/03/02/at_uid_621f377a631a5.svg" height="14" width="14"/></td>
                         <td><span class='small'>casillas.dev</span></td>
                     </tr>
                     <tr>
-                        <td><q-icon name='mdi-github' color='grey-10'/></td>
+                        <td><img src="https://api.casillas.dev/storage/uploads/2022/03/02/icons8-linkedin-2_uid_621f3ae64f634.svg" height="14" width="14"/></td>
+                        <td><span class='small'>/in/sebastian-casillas</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><img src="https://api.casillas.dev/storage/uploads/2022/03/02/icons8-git_uid_621f3b197b9f3.svg" height="14" width="14"/></td>
                         <td><span class='small'>github.com/Bastian-Kass</span></td>
                     </tr>
                 </table>
@@ -100,7 +97,7 @@
             <div class='right_column'>
 
                 <div class='right_col_title'>
-                    <q-icon name='work' size='5.2mm' color='dark'></q-icon>
+                    <img src="https://api.casillas.dev/storage/uploads/2022/03/02/briefcase_uid_621f2d01ed702.svg" width="16" height="16">
                     <h2>Work</h2>
                 </div>
 
@@ -110,7 +107,7 @@
 
 
                 <div class='right_col_title'>
-                    <q-icon name='book' size='5.2mm' color='dark'></q-icon>
+                    <img src="https://api.casillas.dev/storage/uploads/2022/03/02/school_uid_621f3281cf784.svg" width="16" height="16">
                     <h2>Education</h2>
                 </div>
 
@@ -119,7 +116,7 @@
                 </template>
 
                 <div class='right_col_title'>
-                    <q-icon name='fitness_center' size='5.2mm' color='dark'></q-icon>
+                    <img src="https://api.casillas.dev/storage/uploads/2022/03/02/dumbbell_uid_621f32816d6af.svg" width="16" height="16">
                     <h2>Expertise</h2>
                 </div>
 
@@ -551,6 +548,8 @@
         h3{
             font-size: 4.5mm;
             line-height: 5.2mm;
+            margin: 3mm 0 0mm 0;
+            font-weight: 600;
         }
 
         h4{
