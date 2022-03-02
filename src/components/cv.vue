@@ -308,7 +308,7 @@
                     },
                     {
                         title: 'Project design & IT consultancy',
-                        subtitle: 'Unnamed project for private legal firm',
+                        subtitle: 'Private legal firm',
                         details: [
                             {content: 'Mexico', icon: 'map'},
                             {content: 'Freelance', icon: 'coffee'}
@@ -637,6 +637,7 @@
             height: 4.5mm;
             width: 4.5mm;
             margin-right: 1.4mm;
+            margin-left: 1mm;
         }
 
 
@@ -701,7 +702,6 @@
 
 
             .right_col_title{
-                margin-top: 3mm;
 
                 &:first-child {
                     margin-top: 0;
