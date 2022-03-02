@@ -10,7 +10,6 @@
                 <div class='row  content-center'>
                     <q-avatar size='40mm' style='margin:2mm auto 2mm auto;'>
                         <q-img style='height: 50mm; width: 50mm; margin-top:-5mm;' src='/assets/profile_circle.png'
-
                         />
                     </q-avatar>
                 </div>
@@ -28,7 +27,6 @@
                         <td><q-icon name='phone' color='grey-10'/></td>
                         <td><span class='small'>+31 06 82777956</span></td>
                     </tr>
-
                     <tr>
                         <td><q-icon name='map' color='grey-10'/></td>
                         <td><span class='small'>Espoo, Finland</span></td>
@@ -40,6 +38,10 @@
                     <tr>
                         <td><q-icon name='language' color='grey-10'/></td>
                         <td><span class='small'>casillas.dev</span></td>
+                    </tr>
+                    <tr>
+                        <td><q-icon name='mdi-github' color='grey-10'/></td>
+                        <td><span class='small'>github.com/Bastian-Kass</span></td>
                     </tr>
                 </table>
 
@@ -543,13 +545,12 @@
         h2{
             font-size: 6mm;
             line-height: 6.8mm;
-            margin: .4mm 0 2mm 0;
+            margin: 1mm 0 1mm 2mm;
         }
 
         h3{
             font-size: 4.5mm;
             line-height: 5.2mm;
-            margin: 3mm 0 1mm 0;
         }
 
         h4{
@@ -664,22 +665,24 @@
             position: absolute;
             left:77mm;
             top:0;
+
             margin: 0;
             width: 133mm;
             height: 100%;
+            
             padding: 10mm 6mm 6mm 3mm;
 
-            .right_col_title{
-                display: flex;
-                align-items: center;
-                margin-bottom: 4mm;
 
-                & > *{
-                    margin-bottom: 0 !important;
+
+            .right_col_title{
+                margin-top: 3mm;
+
+                &:first-child {
+                    margin-top: 0;
                 }
 
-                & > i{
-                    margin:0 1.2mm 0 0.8mm
+                & > *{
+                    display: inline-block;
                 }
             }
         }

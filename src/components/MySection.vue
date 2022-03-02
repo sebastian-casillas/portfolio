@@ -5,8 +5,11 @@
                 {{experience.date_start}}<br>{{experience.date_end}}
             </span>
         </div>
+        <div class="detail_block" style="width: 1.6mm; border-top: solid 1px #777;">
+
+        </div>
         <div class="info_block">
-            <div class="info_block_detail"/>
+
             <div class="info_block_content">
 
                 <div class="content_div_title">
@@ -46,25 +49,28 @@
     .section{
         max-width: 100%;
         display: flex;
-        margin-bottom: 4mm;
-        margin-top: 4.5mm;
+
+        margin-top: 1.6mm;
+        margin-bottom: 2mm;
+
 
         .date_block{
             position: relative;
             padding-top: 1mm;
-            margin-right: 1mm;
 
-            width: 6mm;
-            max-width: 6mm;
-            min-width: 6mm;
+            width: 7mm;
+            max-width: 7mm;
+            min-width: 7mm;
 
             display:flex;
             justify-content: center;
+
+            border-right: solid 1px #777;
             
 
             & > span.date_text{
                 font-size: 2.2mm !important;
-                line-height: 2.8mm !important;
+                line-height: 3mm !important;
                 font-weight: 300;
                 color: #666 !important;
                 
@@ -72,24 +78,20 @@
                 letter-spacing: .05mm !important;
 
                 text-align: right;
-                transform: rotate(180deg)
+                transform: rotate(180deg);
             }
+          }
+
+          .detail_block, .date_block{
+              margin-top: 2mm;
           }
 
 
         .info_block{
             display:inline-block;
-            border-left: solid .3mm #888;
-
-            .info_block_detail{
-                height: .2mm; 
-                width: 2mm; 
-                border-top: solid .3mm #888;
-            }
 
             .info_block_content{
-                margin-top: -3mm;
-                padding-left: 3mm;
+                padding-left: 1mm;
                 padding-top: .8mm;
 
                 .content_div_title{
@@ -120,10 +122,11 @@
                     height: 2.6mm;
                     display: flex;
                     align-items: center;
+                    line-height: 2.7mm !important;
 
                     & > span{
                         font-size: 2.4mm;
-                        line-height: 2.6;
+                        line-height: 2.6mm !important;
                         font-weight: 600;
                         color: #444 !important;
 
