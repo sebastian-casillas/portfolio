@@ -10,10 +10,10 @@
       <q-tabs
           v-model="tab"
           dense shrink
-          class="text-grey row"
+          class="text-grey row justify-center"
           active-color="white"
           indicator-color="white"
-          align="justify"
+          align="center"
           narrow-indicator
           style="width: 400px; padding: 0;"
         >
