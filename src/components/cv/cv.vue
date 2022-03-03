@@ -312,7 +312,7 @@
                         date_start: '07/2019',
                         items: [
                             'Software architectural design for semi-automated online legal firm',
-                            '○ Requirement specifications ○ Internal process outline and development plan ○ Viability research '
+                            '○ Requirement specifications ○ Internal process outline ○ Viability research '
                         ]
                     },
                     {
@@ -327,7 +327,7 @@
                         items: [
                             'Design/Implement/Support company-wide tools with a heavy user oriented assessment',
                             '○ Chat system ○ File system ○ Erp progress tracking system',
-                            'Actively participated in a paradigm shift to new technologies that took under six months',
+                            'Paradigm shift to new technologies that took under six months',
                             'Restructure/Maintenance of Database servicing thousands of users'
                         ]
                     },
@@ -395,9 +395,8 @@
                         subtitle: 'Aalto University',
                         date_start: '➞',
                         items: [
-                            '○ Explorative Information Visualization', 
+                            '○ Explorative Information Visualization  ○ Computational User interfaces', 
                             '○ Machine Learning: Supervised methods',
-                            '○ Computational User interfaces',
                             'Thesis project: Innovation in a real life scenario'
                         ]
                     },
@@ -434,8 +433,8 @@
                             {content: 'I.T. Management', icon: 'push_pin', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/pin_uid_621f367db8a25.svg'},
                         ],
                         items: [
-                            '○ Natural Language Processing ○ Distributed Systems ○ Networks and Telecoms ○ Algorithmia',
-                            '○ Comp. Architecture & Hardware Components ○ Operating systems ○ Low-level programming',
+                            '○ Natural Lang. Processing ○ Distributed Systems ○ Networks and Telecoms',
+                            '○ Comp. Architecture & Hardware ○ Operating systems ○ Low-level programming',
                             '○ Business ○ Finance ○ Statistics',
                         ]
                     },

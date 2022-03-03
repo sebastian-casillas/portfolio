@@ -50,8 +50,8 @@
         max-width: 100%;
         display: flex;
 
-        margin-top: 1.4mm;
-        margin-bottom: 1.6mm;
+        margin-top: 1mm;
+        margin-bottom: .8mm;
 
 
         .date_block{
