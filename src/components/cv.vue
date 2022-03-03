@@ -278,7 +278,7 @@
 
                 experience:[
                     {
-                        title: 'Product Owner/Developer & IT Consultant',
+                        title: 'Product Owner & IT Consultant',
                         subtitle: 'Center for Multilateral Negotiations',
                         date_start: '09/2017',
                         date_end: 'Today',
@@ -367,7 +367,7 @@
                     },
                     {
                         title: 'IT developer and consultant',
-                        subtitle: 'DSAN - Diseño de software Aplicado a los negocios',
+                        subtitle: 'DSAN - Diseño de software Aplicado a negocios',
                         date_start: '2011 &',
                         date_end: '2013',
                         details: [
@@ -383,19 +383,19 @@
 
                 education:[
                     {
-                        title: 'Masters in Human Computer Interaction and Design',
+                        title: 'Masters in Human Computer Interaction & Design',
                         subtitle: 'EIT Digital Masters School',
                         date_start: '2020',
                         date_end: '2022',
                         details: [
                             {content: 'Minor in Innovation and Entrepreneurship', icon: 'push_pin'},
-                            {content: 'Aalto University', icon: 'place'},
-                            {content: 'University of Twente', icon: 'place'},
+                            // {content: 'Aalto U.', icon: 'place'},
+                            // {content: 'U. of Twente', icon: 'place'},
                         ]
                     },
 
                     {
-                        title: 'Masters in Information and Communication Technologies',
+                        title: 'Masters in Information & Communication Technologies',
                         subtitle: 'Aalto University',
                         date_start: '➞',
                         items: [
@@ -420,7 +420,7 @@
                     },
                     {
                         title: 'Media & democracy: Digital Methods Summer School 2021',
-                        subtitle: 'University of Amsterdam',
+                        subtitle: 'U. of Amsterdam',
                         date_start: '➞',
                         items: [
                             'Project ideation and Business plan: ',
@@ -429,12 +429,13 @@
                     },
                     {
                         title: 'Bsc. Computer Systems Engineering',
-                        subtitle: 'ESCOM - National Polytechnic Institute of Mexico',
+                        subtitle: 'ESCOM - National Polytechnic Institute',
                         date_start: '2014',
                         date_end: '2018',
                         details: [
-                            {content: 'Extensive 5 year  programme', icon: 'moving'},
-                            {content: 'Focus in Software Engineering and I.T. Management', icon: 'push_pin'},
+                            {content: 'Extensive 5yr. program', icon: 'moving'},
+                            {content: 'Software Engr.', icon: 'push_pin'},
+                            {content: 'I.T. Management', icon: 'push_pin'},
                         ],
                         items: [
                             '○ Natural Language Processing ○ Distributed Systems ○ Networks and Telecoms ○ Algorithmia',

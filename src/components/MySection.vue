@@ -1,24 +1,22 @@
 <template>
     <div class="section">
         <div class="date_block">
-            <span class="date_text">
+            <p class="date_text">
                 {{experience.date_start}}<br>{{experience.date_end}}
-            </span>
+            </p>
         </div>
-        <div class="detail_block" style="width: 1.6mm; border-top: solid 1px #777;">
 
-        </div>
+        <div class="detail_block"/>
+
         <div class="info_block">
 
             <div class="info_block_content">
 
-                <div class="content_div_title">
+                <p>
                     <span class="content_title" v-html="experience.title"></span>
                     <span class="content_subtitle" v-html="experience.subtitle"></span>
-                </div>
-
-
-
+                </p>
+                    
                 <p class="content_note" v-if="experience.details">
                     <template v-for="d in experience.details" :key="d.content"> 
                         <q-icon size="2.5mm" :name="d.icon"/><span>{{d.content}}</span>
@@ -50,84 +48,107 @@
         max-width: 100%;
         display: flex;
 
-        margin-top: 1.6mm;
-        margin-bottom: 2mm;
+        margin-top: 1.4mm;
+        margin-bottom: 1.6mm;
 
 
         .date_block{
-            position: relative;
-            padding-top: 1mm;
+            margin-top: 2mm;
 
             width: 7mm;
             max-width: 7mm;
             min-width: 7mm;
 
-            display:flex;
-            justify-content: center;
-
-            border-right: solid 1px #777;
+            // height: 100%;
+            
             
 
-            & > span.date_text{
-                font-size: 2.2mm !important;
-                line-height: 3mm !important;
+
+            & > p.date_text{
+
+                font-size: 2.9mm !important;
+                line-height: 3.2mm !important;
+
                 font-weight: 300;
                 color: #666 !important;
-                
+
+                min-width: 7mm;
+
+                margin: 0;
+                text-orientation: sideways-right;
+
                 writing-mode: vertical-rl;
                 letter-spacing: .05mm !important;
 
                 text-align: right;
+                vertical-align: text-bottom;
+
+                // border-top: 1px green solid;
+                // border-bottom: 1px red solid;
+
                 transform: rotate(180deg);
+
+                // transform: rotate(270deg);
+
+
+                
+
+                
             }
           }
 
-          .detail_block, .date_block{
-              margin-top: 2mm;
+        .detail_block{
+                margin-top: 2mm;
+                width: 1.6mm; 
+                margin-left:.4mm;
+                margin-right:.6mm;
+                border-top: 1px solid #777; 
+                border-left:1px solid #777;
           }
 
 
         .info_block{
-            display:inline-block;
+ 
 
             .info_block_content{
-                padding-left: 1mm;
-                padding-top: .8mm;
-
-                .content_div_title{
-                    padding-left: 1.2mm;
-                    display: flex;
-                    align-items: flex-end;
-                }
+                // padding-left: .6mm;
+                // padding-top: .8mm;
 
                 .content_title{
-                    
-                    font-size: 3.2mm !important;
+                    font-size: 3.5mm !important;
                     line-height: 3.8mm !important;
-                    font-weight: 300;
-                    letter-spacing: .005mm;
+                    letter-spacing: -.05mm !important;
+
+                    vertical-align: text-bottom !important;
+
+                    font-weight: 500;
+                    
                 }
 
                 .content_subtitle{
-                    font-size: 2.3mm !important;
-                    line-height: 2.6mm !important;
-                    font-weight: 600;
+                    font-size: 3mm !important;
+                    line-height: 3.8mm !important;
+                    letter-spacing: -.05mm !important;
+
+                    vertical-align: text-bottom !important;
+
+                    font-weight: 700 !important;
                     margin-left: .8mm;
                     color: #555 !important;
                     letter-spacing: .005mm;
                 }
 
                 .content_note{
-                    padding-left: 1.4mm;
+                    padding-left: .4mm;
                     height: 2.6mm;
                     display: flex;
                     align-items: center;
                     line-height: 2.7mm !important;
 
                     & > span{
-                        font-size: 2.4mm;
+                        font-size: 2.9mm !important;
                         line-height: 2.6mm !important;
-                        font-weight: 600;
+                        font-weight: 600 !important;
                         color: #444 !important;
 
                         margin-left: 1mm;
