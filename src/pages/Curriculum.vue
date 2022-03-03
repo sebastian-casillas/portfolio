@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import cv from '@/components/cv.vue'
+import cv from '@/components/cv/cv.vue'
 import { saveAs } from 'file-saver'
 
 export default {

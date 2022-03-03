@@ -115,7 +115,7 @@
 
 <script>
 
-    import MySection from '@components/MySection';
+    import MySection from '@components/cv/MySection';
     import WordCloud from 'wordcloud'
 
     export default {
@@ -283,9 +283,9 @@
                         date_start: '09/2017',
                         date_end: 'Today',
                         details: [
-                            {content: 'cemune.org', icon: 'language'},
-                            {content: 'Remote', icon: 'cloud_queue'},
-                            {content: 'Volunteer', icon: 'coffee'},
+                            {content: 'cemune.org', icon: 'language', img:'https://api.casillas.dev/storage/uploads/2022/03/02/web_uid_621f367e7508e.svg'},
+                            {content: 'Remote', icon: 'cloud_queue', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/cloud-outline_uid_621f367d602bb.svg'},
+                            {content: 'Volunteer', icon: 'coffee', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/coffee_uid_621f367d0937c.svg'},
                         ],
                         items: [
                             'Software architecture and implementation for custom media platform',
@@ -298,9 +298,9 @@
                         date_start: '09/2020',
                         date_end: '04/2021',
                         details: [
-                            {content: 'Mexico', icon: 'map'},
-                            {content: 'Remote', icon: 'cloud_queue'},
-                            {content: 'Freelance', icon: 'coffee'},
+                            {content: 'Mexico', icon: 'map', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
+                            {content: 'Remote', icon: 'cloud_queue', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/cloud-outline_uid_621f367d602bb.svg'},
+                            {content: 'Freelance', icon: 'coffee', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/coffee_uid_621f367d0937c.svg'},
                         ],
                         items: [
                             'Design & Implementation of web interface to create/navigate a SPARQL databank through OntoGraphs'
@@ -310,8 +310,8 @@
                         title: 'Project design & IT consultancy',
                         subtitle: 'Private legal firm',
                         details: [
-                            {content: 'Mexico', icon: 'map'},
-                            {content: 'Freelance', icon: 'coffee'}
+                            {content: 'Mexico', icon: 'map', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
+                            {content: 'Freelance', icon: 'coffee', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/coffee_uid_621f367d0937c.svg'}
                         ],
                         date_start: '07/2019',
                         items: [
@@ -325,8 +325,8 @@
                         date_start: '10/2018',
                         date_end: '12/2019',
                         details: [
-                            {content: 'erp.wellstartrading.com', icon: 'language'},
-                            {content: 'Shanghai', icon: 'map'}
+                            {content: 'erp.wellstartrading.com', icon: 'language', img:'https://api.casillas.dev/storage/uploads/2022/03/02/web_uid_621f367e7508e.svg'},
+                            {content: 'Shanghai', icon: 'map', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'}
                         ],
                         items: [
                             'Design/Implement/Support company-wide tools with a heavy user oriented assessment',
@@ -341,9 +341,9 @@
                         date_start: '10/2016',
                         date_end: '09/2018',
                         details: [
-                            {content: 'leadslide.com', icon: 'language'},
-                            {content: 'Remote', icon: 'cloud_queue'},
-                            {content: 'Freelance', icon: 'coffee'},
+                            {content: 'leadslide.com', icon: 'language', img:'https://api.casillas.dev/storage/uploads/2022/03/02/web_uid_621f367e7508e.svg'},
+                            {content: 'Remote', icon: 'cloud_queue', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/cloud-outline_uid_621f367d602bb.svg'},
+                            {content: 'Freelance', icon: 'coffee', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/coffee_uid_621f367d0937c.svg'},
                         ],
                         items: [
                             'General project modules implementation on Laravel and Angular with UI/UX focus'
@@ -355,8 +355,8 @@
                         date_start: '08/2017',
                         date_end: '02/2018',
                         details: [
-                            {content: 'banxico.org.mx', icon: 'language'},
-                            {content: 'Mexico', icon: 'map'},
+                            {content: 'banxico.org.mx', icon: 'language', img:'https://api.casillas.dev/storage/uploads/2022/03/02/web_uid_621f367e7508e.svg'},
+                            {content: 'Mexico', icon: 'map', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
                             {content: 'Internship', icon: 'sticky_note_2'},
                         ],
                         items: [
@@ -371,8 +371,8 @@
                         date_start: '2011 &',
                         date_end: '2013',
                         details: [
-                            {content: 'dsan.com.mx', icon: 'language'},
-                            {content: 'Mexico', icon: 'map'}
+                            {content: 'dsan.com.mx', icon: 'language', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/web_uid_621f367e7508e.svg'},
+                            {content: 'Mexico', icon: 'map', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'}
                         ],
                         items: [
                             'Native Android application development',
@@ -388,7 +388,7 @@
                         date_start: '2020',
                         date_end: '2022',
                         details: [
-                            {content: 'Minor in Innovation and Entrepreneurship', icon: 'push_pin'},
+                            {content: 'Minor in Innovation and Entrepreneurship', icon: 'push_pin', img:'https://api.casillas.dev/storage/uploads/2022/03/02/pin_uid_621f367db8a25.svg'},
                             // {content: 'Aalto U.', icon: 'place'},
                             // {content: 'U. of Twente', icon: 'place'},
                         ]
@@ -410,7 +410,7 @@
                         subtitle: 'University of Twente',
                         date_start: '➞',
                         details: [
-                            {content: 'Focus in User research, user experience, & user interfaces', icon: 'push_pin'},
+                            {content: 'Focus in User research, user experience, & user interfaces', icon: 'push_pin', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/pin_uid_621f367db8a25.svg'},
                         ],
                         items: [
                             '○ Immersive experiences: Human oriented design with a purpose',
@@ -434,8 +434,8 @@
                         date_end: '2018',
                         details: [
                             {content: 'Extensive 5yr. program', icon: 'moving'},
-                            {content: 'Software Engr.', icon: 'push_pin'},
-                            {content: 'I.T. Management', icon: 'push_pin'},
+                            {content: 'Software Engr.', icon: 'push_pin', img:'https://api.casillas.dev/storage/uploads/2022/03/02/pin_uid_621f367db8a25.svg'},
+                            {content: 'I.T. Management', icon: 'push_pin', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/pin_uid_621f367db8a25.svg'},
                         ],
                         items: [
                             '○ Natural Language Processing ○ Distributed Systems ○ Networks and Telecoms ○ Algorithmia',

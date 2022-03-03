@@ -18,9 +18,7 @@
                 </p>
                     
                 <p class="content_note" v-if="experience.details">
-                    <template v-for="d in experience.details" :key="d.content"> 
-                        <q-icon size="2.5mm" :name="d.icon"/><span>{{d.content}}</span>
-                    </template>
+                    <my-tag v-for="d in experience.details" :key="d.content" :tag="d" />
                 </p>
                 <p class="block_item" v-for="item of experience.items" 
                     :key="item"
@@ -36,9 +34,13 @@
 </template>
 
 <script>
+
+    import MyTag from '@components/cv/tags';
+
     export default {
         name: 'MySection',
         props: ['experience'],
+        components: {MyTag},
     }
 </script>
 

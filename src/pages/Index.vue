@@ -61,7 +61,7 @@
 
 <script>
 
-import CV from '@/components/cv.vue'
+import CV from '@components/cv/cv.vue'
 import WordCloud from '@components/home/WordCloud.vue'
 import ProjectView from '@/components/portfolio/ProjectView.vue'
 
