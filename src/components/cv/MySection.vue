@@ -174,7 +174,7 @@
             }
 
                 .block_item{
-                    font-size: 2.4mm !important;
+                    font-size: 2.9mm !important;
                     line-height: 2.8mm;
                     margin-bottom: .4mm !important;
                 }
