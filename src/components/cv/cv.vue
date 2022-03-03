@@ -72,12 +72,7 @@
                         </tr>
                         <tr>
                             <th align='left'>
-
-                                <template v-for='d of item.details' :key='d'>
-                                    <img class="inline_icon" :src='d.icon' />
-                                    <span style="vertical-align: middle;">{{d.content}}</span>
-                                </template>
-                                
+                                <my-tag v-for="d in item.details" :key="d.content" :tag="d" />
                             </th>
                         </tr>
                     </template>
@@ -116,11 +111,12 @@
 <script>
 
     import MySection from '@components/cv/MySection';
+    import MyTag from '@components/cv/tags';
     import WordCloud from 'wordcloud'
 
     export default {
         name: 'Cv',
-        components: {MySection},
+        components: {MySection, MyTag},
         data: () => ({
             cv_data :{
 
@@ -357,7 +353,7 @@
                         details: [
                             {content: 'banxico.org.mx', icon: 'language', img:'https://api.casillas.dev/storage/uploads/2022/03/02/web_uid_621f367e7508e.svg'},
                             {content: 'Mexico', icon: 'map', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
-                            {content: 'Internship', icon: 'sticky_note_2'},
+                            {content: 'Internship', icon: 'sticky_note_2', img:'https://api.casillas.dev/storage/uploads/2022/03/03/notebook_uid_62207bca8914d.svg'},
                         ],
                         items: [
                             'Formal user-oriented documentation on existing projects',
@@ -433,13 +429,13 @@
                         date_start: '2014',
                         date_end: '2018',
                         details: [
-                            {content: 'Extensive 5yr. program', icon: 'moving'},
+                            {content: 'Extensive 5yr. program', icon: 'moving', img: 'https://api.casillas.dev/storage/uploads/2022/03/03/trending-up_uid_62207bcae96ed.svg'},
                             {content: 'Software Engr.', icon: 'push_pin', img:'https://api.casillas.dev/storage/uploads/2022/03/02/pin_uid_621f367db8a25.svg'},
                             {content: 'I.T. Management', icon: 'push_pin', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/pin_uid_621f367db8a25.svg'},
                         ],
                         items: [
                             '○ Natural Language Processing ○ Distributed Systems ○ Networks and Telecoms ○ Algorithmia',
-                            '○ Computer Architecture & Hardware Components ○ Operating systems ○ Low-level programming',
+                            '○ Comp. Architecture & Hardware Components ○ Operating systems ○ Low-level programming',
                             '○ Business ○ Finance ○ Statistics',
                         ]
                     },
@@ -448,7 +444,7 @@
                         subtitle: 'Beijing Institute of Technology',
                         date_start: '➞',
                         details: [
-                            {content: 'Institutional Excellence Scholarship', icon: 'star'}],
+                            {content: 'Institutional Excellence Scholarship', icon: 'star', img: 'https://api.casillas.dev/storage/uploads/2022/03/03/star_uid_62207bcb51d51.svg'}],
                         items: [
                             '○ Computer Graphics ○ Software systems design'
                         ]
@@ -467,8 +463,8 @@
                         title: 'Front-End JS Framework',
                         subtitle: 'Hong Kong U.',
                         details: [
-                            {content: 'Coursera', icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
-                            {content: 'Angular', icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/check-decagram_uid_621f90c9737cc.svg'},
+                            {content: 'Coursera', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
+                            {content: 'Angular', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/check-decagram_uid_621f90c9737cc.svg'},
                             // {content: '2018', icon: 'calendar'},
                         ]
                     },
@@ -476,7 +472,7 @@
                         title: 'German A2 intensive',
                         subtitle: 'Deutschotek',
                         details: [
-                            {content: 'Vienna', icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
+                            {content: 'Vienna', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
                             // {content: '2018', icon: 'calendar'},
                         ]
                     },
@@ -484,9 +480,9 @@
                         title: 'Big Data Micromasters',
                         subtitle: 'U. of Adelaide',
                         details: [
-                            {content: 'EDx', icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
+                            {content: 'EDx', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
                             // {content: 'Programming', icon: 'verified'},
-                            {content: 'Computational Thinking', icon: 'https://api.casillas.dev/storage/uploads/2022/03/02/check-decagram_uid_621f90c9737cc.svg'},
+                            {content: 'Computational Thinking', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/check-decagram_uid_621f90c9737cc.svg'},
                             // {content: '2018', icon: 'calendar'},
                         ]
                     },
