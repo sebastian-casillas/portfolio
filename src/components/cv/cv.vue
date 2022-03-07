@@ -502,7 +502,7 @@
 
             let options = {
                 list: this.cv_data.competences,
-                gridSize: Math.round(18 * this.rate),
+                gridSize: Math.round(15 * this.rate),
                 weightFactor: size => (10 + Math.pow(size, 1.9)) * this.rate* 1.3,
                 fontWeight: (word, weight) => [1,3].includes(weight)? 500: 600,
                 shape: 'rectangle', 
