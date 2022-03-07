@@ -66,7 +66,7 @@
                         <tr></tr>
                         <tr>
                             <th align='left'>
-                                <span class="text-bold mr_small">{{item.title}}</span>
+                                <span class="text-bold">{{item.title}}</span>
                                 <span class='subtitle'>{{item.subtitle}}</span>
                             </th>
                         </tr>
@@ -179,10 +179,11 @@
                 competences:[
 
                     ['Virtual Reality', 4], 
-                    ['Unity', 3],
-                    ['UnrealEngine', 4],
+                    ['Unity', 4],
+                    ['UnrealEngine', 3],
                     ['Blender', 3],
-                    ['C/C++', 1],
+                    ['C/C++', 2],
+                    ['C/C#', 4],
 
                     ['PhotoShop', 3],
                     ['Inkscape', 2],
@@ -194,7 +195,7 @@
                     ['Android', 3],
                     ['Vuforia', 2],
 
-                    ['Natural Language Processing', 2],
+                    ['Natural Language Processing', 1],
                     ['ANTLR', 3],
 
 
@@ -203,7 +204,6 @@
                     ['TypeScript', 3],
                     ['ES6', 4],
                     ['Java Spring', 2],
-                    ['Applet', 1],
                     ['Front End', 4],
                     ['Javascript', 4],
                     ['Angular', 3],
@@ -213,6 +213,7 @@
                     ['SCSS', 2],
                     ['HTML', 3],
                     ['NPM', 2],
+                    ['Single Page App.', 4],
 
                     ['Data Visualization', 4],
                     ['D3', 4],
@@ -244,7 +245,7 @@
                     ['Laravel', 3],
 
                     ['Wordpress', 2],
-                    ['Cockpit', 3],
+                    ['CockpitCMS', 3],
                     
                     ['Git', 2],
                     ['SVN', 2],
@@ -253,9 +254,8 @@
 
                     ['Windows', 2],
                     ['Linux', 2],
+                    ['Android', 2],
                     ['WSL', 1],
-
-
                 ],
 
                 p_languages:[
@@ -584,15 +584,16 @@
         }
 
         span.subtitle{
-            font-size: 2.9mm;
-            font-weight: 700;
-            color: #666;
-            line-height: 3.6mm;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
+                    font-size: 2.9mm !important;
+                    line-height: 3.8mm !important;
+                    letter-spacing: -.08mm !important;
 
-        *.mr_small{
-            margin-right: 1mm;
+                    vertical-align: text-bottom;
+
+                    font-weight: 800;
+                    margin-left: 1.2mm;
+                    color: #454545;
+                    letter-spacing: .005mm;
         }
 
         p{
@@ -666,12 +667,10 @@
                         vertical-align: text-bottom;
                     }
                     tr, td, span{
-                        line-height: 2.4mm;
+                        font-size: 3.3mm;
+                        line-height: 3.6mm;
+                        height: 3mm;
                         vertical-align: bottom;
-                    }
-                    span{
-                        line-height: 2.4mm;
-                        vertical-align: text-bottom;
                     }
 
                 }

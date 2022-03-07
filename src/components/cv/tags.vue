@@ -16,7 +16,7 @@
 
     .tag_element{
         height: 2.9mm !important;
-        margin-right: .8mm;
+        margin-right: 1.2mm;
         display: inline-block;
 
         .tag_icon{

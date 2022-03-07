@@ -14,7 +14,7 @@
 
                 <p>
                     <span class="content_title" v-html="experience.title"></span>
-                    <span class="content_subtitle" v-html="experience.subtitle"></span>
+                    <span class="subtitle" v-html="experience.subtitle"></span>
                 </p>
                     
                 <p class="content_note" v-if="experience.details">
@@ -51,7 +51,7 @@
         display: flex;
 
         margin-top: 1mm;
-        margin-bottom: .8mm;
+        margin-bottom: 1.4mm;
 
 
         .date_block{
@@ -118,19 +118,6 @@
                     
                 }
 
-                .content_subtitle{
-                    font-size: 2.9mm !important;
-                    line-height: 3.8mm !important;
-                    letter-spacing: -.08mm !important;
-
-                    vertical-align: text-bottom !important;
-
-                    font-weight: 800 !important;
-                    margin-left: 1.2mm;
-                    color: #454545 !important;
-                    letter-spacing: .005mm;
-                }
-
                 .content_note{
                     padding-left: .4mm;
                     height: 2.6mm;
@@ -158,7 +145,6 @@
 
             li{
                 color: #333;
-                font-size: 2.8mm;
                 font-weight: 400;
                 letter-spacing: 0;
                 margin-bottom: .2mm;
@@ -166,7 +152,7 @@
 
                 .block_item{
                     font-size: 2.9mm !important;
-                    line-height: 2.8mm;
+                    line-height: 3.1mm !important;
                     margin-bottom: .4mm !important;
                 }
 
