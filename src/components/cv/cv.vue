@@ -590,7 +590,7 @@
 
                     vertical-align: text-bottom;
 
-                    font-weight: 800;
+                    font-weight: 700;
                     margin-left: 1.2mm;
                     color: #454545;
                     letter-spacing: .005mm;
