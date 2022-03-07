@@ -595,18 +595,6 @@
             margin-right: 1mm;
         }
 
-        #first_name, #last_name{
-            font-size: 7mm;
-            line-height: 9.4mm;
-            margin: 0 0 1mm 0;
-            font-weight: 500;
-            line-height: 7.4mm;
-        }
-
-        #last_name{
-            margin-bottom: 2mm;
-        }
-
         p{
             font-size: 3.4mm;
             line-height: 3.6mm;
@@ -614,6 +602,23 @@
             letter-spacing: .02mm;
             margin: .2mm 0 1mm 0;
         }
+
+        #first_name{
+            font-size: 6.5mm;
+            line-height: 6.7mm;
+            margin: 0 0 1mm 0;
+            font-weight: 600;
+        }
+
+        #last_name{
+            font-size: 5.5mm;
+            line-height: 5.6mm;
+            margin: 0 0 2mm 0;
+            font-weight: 600;
+        }
+
+
+
 
         img.inline_icon{
             height: 3mm;
@@ -654,9 +659,9 @@
 
                 &.dense{
                     th{
-                        font-size: 3.4mm;
+                        font-size: 3.2mm;
                         color: #343434;
-                        line-height: 5mm;
+                        line-height: 3.3mm;
                         padding: 0;
                         vertical-align: text-bottom;
                     }
