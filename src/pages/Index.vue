@@ -4,9 +4,9 @@
       <q-toolbar :style="menu_height">
 
         <q-toolbar-title>
-            <h6 style="margin: 0;">
+            <span class="header_title noselect" style="margin: 0;">
               Sebastian Casillas
-            </h6>
+            </span>
         </q-toolbar-title>
 
         <q-tabs shrink class="index_navigation_tabs">
@@ -173,8 +173,10 @@ export default {
     }
 
 
+    .header_title{
+      font-size: 1.2em;
+    }
 
-    
   }
   
   #home_main{
