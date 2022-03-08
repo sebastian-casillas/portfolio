@@ -4,7 +4,7 @@
     <div id='cv_page' ref='cv_page'>
             <div class='left_column'>
 
-                <div class='row  content-center'>
+                <div class='row content-center'>
                     <q-avatar size='35mm' style='margin:2mm auto 2mm auto;'>
                         <q-img style='height: 40mm; width: 40mm; margin-top:-3mm;' src='/assets/profile_circle.png'/>
                     </q-avatar>
