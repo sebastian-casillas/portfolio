@@ -81,15 +81,20 @@ module.exports = {
     quotes: ['warn', 'single', { avoidEscape: true }],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+
+    '@typescript-eslint/no-unsafe-argument': "off",
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-call': 'off',
     '@typescript-eslint/no-unsafe-return': 'off',
+
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/restrict-plus-operands': 'off',
-    'vue/no-unused-components': 'off',
     '@typescript-eslint/no-var-requires': "off",
+    
+    'vue/no-unused-components': 'off',
+    'vue/multi-word-component-names': "off",
 
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
