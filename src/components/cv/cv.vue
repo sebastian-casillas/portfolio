@@ -115,7 +115,7 @@
     import WordCloud from 'wordcloud'
 
     export default {
-        name: 'Cv',
+        name: 'CurriculuVitae',
         components: {MySection, MyTag},
         data: () => ({
             cv_data :{
