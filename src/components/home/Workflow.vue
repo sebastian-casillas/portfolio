@@ -3,6 +3,15 @@
 
     <div class="row q-mb-xl q-pa-md">
 
+
+
+        <template v-if="!competences.length">
+            <div v-for="i in 5" :key="i" class="col-md-6 col-sm-12 col-xs-12 q-px-xl q-my-sm competence_card">
+                <q-skeleton type="text"/>
+                <q-skeleton type="rect" class="q-mt-sm" style="height: 40px;"/>
+            </div>
+        </template>
+
         <div v-for="c of competences" :key="c._id" 
                 class="col-md-6 col-sm-12 col-xs-12 q-px-xl q-my-sm competence_card">
             <h5 class="q-my-md" style="line-height: 2rem;"> {{c.value.title}}</h5>
@@ -29,24 +38,27 @@
         <div class="col-md-6 col-sm-12 col-xs-12 q-pa-xl" id="language_icon_p">
             <h4 class="q-mt-sm" >Programming languages</h4>
 
+            <q-skeleton v-if="!programming_lang.length" type="rect" />
+
+            <template v-else>
+                <div v-for="l of programming_lang" :key="l" class="row wrap items-center content-center q-mb-md">
 
 
-            <div v-for="l of programming_lang" :key="l" class="row wrap items-center content-center q-mb-md">
+                    <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.value.language}}</span>
+
+                    
+
+                    <span class="col-grow"></span>
+
+                    <q-rating  class="col-shrink q-mx-sm" icon="mdi-label-variant" readonly  v-model='l.value.level' size='1.3rem' color='deep-orange-3' :max='4'/>
+                    <q-icon name="mdi-clock" size='1.3rem'></q-icon>
 
 
-                <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.value.language}}</span>
+                </div>
 
-                
+                <p class="text-overline q-mt-xl q-mb-md" style="line-height: 1rem;">{{programming_lang_note}}</p>
+            </template>
 
-                <span class="col-grow"></span>
-
-                <q-rating  class="col-shrink q-mx-sm" icon="mdi-label-variant" readonly  v-model='l.value.level' size='1.3rem' color='deep-orange-3' :max='4'/>
-                <q-icon name="mdi-clock" size='1.3rem'></q-icon>
-
-
-            </div>
-
-            <p class="text-overline q-mt-xl q-mb-md" style="line-height: 1rem;">{{programming_lang_note}}</p>
 
         </div>
 
@@ -54,20 +66,27 @@
 
             <h4 class="q-mt-sm" >Languages</h4>
 
-            <div v-for="l of international_lang" :key="l" class="row wrap items-center content-center q-mb-md">
+
+            <q-skeleton v-if="!international_lang.length" type="rect" />
+
+            <template v-else>
+                <div v-for="l of international_lang" :key="l" class="row wrap items-center content-center q-mb-md">
 
 
-                <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.value.language}}</span>
+                    <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.value.language}}</span>
 
-                <span class="col-grow"></span>
+                    <span class="col-grow"></span>
 
-                <span class="col-shrink text-overline q-mx-sm" style="color: #fffA" v-if="l.value.level >= 2">{{l.value.subtitle}}</span>
-                <span class="col-shrink text-overline q-mx-sm " v-else  >...In progress</span>
+                    <span class="col-shrink text-overline q-mx-sm" style="color: #fffA" v-if="l.value.level >= 2">{{l.value.subtitle}}</span>
+                    <span class="col-shrink text-overline q-mx-sm " v-else  >...In progress</span>
 
-                <q-rating  class="col-shrink q-mx-sm" v-if="l.value.level >= 2" readonly   v-model='l.value.level' size='1.3rem' color='deep-orange-3' :max='4'/>
+                    <q-rating  class="col-shrink q-mx-sm" v-if="l.value.level >= 2" readonly   v-model='l.value.level' size='1.3rem' color='deep-orange-3' :max='4'/>
 
 
-            </div>
+                </div>
+
+            </template>
+
 
         </div>
     </div>
@@ -147,6 +166,14 @@ export default {
     & > *{
         background-color: #6546;
     }
+}
+
+.q-skeleton--anim-wave:after {
+    background: linear-gradient(90deg, rgba(0, 0, 0, .00), rgba(0, 0, 0, 0.09), rgba(0, 0, 0, .00));
+}
+
+.q-skeleton--dark {
+    background: rgba(69, 69, 69, 0.05);
 }
 
 
