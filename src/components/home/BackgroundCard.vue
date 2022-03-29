@@ -4,6 +4,7 @@
         :icon="icon"
         :side="side"
         :title="data.subtitle"
+        :color="(side === 'left')? 'accent': 'positive'"
     >
 
         <template #>
@@ -13,7 +14,7 @@
                 <div class="content_notes">  
                     <q-chip 
                         v-for="d in data.tags" :key="d.content"
-                        color="teal-6" size="md" square dense outline 
+                        color="grey-9" size="md" square dense outline 
                         :icon="d.value.icon"
                         class="q-px-sm"
                         >
@@ -26,7 +27,7 @@
 
                 <!-- <vue3-markdown-it :source="selected_project.description" /> -->
                 <p class="block_item">
-                    {{this.data.content}}
+                    <Markdown v-if="data.content" :source="data.content"/>
                 </p>
             </div>
         </template>
@@ -44,7 +45,12 @@
 </template>
 
 <script>
+import Markdown from 'vue3-markdown-it';
+
 export default {
+    components: {
+        Markdown
+    },
     props:{
         data: {
             type: Object,
