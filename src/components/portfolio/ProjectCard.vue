@@ -1,12 +1,12 @@
 <template>
-    <q-responsive :ratio="3/2" style="width: 100%;">
+    <q-responsive :ratio="3/2" style="width: 100%;" @click="$router.push({name: 'Portfolio', params: { slug: project.slug }})">
 
         <q-skeleton class="abs-full" v-show="!showImg" style="z-index: 5;"/>
 
-        <img :src="'https://api.casillas.dev/' + project.cover.path" class="abs-full" style="object-fit: cover;" v-show="showImg" @load="showImg = true" @click="$router.push({name: 'Portfolio', params: { slug: project.slug }})"/>
+        <img :src="'https://api.casillas.dev/' + project.cover.path" class="abs-full" style="object-fit: cover;" v-show="showImg" @load="showImg = true" />
 
 
-        <div class="abs-full" style="z-index: 10; " @mouseover="cardHover = true" @mouseleave="cardHover = false">
+        <div class="abs-full p-card-overlay" @mouseover="cardHover = true" @mouseleave="cardHover = false">
 
             <div class="absolute-bottom q-px-sm q-py-md hide-scrollbar" style="background-color: #3338; max-height: 100%; overflow-y: auto;">
 
@@ -19,7 +19,7 @@
                     <div v-show="cardHover" style="overflow-x: hidden;">
                         <div class="text-h6 non-selectable" >{{project.subtitle}}</div>
                         <div class="q-mt-sm" v-show="cardHover">
-                            <q-chip v-for="chip of project.knowledge_applied" :key="chip">
+                            <q-chip v-for="chip of project.knowledge_applied" :key="chip" :clickable="false" class="non-selectable">
                                 {{chip}}
                             </q-chip>
                         </div>
@@ -51,7 +51,10 @@ export default {
 </script>
 
 <style scoped>
-
+.p-card-overlay{
+    z-index: 10;
+    cursor: pointer;
+}
     .abs-full{
         position: absolute;
         top: 0;
