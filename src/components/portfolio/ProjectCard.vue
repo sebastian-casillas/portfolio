@@ -7,11 +7,12 @@
 
 
         <div class="abs-full" style="z-index: 10;">
-            <div class="absolute-bottom q-px-sm q-py-md" style="background-color: #3338;">
+            <div class="absolute-bottom q-px-sm q-py-md" style="background-color: #3338; max-height: 100%;">
 
                 <div class="text-h4 non-selectable">{{project.title}}</div>
+
                 <q-slide-transition>
-                    <div v-show="cardHover">
+                    <div v-show="cardHover" style="overflow-x: hidden;">
                         <div class="text-h6 non-selectable" >{{project.subtitle}}</div>
                         <div class="q-mt-sm" v-show="cardHover">
                             <q-chip v-for="chip of project.knowledge_applied" :key="chip">
@@ -20,6 +21,8 @@
                         </div>
                     </div>
                 </q-slide-transition>
+
+
             </div>
 
 
