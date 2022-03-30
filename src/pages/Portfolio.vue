@@ -1,46 +1,42 @@
 <template>
 
-  <div class="q-pt-lg">
+  <div class="full-width row wrap justify-center content-start q-py-lg q-px-md">
 
-    <div  class="row justify-center">
+    <!-- Loading div: centered and with a min ratio -->
+    <div v-show="!projects.length" class="full-width row justify-center q-py-lg">
 
-      <div>
-        <q-circular-progress
-          v-show="!projects.length"
+      <q-circular-progress
+        
+          style="min-width: 150px; min-height: 150px;"
           indeterminate
-          size="50px"
-          :thickness="0.22"
+          size="20px"
+          :thickness="0.1"
           color="primary"
           track-color="grey-3"
-          class="q-ma-md"
+          class="q-ma-md column q-my-md"
         />
-      </div>
-
-      <project-card 
-          class="col-md-4 col-lg-3 col-sm-6 q-mt-md"
-          v-for="p of projects" 
-          :key="p._id"
-          :project="p"
-          />
 
     </div>
 
+    <!-- Grid of results -->
+    <div class="full-width row" style="max-width: 1200px; min-width: 500px;">
 
-
-
-    <q-dialog
-      :model-value="!!selected_slug"
-      persistent maximized
-      transition-show="slide-up"
-      transition-hide="slide-down"
-    >
-      <div v-if="selected_slug">
-        <project-view :selected_slug="selected_slug"></project-view>
+      <div class="column col-md-4 col-lg-3 col-sm-12 q-px-sm q-my-md" v-for="p of projects" :key="p._id">
+        <project-card  :project="p" />
       </div>
-    </q-dialog>
 
+    </div>
 
   </div>
+
+  <q-dialog
+      :model-value="!!selected_slug"
+      persistent 
+      maximized
+      position="bottom"
+      >
+        <project-view :selected_slug="selected_slug"></project-view>
+    </q-dialog>
 
 </template>
 
