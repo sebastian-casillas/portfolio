@@ -51,10 +51,10 @@ export default {
 </script>
 
 <style scoped>
-.p-card-overlay{
-    z-index: 10;
-    cursor: pointer;
-}
+    .p-card-overlay{
+        z-index: 10;
+        cursor: pointer;
+    }
     .abs-full{
         position: absolute;
         top: 0;

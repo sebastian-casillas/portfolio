@@ -1,47 +1,45 @@
 <template>
 
 
-<div id="project_window_layout" class="column">
+<div id="project_window_layout">
 
     <q-card id="project_window_card" class="text-black col" >
 
-        <template v-if="!!selected_project">
-            <q-card-section >
-                <q-bar>
-                    <q-space />
 
-                    <q-btn flat round size=".8rem"
-                        icon="close" 
-                        @click="$router.push({name: 'Portfolio'})"
-                        />
-                </q-bar>
-            </q-card-section>
+        <q-card-section >
+            <q-bar>
+                <q-space />
 
-            <q-card-section >
-                <div class="fill-width row">
-                    <div class="col-md-6 col-sm-12 col-xs-12">
+                <q-btn flat round size=".8rem"
+                    icon="close" 
+                    @click="$router.push({name: 'Portfolio'})"
+                    />
+            </q-bar>
+        </q-card-section>
 
-                        <q-carousel
-                            swipeable
-                            animated
-                            v-model="slide"
-                            infinite
-                            >
+        <q-card-section v-if="!!selected_project" class="fill-width row justify-center">
+                    <q-carousel
+                        class="col-md-8 col-sm-12"
+                        swipeable
+                        animated
+                        v-model="slide"
+                        infinite
+                        >
 
-                            <q-carousel-slide 
-                                    v-for="i in selected_project.gallery" 
-                                    :key="i.meta.asset" 
-                                    :name="i.meta.asset" 
-                                    :img-src="'https://api.casillas.dev/' + i.path" 
-                                    :alt="i.meta.title"  
-                                    />
+                        <q-carousel-slide 
+                                v-for="i in selected_project.gallery" 
+                                :key="i.meta.asset" 
+                                :name="i.meta.asset">
+                                <q-img :src="'https://api.casillas.dev/' + i.path" :alt="i.meta.title" />
+                        </q-carousel-slide>
 
-                        </q-carousel>
+                    </q-carousel>
 
+                    <div class="col-md-4 col-sm-12">
                         <div class="row q-my-sm">
 
 
-                            <q-img class="q-mx-sm q-mb-md col col-xs-4 col-sm-3 col-md-2" img-class="my-button"
+                            <q-img class="q-mx-sm q-mb-mdcol-sm-6 col-md-4" img-class="my-button"
                             
                                     v-for="i in selected_project.gallery" 
                                     :key="i.meta.asset"
@@ -54,29 +52,26 @@
 
 
                         </div>
-
-                    </div>
-
-                    <div class="col-md-6 col-sm-12 col-xs-12 q-pa-lg">
-                        <h3  style="color:black" class="q-mb-sm">{{selected_project.title}}</h3>
-                        <p v-if="selected_project" class="text-overline" style="color:black">{{selected_project.context}}</p>
-                        <div>
-                            <vue3-markdown-it :source="selected_project.description" />
-                        </div>
-                        <!-- <p v-if="selected_project" style="color:black">{{selected_project.description}}</p> -->
-                        <div v-if="selected_project" class="row wrap q-mt-md">
-                                <q-chip v-for="c of selected_project.knowledge_applied" :key="c">
-                                {{c}}
-                            </q-chip>
-                        </div>
-
-                    </div>
                 </div>
-                
-            </q-card-section>
+        </q-card-section>
 
 
-        </template>
+
+
+        <q-card-section v-if="!!selected_project">
+                <h3  style="color:black" class="q-mb-sm">{{selected_project.title}}</h3>
+                <p v-if="selected_project" class="text-overline" style="color:black">{{selected_project.context}}</p>
+                <div>
+                    <vue3-markdown-it :source="selected_project.description" />
+                </div>
+                <!-- <p v-if="selected_project" style="color:black">{{selected_project.description}}</p> -->
+                <div v-if="selected_project" class="row wrap q-mt-md">
+                        <q-chip v-for="c of selected_project.knowledge_applied" :key="c">
+                        {{c}}
+                    </q-chip>
+                </div>
+        </q-card-section>
+
         
 
     </q-card>
@@ -147,6 +142,7 @@ export default {
 
 #project_window_layout{
     min-height: 100vh; 
+    width: 100%;
     padding: 20px 10px 0;
 
     #project_window_card{
