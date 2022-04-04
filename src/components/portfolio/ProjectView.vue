@@ -5,19 +5,7 @@
 
     <q-card id="project_window_card" class="text-black col" >
 
-
-        <q-card-section >
-            <q-bar>
-                <q-space />
-
-                <q-btn flat round size=".8rem"
-                    icon="close" 
-                    @click="$router.push({name: 'Portfolio'})"
-                    />
-            </q-bar>
-        </q-card-section>
-
-        <q-card-section v-if="!!selected_project" class="fill-width row justify-center">
+        <q-card-section v-if="!!selected_project" class="fill-width row justify-center" style="background-color: #222">
                     <q-carousel
                         class="col-md-8 col-sm-12"
                         swipeable
@@ -39,7 +27,7 @@
                         <div class="row q-my-sm">
 
 
-                            <q-img class="q-mx-sm q-mb-mdcol-sm-6 col-md-4" img-class="my-button"
+                            <q-img class="q-mx-sm q-mb-md col-sm-6 col-md-4" img-class="my-button"
                             
                                     v-for="i in selected_project.gallery" 
                                     :key="i.meta.asset"
@@ -56,10 +44,22 @@
         </q-card-section>
 
 
+        <q-card-section class="q-mt-sm q-pa-lg">
 
+            <q-bar class="q-pa-none q-mb-md">
+                <h4 v-if="!!selected_project" class="q-ma-none">
+                    {{selected_project.title}}
+                </h4>
 
-        <q-card-section v-if="!!selected_project">
-                <h3  style="color:black" class="q-mb-sm">{{selected_project.title}}</h3>
+                <q-space />
+
+                <q-btn flat round size=".8rem"
+                    icon="close" 
+                    @click="$router.push({name: 'Portfolio'})"
+                    />
+            </q-bar>
+
+            <template v-if="!!selected_project">
                 <p v-if="selected_project" class="text-overline" style="color:black">{{selected_project.context}}</p>
                 <div>
                     <vue3-markdown-it :source="selected_project.description" />
@@ -70,7 +70,31 @@
                         {{c}}
                     </q-chip>
                 </div>
+            </template>
+
         </q-card-section>
+
+        <q-separator size="2" color="grey" inset/>
+
+        <template v-if="!!selected_project && !!selected_project.blocks">
+             <q-card-section v-for="(block, index) in selected_project.blocks" :key="selected_project._id + '_block_' + index" class="q-px-lg q-py-md">
+                <template v-if="block.field.type === 'text'">
+                    <p>
+                        {{block.value}}
+                    </p>
+                </template>
+                <template v-else-if="block.field.type === 'markdown'">
+                    <Markdown :source="block.value"/>
+                </template>
+                <template v-else-if="block.field.type === 'html'">
+                    <div v-html="block.value"></div>
+                </template>
+
+            </q-card-section>
+        </template >
+
+
+
 
         
 
@@ -86,10 +110,11 @@
 
 import panzoom from '@panzoom/panzoom'
 import IntersectionImg from '@/components/home/IntersectionImg.vue'
+import Markdown from 'vue3-markdown-it'
 
 export default {
   name: 'ProjectView',
-  components: {IntersectionImg},
+  components: {IntersectionImg, Markdown},
   props: {
       selected_slug :{
           type: String,
