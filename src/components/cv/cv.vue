@@ -564,7 +564,7 @@
             font-size: 5.4mm;
             line-height: 5.8mm;
             margin: 2.4mm 0 0 0;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         h3{
@@ -647,7 +647,7 @@
         img.big_icon{
             height: 4.5mm;
             width: 4.5mm;
-            margin-right: 1.4mm;
+            margin-right: 1.8mm;
             margin-left: 1mm;
         }
 
@@ -681,37 +681,6 @@
                     line-height: 4mm;
                 }
             }
-
-            table{
-                width: 100%;
-                margin-bottom: 2mm;
-                margin-top:1mm;
-
-                &.dense{
-                    th{
-                        font-size: 3.2mm;
-                        line-height: 3.3mm;
-                        padding: 0;
-                        vertical-align: text-bottom;
-                    }
-                    tr, td, span{
-                        font-size: 3.3mm;
-                        line-height: 3.6mm;
-                        height: 3mm;
-                        vertical-align: bottom;
-                    }
-
-                }
-
-                &.align-top{
-                    tr, td, span {
-                        vertical-align: text-top;
-                    }
-                    
-                }
-
-            }
-
             
         }
 
@@ -730,6 +699,8 @@
 
 
             .right_col_title{
+                margin-left: 8mm;
+                margin-bottom: 2mm;
 
                 &:first-child {
                     margin-top: 0;
