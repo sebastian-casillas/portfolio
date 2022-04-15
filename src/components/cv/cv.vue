@@ -2,88 +2,83 @@
 
 
     <div id='cv_page' ref='cv_page'>
+
+
+
             <div class='left_column'>
 
-                <div class='row content-center'>
+                <!-- <div class='row content-center'>
                     <q-avatar size='35mm' style='margin:2mm auto 2mm auto;'>
                         <q-img style='height: 40mm; width: 40mm; margin-top:-3mm;' src='/assets/profile_circle.png'/>
                     </q-avatar>
-                </div>
+                </div> -->
 
-                <p id="first_name">Sebastian</p>
-                <p id="last_name">Casillas Perez</p>
 
-                <table class='dense align-top'>
+                <p class="first_name">Sebastian</p>
+                <p class="last_name">Casillas Perez</p>
+
+                <div name="contact_information" class="leftside_section">
                     <template v-for="d in cv_data.contact" :key="d.content">
-                        <tr v-if="d.show">
-                            <th><img class="small_icon" :src="d.icon"/> </th>
-                            <td><span>{{d.content}}</span></td>
-                        </tr>
+                        <div v-if="d.show" >
+                            <img class="small_icon" :src="d.icon"/> 
+                            <span>{{d.content}}</span>
+                        </div>
                     </template>
-                </table>
+                </div>
 
                 <h3>Languages</h3>
 
-                <table class='dense'>
-                    <tr v-for='language of cv_data.languages' :key='language'>
-                        <th align='left'><span class="text-bold">{{language.name}}</span></th>
-                        
-                        <td v-if='language.note' align='right'><span class='subtitle'>{{language.note}}</span></td>
-                        <td v-else align='right'><span class='subtitle' >In progress</span></td>
+                <div name="spoken_languages" class="leftside_section">
+                    <template v-for='language of cv_data.languages' :key='language'>
+                        <div>
+                            <span>{{language.name}}</span>
+                            <div class="spacer" style="flex-grow: 1;"></div>
 
-                        <td v-if='language.level' align='right' style='width:10mm;' >
-                            <span v-for="l in language.level" :key="l" style="color: #444">★</span> 
-                            <span v-for="l in 4-language.level" :key="l" style="color: #999">★</span> 
-                        </td>
-                        <td v-else align='left'><span style='margin-left: 1.5mm'>...</span></td>
-                    </tr>
-                </table>
+                            <template v-if="language.level > 0">
+                                <span class='subtitle'>{{language.note}}</span>
+                                <div v-if='language.level' align='right' style='width:10mm;' >
+                                    <span v-for="l in language.level" :key="l" style="color: #444">★</span> 
+                                    <span v-for="l in 3-language.level" :key="l" style="color: #999">★</span> 
+                                </div>
+                            </template>
+                            <template v-else>
+                                <span class='subtitle'>- In progress -</span>
+                            </template>
+                        
+                        </div>
+                    </template>
+                </div>
+
+                <h3>Technology Stack</h3>
+
+                <div name="programming_languages" class="leftside_section">
+                    <template v-for='language of cv_data.p_languages' :key='language'>
+
+                        <div>
+                            <span>{{language.name}}</span>
+                        </div>
+                    </template>
+                </div>
+
+                <div style="display: flex; justify-content: center; width: 100%;">
+                    <div id='competence_wordcloud' ref='competence_wordcloud'></div>
+                </div>
 
                 <h3>Capacity</h3>
 
-                <table class='dense'>
-                    <tr v-for='e of cv_data.expertise' :key='e'>
-                        <th align='left'><p>{{e.name}}</p></th>
-                    </tr>
-                </table>
-
-                <div style='width: 100%; border-bottom: .2mm solid #444;'></div>
-
-                <table class='dense'>
-                    <tr v-for='language of cv_data.p_languages' :key='language'>
-                        <th align='left'><span class="text-bold">{{language.name}}</span></th>
-                        <td v-if='language.level' align='right' style='width:10mm;'>
-                            <span v-for="l in language.level" :key="l" style="color: #444">★</span> 
-                            <span v-for="l in 4-language.level" :key="l" style="color: #999">★</span> 
-                        </td>
-                    </tr>
-                </table>
-
-                <h3>Certifications</h3>
-
-                <table class='dense'>
-                    <template v-for='item of cv_data.certifications' :key='item'>
-                        <tr></tr>
-                        <tr>
-                            <th align='left'>
-                                <span class="text-bold">{{item.title}}</span>
-                                <span class='subtitle'>{{item.subtitle}}</span>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th align='left'>
-                                <my-tag v-for="d in item.details" :key="d.content" :tag="d" />
-                            </th>
-                        </tr>
+                <div name="capacity" class="leftside_section">
+                    <template v-for='e of cv_data.expertise' :key='e'>
+                        <div>
+                            <span>{{e.name}}</span>
+                        </div>
                     </template>
-                </table>
-            
+                </div>
+                
             </div>
 
             <div class='right_column'>
 
-                <div id='competence_wordcloud' ref='competence_wordcloud'></div>
-
+                
                 <div class='right_col_title'>
                     <img class="big_icon" src="https://api.casillas.dev/storage/uploads/2022/03/02/briefcase_uid_621f2d01ed702.svg">
                     <h2>Work</h2>
@@ -103,7 +98,11 @@
                     <my-section :experience='item'/>
                 </template>
 
+                
+
             </div>
+
+            
     </div>
 
 </template>
@@ -158,22 +157,22 @@
                 ],
 
                 languages:[
-                    {name: 'Spanish', level: 4, note: 'Mother-tongue'},
-                    {name: 'English', level: 4, note: 'IELTS 2020 - CERF C1'},
+                    {name: 'Spanish', level: 3, note: 'Mother-tongue'},
+                    {name: 'English', level: 3, note: 'IELTS 2020 - CERF C1'},
 
                     {name: 'German', level: 2, note: 'Deutschotek: A2'},
                     {name: 'Chinese', level: 1, note: 'BIT:Mandarin Basic'},
-                    {name: 'Dutch'},
-                    {name: 'Finnish'}
+                    {name: 'Dutch', level: 0, note: ''},
+                    {name: 'Finnish', level: 0, note: ''}
                 ],
 
                 expertise:[
+                    {name: 'Comp. Systems Engineer', level: 4},
                     {name: 'Interactive & immersive experiences', level: 4},
-                    {name: 'Data Visualization', level: 4},
+                    {name: 'Data mining, viz., & architecture', level: 4},
                     {name: 'UI & UX research, design & development', level: 4},
-
-                    {name: 'IT proj. architecture design & management', level: 4},
-                    {name: 'Data architecture, storage, access', level: 4},
+                    {name: 'Low & high fidelity prototyping', level: 4},
+                    {name: 'IT proj. architecture design & implementation', level: 4},
                 ],
 
                 competences:[
@@ -188,11 +187,13 @@
                     ['PhotoShop', 3],
                     ['Inkscape', 2],
                     ['Krita', 3],
+                    ['Figma', 3],
                     ['AffinityDesign', 2],
                     ['SVG', 3],
                     ['Vector Graphics', 2],
 
                     ['Android', 3],
+                    ['Java', 3],
                     ['Vuforia', 2],
 
                     ['Natural Language Processing', 1],
@@ -200,26 +201,21 @@
 
 
 
-                    ['NodeJS', 3],
-                    ['TypeScript', 3],
+
                     ['ES6', 4],
-                    ['Java Spring', 2],
                     ['Front End', 4],
                     ['Javascript', 4],
                     ['Angular', 3],
                     ['Vue', 4],
-                    ['JQuery', 3],
                     ['CSS', 3],
-                    ['SCSS', 2],
                     ['HTML', 3],
                     ['NPM', 2],
-                    ['Single Page App.', 4],
 
                     ['Data Visualization', 4],
                     ['D3', 4],
                     ['ChartJS', 3],
 
-                    ['Relationship DB', 2],
+
                     ['MySQL', 3],
                     ['MariaDB', 2],
                     ['Distributed DB', 2],
@@ -236,16 +232,12 @@
 
                     ['R', 2],
 
-                    ['Microservices', 1],
-
                     ['RESTFul', 2],
+
                     ['Django', 4],
 
                     ['PHP', 2],
                     ['Laravel', 3],
-
-                    ['Wordpress', 2],
-                    ['CockpitCMS', 3],
                     
                     ['Git', 2],
                     ['SVN', 2],
@@ -256,20 +248,19 @@
                     ['Linux', 2],
                     ['Android', 2],
                     ['WSL', 1],
+
+                    ['ASM', 1],
+                    ['VHDL', 1],
                 ],
 
                 p_languages:[
                     {name: 'Javascript', level: 4},
                     {name: 'Python', level: 4},
                     {name: 'PHP', level: 4},
-
-                    {name: 'Java', level: 3},
                     {name: 'C#', level: 4},
                     {name: 'C/C++', level: 3},
                     {name: 'SQL', level: 3},
 
-                    {name: 'R', level: 2},
-                    {name: 'Low level: ASM, VHDL', level: 2},
                 ],
 
                 experience:[
@@ -292,14 +283,15 @@
                         title: 'Explorative Designer & Lead Developer',
                         subtitle: 'CONACyT & CNB ',
                         date_start: '09/2020',
-                        date_end: '04/2021',
+                        date_end: '04/2022',
                         details: [
                             {content: 'Mexico', icon: 'map', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'},
                             {content: 'Remote', icon: 'cloud_queue', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/cloud-outline_uid_621f367d602bb.svg'},
                             {content: 'Freelance', icon: 'coffee', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/coffee_uid_621f367d0937c.svg'},
                         ],
                         items: [
-                            'Design & Implementation of web interface to create/navigate a SPARQL databank through OntoGraphs'
+                            'Design & Implementation of web interface to create/navigate a SPARQL databank through OntoGraphs',
+                            'Workflow process analysis and user research to support a more efficient interface redisign'
                         ]
                     },
                     {
@@ -325,7 +317,7 @@
                             {content: 'Shanghai', icon: 'map', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/map-marker_uid_621f367f316d7.svg'}
                         ],
                         items: [
-                            'Design/Implement/Support company-wide tools with a heavy user oriented assessment',
+                            'Design/Implement company-wide tools with a heavy user oriented assessment',
                             '○ Chat system ○ File system ○ Erp progress tracking system',
                             'Paradigm shift to new technologies that took under six months',
                             'Restructure/Maintenance of Database servicing thousands of users'
@@ -393,8 +385,11 @@
                     {
                         title: 'Masters in Information & Communication Technologies',
                         subtitle: 'Aalto University',
-                        date_start: '➞',
+                        date_start: '☌',
+                        details: [
+                        ],
                         items: [
+                            
                             '○ Explorative Information Visualization  ○ Computational User interfaces', 
                             '○ Machine Learning: Supervised methods',
                             'Thesis project: Innovation in a real life scenario'
@@ -403,9 +398,9 @@
                     {
                         title: 'Masters in Interactive Technology',
                         subtitle: 'University of Twente',
-                        date_start: '➞',
+                        date_start: '☌',
                         details: [
-                            {content: 'Focus in User research, user experience, & user interfaces', icon: 'push_pin', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/pin_uid_621f367db8a25.svg'},
+                            {content: 'Focus in User research, UX. and UI', icon: 'push_pin', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/pin_uid_621f367db8a25.svg'},
                         ],
                         items: [
                             '○ Immersive experiences: Human oriented design with a purpose',
@@ -414,9 +409,10 @@
                         ]
                     },
                     {
-                        title: 'Media & democracy: Digital Methods Summer School 2021',
+                        title: 'Media & democracy: Digital Methods Summer School 21',
                         subtitle: 'U. of Amsterdam',
-                        date_start: '➞',
+                        date_start: '☌',
+                        details: [],
                         items: [
                             'Project ideation and Business plan: ',
                             '<i>\'Botblaster - An \'antivirus\' for your social media\'</i> - Machine learning as a virtual management assistant'
@@ -429,19 +425,17 @@
                         date_end: '2018',
                         details: [
                             {content: 'Extensive 5yr. program', icon: 'moving', img: 'https://api.casillas.dev/storage/uploads/2022/03/03/trending-up_uid_62207bcae96ed.svg'},
-                            {content: 'Software Engr.', icon: 'push_pin', img:'https://api.casillas.dev/storage/uploads/2022/03/02/pin_uid_621f367db8a25.svg'},
-                            {content: 'I.T. Management', icon: 'push_pin', img: 'https://api.casillas.dev/storage/uploads/2022/03/02/pin_uid_621f367db8a25.svg'},
                         ],
                         items: [
                             '○ Natural Lang. Processing ○ Distributed Systems ○ Networks and Telecoms',
                             '○ Comp. Architecture & Hardware ○ Operating systems ○ Low-level programming',
-                            '○ Business ○ Finance ○ Statistics',
+                            '○ Business ○ Finance ○ Statistics ○ I.T. Management',
                         ]
                     },
                     {
                         title: 'Exchange semester: BSc. Computer Science',
                         subtitle: 'Beijing Institute of Technology',
-                        date_start: '➞',
+                        date_start: '☌',
                         details: [
                             {content: 'Institutional Excellence Scholarship', icon: 'star', img: 'https://api.casillas.dev/storage/uploads/2022/03/03/star_uid_62207bcb51d51.svg'}],
                         items: [
@@ -502,12 +496,14 @@
 
             let options = {
                 list: this.cv_data.competences,
-                gridSize: Math.round(15 * this.rate),
-                weightFactor: size => (10 + Math.pow(size, 1.9)) * this.rate* 1.3,
+                gridSize: Math.round(7 * this.rate),
+                weightFactor: size => (60 + Math.pow(size, 1.9)) * this.rate,
                 fontWeight: (word, weight) => [1,3].includes(weight)? 500: 600,
-                shape: 'rectangle', 
-                color: (word, weight) => (4 - weight) * 10,
+                shape: 'circle', 
+                fontFamily: 'Times, serif',
+                color: (word, weight) =>  (weight ===4)? '#282828' : '#383838' ,
                 rotateRatio: 0,
+                rotationSteps: 2,
                 backgroundColor: '#fff0',
                 shuffle: true
             }
@@ -529,24 +525,32 @@
         scrollbar-width: none;  /* Firefox */
     }
 
-
     #competence_wordcloud{
-        margin: .2mm 1mm;
-        width: 125mm;
-        height: 25mm;
-
+        margin: 2mm 0 2mm 0;
+        width: 60mm;
+        height: 60mm;
     }
-
-
 
     #cv_page{
         position: relative;
+
+        // Measurments of an A4 paper
         width: 210mm;
         height: 297mm;
-        background-color: white;
 
-        p, h1, h2, h3, span, i{
-            color: #333;
+        background-color: white;
+        font-family: 'Roboto';
+        line-height: 105%;
+        
+        color: red;
+
+        p, span, i{
+            color: #363636;
+        }
+
+        h1, h2, h3, h4, .first_name, .last_name{
+            color: #222;
+            font-family: 'Helvetica';
         }
 
         h1{
@@ -566,9 +570,12 @@
         h3{
             font-size: 5mm;
             line-height: 5.6mm;
-            margin: 4mm 0 .8mm 0mm;
-            font-weight: 500;
+            margin: 4mm 0 2mm 0mm;
+            font-weight: 600;
+            
+            
         }
+
 
         span{
             vertical-align: text-bottom;
@@ -576,7 +583,6 @@
             line-height: 3.6mm;
             letter-spacing: .02mm;
             font-weight:400;
-            color: #111;
         }
 
         span.text-bold{
@@ -584,16 +590,16 @@
         }
 
         span.subtitle{
-                    font-size: 2.9mm !important;
-                    line-height: 3.8mm !important;
-                    letter-spacing: -.08mm !important;
+            font-size: 2.9mm !important;
+            line-height: 3.8mm !important;
+            letter-spacing: -.08mm !important;
 
-                    vertical-align: text-bottom;
+            vertical-align: text-bottom;
 
-                    font-weight: 700;
-                    margin-left: 1.2mm;
-                    color: #454545;
-                    letter-spacing: .005mm;
+            font-weight: 700;
+            margin-left: 1.2mm;
+            color: #454545;
+            letter-spacing: .005mm;
         }
 
         p{
@@ -604,21 +610,21 @@
             margin: .2mm 0 1mm 0;
         }
 
-        #first_name{
+        .first_name{
             font-size: 6.5mm;
             line-height: 6.7mm;
             margin: 0 0 1mm 0;
             font-weight: 600;
+            text-align: center;
         }
 
-        #last_name{
+        .last_name{
             font-size: 5.5mm;
             line-height: 5.6mm;
-            margin: 0 0 2mm 0;
+            margin: 0 0 6mm 0;
             font-weight: 600;
+            text-align: center;
         }
-
-
 
 
         img.inline_icon{
@@ -628,11 +634,14 @@
             margin-left: .8mm;
         }
 
-        img.small_icon{
-            margin-right: 1mm;
+        img.small_icon, svg.small_icon{
+            margin-right: 1.4mm;
             margin-bottom: .3mm;
             height: 4mm;
             width: 4mm;
+            fill: pink;
+            stroke: pink;
+            
         }
 
         img.big_icon{
@@ -644,14 +653,34 @@
 
 
         .left_column{
-            background-color: #C7C7CC;
+            background-color: #d0d0d9;
+            
             position: absolute;
             left:0;
             margin: 0;
             top:0;
             width: 77mm;
             height: 100%;
-            padding: 8mm 5mm 8mm 10mm;
+            padding: 20mm 5mm 8mm 10mm;
+
+            .leftside_section{
+                
+                .small_icon{
+                    fill: pink;
+                }
+
+                & > div{
+                    display:flex; 
+                    align-content: middle; 
+                    margin-bottom: 2mm;
+                }
+
+                span{
+                    
+                    font-size: 3.6mm;
+                    line-height: 4mm;
+                }
+            }
 
             table{
                 width: 100%;
@@ -661,7 +690,6 @@
                 &.dense{
                     th{
                         font-size: 3.2mm;
-                        color: #343434;
                         line-height: 3.3mm;
                         padding: 0;
                         vertical-align: text-bottom;
@@ -688,8 +716,8 @@
         }
 
         .right_column{
-            background-color: white;
             position: absolute;
+
             left:77mm;
             top:0;
 

@@ -31,8 +31,8 @@
         }
 
         .tag_text{
-            font-size: 2.8mm !important; 
-            line-height: 2.9mm !important; 
+            font-size: 3mm !important; 
+            line-height: 3mm !important; 
             
             font-weight: 600; 
             color: #555;
