@@ -1,34 +1,37 @@
 <template>
-    <q-responsive :ratio="3/2" class="fill-container" @click="$router.push({name: 'Portfolio', params: { slug: project.slug }})">
+    <q-responsive :ratio="7/4" style="width: 100%;" @click="$router.push({name: 'Portfolio', params: { slug: project.slug }})">
+    
+        <div>
+            <q-skeleton class="abs-full" v-show="!showImg" style="z-index: 5;"/>
 
-        <q-skeleton class="abs-full" v-show="!showImg" style="z-index: 5;"/>
-
-        <img :src="'https://api.casillas.dev/' + project.cover.path" class="abs-full" style="object-fit: cover;" v-show="showImg" @load="showImg = true" />
-
-
-        <div class="abs-full p-card-overlay" @mouseover="cardHover = true" @mouseleave="cardHover = false">
-
-            <div class="absolute-bottom q-px-sm q-py-md hide-scrollbar" style="background-color: #3338; max-height: 100%; overflow-y: auto;">
+            <img :src="'https://api.casillas.dev/' + project.cover.path" class="abs-full" style="object-fit: cover;" v-show="showImg" @load="showImg = true" />
 
 
-                <div class="text-h4 non-selectable">{{project.title}}</div>
+            <div class="abs-full p-card-overlay" @mouseover="cardHover = true" @mouseleave="cardHover = false">
+
+                <div class="absolute-bottom q-px-sm q-py-md hide-scrollbar" style="background-color: #3338; max-height: 100%; overflow-y: auto;">
+
+
+                    <div class="text-h4 non-selectable">{{project.title}}</div>
 
 
 
-                <q-slide-transition>
-                    <div v-show="cardHover" style="overflow-x: hidden;">
-                        <div class="text-h6 non-selectable" >{{project.subtitle}}</div>
-                        <div class="q-mt-sm" v-show="cardHover">
-                            <q-chip v-for="chip of project.knowledge_applied" :key="chip" :clickable="false" class="non-selectable">
-                                {{chip}}
-                            </q-chip>
+                    <q-slide-transition>
+                        <div v-show="cardHover" style="overflow-x: hidden;">
+                            <div class="text-h6 non-selectable" >{{project.subtitle}}</div>
+                            <div class="q-mt-sm" v-show="cardHover">
+                                <q-chip v-for="chip of project.knowledge_applied" :key="chip" :clickable="false" class="non-selectable">
+                                    {{chip}}
+                                </q-chip>
+                            </div>
                         </div>
-                    </div>
-                </q-slide-transition>
+                    </q-slide-transition>
 
 
+                </div>
             </div>
         </div>
+
 
     </q-responsive>
 
