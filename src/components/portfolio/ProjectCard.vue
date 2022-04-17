@@ -1,5 +1,5 @@
 <template>
-    <q-responsive :ratio="3/2" style="width: 100%;" @click="$router.push({name: 'Portfolio', params: { slug: project.slug }})">
+    <q-responsive :ratio="3/2" class="fill-container" @click="$router.push({name: 'Portfolio', params: { slug: project.slug }})">
 
         <q-skeleton class="abs-full" v-show="!showImg" style="z-index: 5;"/>
 

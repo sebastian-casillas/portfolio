@@ -21,7 +21,7 @@
       <!-- Grid of results -->
       <div class="full-width row" style="max-width: 1200px; min-width: 500px;">
 
-        <div class="column col-md-6 col-lg-4 col-sm-12 q-px-sm q-my-md" v-for="p of projects" :key="p._id">
+        <div class="column col-md-6 col-lg-4 col-sm-12 col-xs-12 q-px-sm q-my-md" v-for="p of projects" :key="p._id">
           <project-card  :project="p" />
         </div>
 
