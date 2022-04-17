@@ -41,7 +41,10 @@
             <q-skeleton v-if="!programming_lang.length" type="rect" />
 
             <template v-else>
-                <div v-for="l of programming_lang" :key="l" class="row wrap items-center content-center q-mb-md">
+
+                <technologies-graph :graph_data="programming_lang"></technologies-graph>
+
+                <!-- <div v-for="l of programming_lang" :key="l" class="row wrap items-center content-center q-mb-md">
 
 
                     <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.value.language}}</span>
@@ -56,7 +59,7 @@
 
                 </div>
 
-                <p class="text-overline q-mt-xl q-mb-md" style="line-height: 1rem;">{{programming_lang_note}}</p>
+                <p class="text-overline q-mt-xl q-mb-md" style="line-height: 1rem;">{{programming_lang_note}}</p> -->
             </template>
 
 
@@ -98,7 +101,11 @@
 
 <script>
 
+import TechGraph from '@/components/home/TechnologiesGraph.vue'
+import TechnologiesGraph from '@/components/home/TechnologiesGraph.vue'
+
 export default {
+  components: { TechnologiesGraph },
     name: 'Workflow',
     props: {
         competences:{
