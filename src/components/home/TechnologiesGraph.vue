@@ -4,11 +4,12 @@
             <g id="node_group" ref="node_group">
 
                 <g v-for="node of test_data.nodes" :key="node.id" :id="node.id">
-                    <circle cx="0" cy="0" :r="node.radius"  >
+                    <circle cx="0" cy="-5" :r="node.radius" class="circle_background" :fill="tech_groups[node.group].color" >
 
                     </circle>
 
-                    <text fill="white">{{node.id}}</text>
+                    <text fill="white" class="node_style">{{node.id}}</text>
+
                 </g>
 
 
@@ -38,11 +39,11 @@ export default {
         },
         canvas_height: {
             type: Number,
-            default: 400
+            default: 500
         },
         canvas_width: {
             type: Number,
-            default: 350
+            default: 650
         },
     },
     data: () => ({
@@ -55,23 +56,33 @@ export default {
         nodeGroup: null,
         linkGroup: null,
 
+        tech_groups:{
+            web: { color: '#ad7e5f', title: 'Web' },
+            unity: { color: '#5d748c', title: 'Unity' },
+            comp_science: { color: '#3b4959', title: 'Computer Science' },
+            data_science: { color: '#3b4959', title: 'Data Science' },
+        },
+
+        nodes: {},
+        links: null,
+
         test_data: {
             nodes: [
-                {id: 'JavaScript', group: 'Web', radius: 20},
-                {id: 'HTML', group: 'Web', radius: 20},
-                {id: 'CSS', group: 'Web', radius: 20},
-                {id: 'PHP', group: 'Web', radius: 20},
-                {id: 'C#', group: 'Unity', radius: 20},
-                {id: 'C/C++', group: 'Computer Science', radius: 20},
-                {id: 'SQL', group: 'Computer Science', radius: 20},
-                {id: 'Java', group: 'Computer Science', radius: 20},
-                {id: 'Python', group: 'Data Science', radius: 20},
+                {id: 'JavaScript', group: 'web', radius: 50},
+                {id: 'HTML', group: 'web', radius: 30},
+                {id: 'CSS', group: 'web', radius: 30},
+                {id: 'PHP', group: 'web', radius: 40},
+                {id: 'C#', group: 'unity', radius: 50},
+                {id: 'C/C++', group: 'comp_science', radius: 40},
+                {id: 'SQL', group: 'comp_science', radius: 30},
+                {id: 'Java', group: 'comp_science', radius: 30},
+                {id: 'Python', group: 'data_science', radius: 50},
             ],
             links: [
                 {
                 source: 'JavaScript',
                 target: 'HTML',
-                value: 1
+                value: 10
                 },
                 {
                 source: 'JavaScript',
@@ -90,15 +101,14 @@ export default {
     mounted() {
         this.svg = d3.select('#canvas');
 
-        
         this.nodeGroup_svgElement = this.svg.select('#node_group')
         this.linkGroup_svgElement = this.svg.select('#link_group')
 
 
         this.simulation = d3.forceSimulation(this.test_data.nodes)
-                            .force('charge', d3.forceManyBody().strength(5))
+                            .force('charge', d3.forceManyBody().strength(100))
                             .force('collision', d3.forceCollide().radius(function(d) {  return d.radius }))
-                        // .force( 'link', d3.forceLink(this.data_links).distance(2).strength(1))
+                            .force( 'link', d3.forceLink(this.test_data.linksdata_links).distance(10).strength(50))
                             .force('center',  d3.forceCenter())
                             .on('tick', this.ticked);
 
@@ -171,5 +181,14 @@ export default {
     height: auto; 
     height: intrinsic;
 
+}
+
+.node_style{
+    text-anchor: middle;
+    font-size: .9rem;
+}
+
+.circle_background{
+    filter: drop-shadow(2px 2px 2px rgb(0 0 0 / 0.4));
 }
 </style>
