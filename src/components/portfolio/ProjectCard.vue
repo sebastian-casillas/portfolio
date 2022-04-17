@@ -9,17 +9,17 @@
 
             <div class="abs-full p-card-overlay" @mouseover="cardHover = true" @mouseleave="cardHover = false">
 
-                <div class="absolute-bottom q-px-sm q-py-md hide-scrollbar" style="background-color: #3338; max-height: 100%; overflow-y: auto;">
+                <div class="absolute-bottom q-px-sm q-pt-md hide-scrollbar" style="background-color: #3338; max-height: 100%; overflow-y: auto;">
 
 
-                    <div class="text-h4 non-selectable">{{project.title}}</div>
+                    <div class="text-h5 non-selectable q-mb-sm">{{project.title}}</div>
 
 
 
                     <q-slide-transition>
                         <div v-show="cardHover" style="overflow-x: hidden;">
-                            <div class="text-h6 non-selectable" >{{project.subtitle}}</div>
-                            <div class="q-mt-sm" v-show="cardHover">
+                            <div class="non-selectable" >{{project.subtitle}}</div>
+                            <div class="q-my-sm" v-show="cardHover">
                                 <q-chip v-for="chip of project.knowledge_applied" :key="chip" :clickable="false" class="non-selectable">
                                     {{chip}}
                                 </q-chip>
