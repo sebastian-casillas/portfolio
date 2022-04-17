@@ -53,7 +53,7 @@
 
                 <q-space />
 
-                <q-btn outline round size=".8rem" color="#434343"
+                <q-btn outline round size=".8rem" color="#505050"
                     icon="close" 
                     @click="$router.push({name: 'Portfolio'})"
                     />
@@ -66,7 +66,7 @@
                 </div>
                 <!-- <p v-if="selected_project" style="color:black">{{selected_project.description}}</p> -->
                 <div v-if="selected_project" class="row wrap q-mt-md">
-                        <q-chip v-for="c of selected_project.knowledge_applied" :key="c">
+                        <q-chip v-for="c of selected_project.knowledge_applied" :key="c" color="#505050">
                         {{c}}
                     </q-chip>
                 </div>
@@ -89,14 +89,15 @@
                 <template v-else-if="block.field.type === 'html'">
                     <div v-html="block.value"></div>
                 </template>
+                <template v-else-if="block.field.type === 'code'">
+                    <component :is="'script'" >
+                        {{block.value}}
+                    </component>
+                </template>
 
             </q-card-section>
         </template >
 
-
-
-
-        
 
     </q-card>
 
