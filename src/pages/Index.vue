@@ -32,7 +32,7 @@
     </div>
 
 
-    <q-scroll-area id="home_main" ref="home_main" class="scroll">
+    <q-scroll-area id="home_main" ref="home_main" style="padding:0" :visible="false">
 
       <div v-intersection="options" style="height: 80px;"></div>
 
@@ -44,13 +44,13 @@
 
     </q-scroll-area>
 
-    <q-dialog v-model="cv_dialog" maximized>
+    <!-- <q-dialog v-model="cv_dialog" maximized>
       <cv/>
     </q-dialog> 
 
     <q-dialog :model-value="is_project_selected" @update:model-value="project_show = null" full-width  >
       <project-view :selected_project="project_show"  @hide-dialog="hide_project_dialog"/>
-    </q-dialog>
+    </q-dialog> -->
 
   </div>
 
@@ -185,6 +185,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+
   } 
   
   .index_navigation_tabs{
@@ -212,6 +213,8 @@ export default {
     transform: translateX(10px);
     opacity: 0;
   }
+
+
 
 
 </style>
