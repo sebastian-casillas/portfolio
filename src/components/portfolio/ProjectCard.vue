@@ -12,7 +12,7 @@
                 <div class="absolute-bottom q-px-sm q-pt-md hide-scrollbar" style="background-color: #3338; max-height: 100%; overflow-y: auto;">
 
 
-                    <div class="text-h5 non-selectable q-mb-sm">{{project.title}}</div>
+                    <div class="text-h6 non-selectable q-mb-sm">{{project.title}}</div>
 
 
 
