@@ -7,7 +7,7 @@
 
         <q-card-section v-if="!!selected_project" class="fill-width row justify-center" style="background-color: #222">
                     <q-carousel
-                        class="col-md-8 col-sm-12"
+                        class="col-md-8 col-sm-12 col-xs-12"
                         swipeable
                         animated
                         v-model="slide"
