@@ -22,5 +22,11 @@ npm run lint
 quasar build
 ```
 
+### Quasar update
+```bash
+npm i -d @quasar/cli@latest
+quasar upgrade -i
+```
+
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
