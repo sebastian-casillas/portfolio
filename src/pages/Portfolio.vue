@@ -35,7 +35,9 @@
         maximized
         position="bottom"
         >
+        <q-scroll-area style="height: 100vh; max-width: 100vw;" >
           <project-view :selected_slug="selected_slug"></project-view>
+          </q-scroll-area>
       </q-dialog>
   </div>
 
