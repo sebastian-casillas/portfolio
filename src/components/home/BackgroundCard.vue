@@ -7,8 +7,8 @@
         :color="(side === 'left')? 'accent': 'positive'"
     >
 
-        <template #>
-            <div >
+        
+            <div>
                 <p class="content_title">{{data.title}}</p>
 
                 <div class="content_notes">  
@@ -30,7 +30,7 @@
                     <Markdown v-if="data.content" :source="data.content"/>
                 </p>
             </div>
-        </template>
+        
 
         <template #subtitle>
             <div class="subtitle_div">
