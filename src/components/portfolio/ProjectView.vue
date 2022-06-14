@@ -66,7 +66,12 @@
                 </div>
                 <!-- <p v-if="selected_project" style="color:black">{{selected_project.description}}</p> -->
                 <div v-if="selected_project" class="row wrap q-mt-md">
-                        <q-chip v-for="c of selected_project.knowledge_applied" :key="c" color="#505050">
+
+                        <q-chip 
+                            v-for="c of selected_project.knowledge_applied" 
+                            :key="c" 
+                            color="grey-9" size="md" square dense outline
+                            class="q-px-sm text-subtitle2" >
                         {{c}}
                     </q-chip>
                 </div>

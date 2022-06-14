@@ -16,7 +16,7 @@
                         v-for="d in data.tags" :key="d.content"
                         color="grey-9" size="md" square dense outline 
                         :icon="d.value.icon"
-                        class="q-px-sm"
+                        class="q-px-sm text-subtitle2"
                         >
                         {{d.value.content}}
                             
