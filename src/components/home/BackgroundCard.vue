@@ -6,8 +6,6 @@
         :title="data.subtitle"
         :color="(side === 'left')? 'accent': 'positive'"
     >
-
-        
             <div>
                 <p class="content_title">{{data.title}}</p>
 
@@ -198,11 +196,4 @@ export default {
 }
 
 
-
-
-
-
-
-
-    
 </style>
