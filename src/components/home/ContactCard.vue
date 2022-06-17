@@ -1,5 +1,6 @@
 <template>
-    <div class="presentation_background">
+
+
 
         <div class="presentation_card">
 
@@ -16,17 +17,17 @@
                     <q-btn @click='to_clipboard' flat dense size="12px" icon="email"  label="sebastian.casillas@outlook.com" />
                     <q-btn @click="open_link('https://linkedin.com/in/sebastian-casillas')" flat dense size="12px"  icon="mdi-linkedin"  label="linkedin.com/in/sebastian-casillas" />
                     <q-btn @click="open_link('https://github.com/Bastian-Kass')" flat dense size="12px"  icon="mdi-github" label="github.com/Bastian-Kass" />
-                    <!-- <q-btn @click="open_link('https://www.hackerrank.com/bastian_kass')" flat dense size="12px"  icon="mdi-code-greater-than-or-equal" label="hackerrank.com/bastian_kass" /> -->
+                    <q-btn @click="open_link('https://www.hackerrank.com/bastian_kass')" flat dense size="12px"  icon="mdi-code-greater-than-or-equal" label="hackerrank.com/bastian_kass" />
                 </div>
 
             </div>
         </div>
 
-        <div class="card_motto">
+        <!-- <div class="card_motto">
             <p class="text-italic text-center q-my-sm"> A good computer system implementation involves much more than just code</p>  
-        </div>
+        </div> -->
 
-    </div>
+
 
 </template>
 
@@ -56,20 +57,20 @@ export default {
 <style lang="scss">
 
 
-    .presentation_background{
-      box-shadow: 0px 48px 317px 59px rgba(122, 75, 75, 0.05);
-      -webkit-box-shadow: 0px 48px 317px 59px rgba(255,255,255,0.05);
-      -moz-box-shadow: 0px 48px 317px 59px rgba(255,255,255,0.05);
+    // .presentation_background{
+    //   box-shadow: 0px 48px 317px 59px rgba(122, 75, 75, 0.05);
+    //   -webkit-box-shadow: 0px 48px 317px 59px rgba(255,255,255,0.05);
+    //   -moz-box-shadow: 0px 48px 317px 59px rgba(255,255,255,0.05);
 
-      margin-bottom: 10rem;
-    }
+    //   margin-bottom: 10rem;
+    // }
 
 
 
 
     .presentation_card{
         background-color: white; 
-        color: black;
+        color: 232323;
         vertical-align: middle;
 
         height: 340px; 
@@ -132,31 +133,31 @@ export default {
 
 
 
-    @media (max-width: 700px){
-        .presentation_card{
-            height: 100%; 
-            width: 100%;
+    // @media (max-width: 700px){
+    //     .presentation_card{
+    //         height: 100%; 
+    //          width: 200px;
 
-            .card_picture{
-                margin: auto;
-                display:block;
-            }
+    //         .card_picture{
+    //             margin: auto;
+    //             display:block;
+    //         }
 
-            .card_text{
-                padding-top:20px;
-                display:block;
-                margin: auto;
-                text-align: center;
-            }
-        }
+    //         .card_text{
+    //             padding-top:20px;
+    //             display:block;
+    //             margin: auto;
+    //             text-align: center;
+    //         }
+    //     }
 
-        .card_motto{
-            margin: 0 20px;
-            width: 95%;
-            text-align: center;
-        }
+    //     .card_motto{
+    //         margin: 0 20px;
+    //         width: 95%;
+    //         text-align: center;
+    //     }
 
 
-    }
+    // }
 
 </style>

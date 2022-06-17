@@ -19,26 +19,40 @@
         >
           <q-tab name="workflow" label="Workflow" icon="mdi-console-network"/>
           <q-tab name="background" label="Background" icon="mdi-check-network" />
+          <q-tab name="projects" label="Projects" icon="mdi-book-variant-multiple" />
         </q-tabs>
     </div>
 
 
+    
     <q-tab-panels 
       animated 
       transition-prev="slide-right"
       transition-next="slide-left"
-      v-model="tab" style="width: 100vw; padding: 0;">
-      <q-tab-panel name="workflow" style="width: 100vw; padding: 0;">
-        <workflow :competences="competences" 
-                  :programming_lang="programming_lang" 
-                  :international_lang="international_lang"
-                  :programming_lang_note="programming_lang_note"
-                  :international_lang_note="international_lang_note"
-                  />
+      v-model="tab" style="width: 100vw; background-color: transparent;">
+
+      <q-tab-panel name="workflow" class="q-pa-0 row justify-center" style="width: 100%;">
+        <div class="col" style="max-width: 1200px;">
+          <workflow :competences="competences" 
+                    :programming_lang="programming_lang" 
+                    :international_lang="international_lang"
+                    :programming_lang_note="programming_lang_note"
+                    :international_lang_note="international_lang_note"
+                    />
+        </div>
+
       </q-tab-panel>
 
-      <q-tab-panel name="background" style="width: 100vw; padding: 0;">
-        <background :background="background"></background>
+      <q-tab-panel name="background" class="q-pa-0 row justify-center" style="width: 100%;">
+        <div class="col" style="max-width: 1200px;">
+          <background :background="background"></background>
+        </div>
+      </q-tab-panel>
+
+      <q-tab-panel name="projects" class="q-pa-0 row justify-center" style="width: 100%;">
+        <div class="col" style="max-width: 1200px;">
+          <projects></projects>
+        </div>
       </q-tab-panel>
     </q-tab-panels>
 
@@ -51,16 +65,18 @@
 import { copyToClipboard } from 'quasar'
 import ContactCard from '@/components/home/ContactCard.vue'
 import Workflow from '@/components/home/Workflow.vue'
-import Background from '@/components/home/Background.vue'
+import Background from '@/pages/Background.vue'
+import Projects from '@/components/home/Projects.vue'
 
 export default {
     name: 'Contact',
     components: {
       Workflow,
       ContactCard, 
-      Background
+      Background,
+      Projects
     },
-    props: {
+    Projectrops: {
         max_width: {
             type: String,
             default: 'width: 800px;'
@@ -119,6 +135,10 @@ export default {
 <style>
   #contact_component{
     padding-top: 14vh;
+  }
+
+  .max-1200{
+    max-width: 1200px;
   }
 </style>
 

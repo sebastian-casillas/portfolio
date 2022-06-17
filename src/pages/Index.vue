@@ -1,6 +1,7 @@
 <template>
   <div id="home">
-    <div id="app_header"  :style="menu_height">
+
+    <!-- <div id="app_header"  :style="menu_height">
       <q-toolbar :style="menu_height">
 
         <q-toolbar-title>
@@ -11,8 +12,14 @@
 
         <q-tabs shrink class="index_navigation_tabs">
             <q-route-tab
-                label="Contact"
+                label="Workflow"
                 to="/"
+                exact
+                />
+
+            <q-route-tab
+                label="Background"
+                to="/background"
                 exact
                 />
 
@@ -22,44 +29,64 @@
                 exact
                 />
 
-            <q-btn name="tab5" label="CV" flat 
-                   class="q-mx-sm"
-                   :style="scrollbased_transparency" 
-                   round 
-                   :to="'/cv'"/>
         </q-tabs>
       </q-toolbar>
-    </div>
-
+    </div> -->
 
     <q-scroll-area id="home_main" ref="home_main" style="padding:0" :visible="false">
+      <div id="contact_component" class="full-width column items-center">
+        
+        <q-space style="height: 10vh"></q-space>
+        
+        <div class="q-ma-xl">
+          <contact-card/>
+        </div>
 
-      <div v-intersection="options" style="height: 80px;"></div>
+        <q-space style="height: 10vh"></q-space>
+        
+        
 
-      <router-view v-slot="{ Component }">
-        <transition name="slide-fade">
-          <component :is="Component" />
-        </transition>
-      </router-view>
+        <q-tabs shrink class="index_navigation_tabs">
+          <q-route-tab
+              label="Workflow"
+              to="/"
+              exact
+              />
 
+          <q-route-tab
+              label="Background"
+              to="/background"
+              exact
+              />
+
+          <q-route-tab
+              label="Projects"
+              to="/portfolio"
+              exact
+              />
+
+        </q-tabs>
+
+        <div style="max-width: 1200px; width: 100%;">
+          <router-view v-slot="{ Component }">
+            <transition name="slide-fade">
+              <component :is="Component" />
+            </transition>
+          </router-view>
+        </div>
+
+
+      </div>
     </q-scroll-area>
 
-    <!-- <q-dialog v-model="cv_dialog" maximized>
-      <cv/>
-    </q-dialog> 
-
-    <q-dialog :model-value="is_project_selected" @update:model-value="project_show = null" full-width  >
-      <project-view :selected_project="project_show"  @hide-dialog="hide_project_dialog"/>
-    </q-dialog> -->
-
   </div>
-
-
 
 
 </template>
 
 <script>
+
+import ContactCard from '@/components/home/ContactCard.vue'
 
 import CV from '@components/cv/cv.vue'
 import WordCloud from '@components/home/WordCloud.vue'
@@ -71,6 +98,7 @@ export default {
   name: 'Home',
   components: {
     cv: CV,
+    ContactCard, 
     ProjectView,
     WordCloud
   },
@@ -79,7 +107,7 @@ export default {
     v_scroll: 0,
     menu: true,
     cv_dialog: false,
-    project_show: null
+    project_show: null,
   }),
 
   setup(){
@@ -100,6 +128,8 @@ export default {
               }
           }
   },
+
+
 
   computed:{
     percent_u: function(){

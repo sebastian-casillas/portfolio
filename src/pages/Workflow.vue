@@ -1,5 +1,5 @@
 <template>
-<div id="competences_div" class="q-pt-lg">
+<div id="competences_div" class="q-pt-lg" >
 
     <div class="row q-mb-xl q-pa-md">
 
@@ -24,7 +24,7 @@
             <div style="height: 80px; width: 100%; padding: 10px; background-color: #333;">
                 <p style="line-height: 1rem; color: #CCC; font-family: consolas; font-weight: 600;">
 
-                    <span style="color: #4D4;">sebastian.casillas@mycomputer:</span> /usr/projects/onlineportfolio# git pull
+                    <span style="color: #4D4;">sebastian.casillas@casillas.dev:</span> /usr/projects/onlineportfolio# git pull
                 </p>
             </div>
             
@@ -105,29 +105,29 @@ import TechGraph from '@/components/home/TechnologiesGraph.vue'
 import TechnologiesGraph from '@/components/home/TechnologiesGraph.vue'
 
 export default {
-  components: { TechnologiesGraph },
+    components: { TechnologiesGraph },
     name: 'Workflow',
-    props: {
-        competences:{
-            type: Array,
-            default: () => []
-        },
-        programming_lang:{
-            type: Array,
-            default: () => []
-        },
-        programming_lang_note:{
-            type: String,
-            default: null
-        },
-        international_lang:{
-            type: Array,
-            default: () => []
-        },
-        international_lang_note:{
-            type: String,
-            default: null
-        },
+    data: () => ({
+        competences: [],
+        programming_lang: [],
+        international_lang: [],
+        programming_lang_note: '',
+        international_lang_note: '',
+    }),
+
+    created() {
+        this.$api
+            .post('singletons/get/contact', { populate: 1 })
+            .then( res => res.data )
+            .then( d => {  
+            if('competences' in d) this.competences = d.competences;
+            if('programming_lang' in d) this.programming_lang = d.programming_lang;
+            if('international_lang' in d) this.international_lang = d.international_lang;
+            if('programming_lang_note' in d) this.programming_lang_note = d.programming_lang_note;
+            if('international_lang_note' in d) this.international_lang_note = d.international_lang_note; 
+            })
+            .catch( e => console.log(e));
+
     },
 
 }
@@ -137,8 +137,6 @@ export default {
 
 #competences_div{
     background-color: #EEE;
-    max-width: 100vw;
-    width: 100vw;
 
     & .competence_card > *{
         color: black;

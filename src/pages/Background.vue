@@ -1,6 +1,25 @@
 <template>
-    <div id="background_div">
-        <h4 class="" style="color: #000;">Background</h4>
+
+    <div id="background_div" class="fill-width">
+
+        <div class="row justify-between items-center">
+            <div>
+                <h4 class="items-center" style="color: #000;">Background</h4>
+            </div>
+
+            <q-space></q-space>
+            
+            <div>
+                <span class="text-black q-mr-sm">
+                    Download my 
+                </span>
+                <q-btn round color="primary" :size="'20px'">
+                CV
+                </q-btn>
+            </div>
+            
+        </div>
+        
 
         <div class="q-px-lg q-pb-md">
             <q-timeline color="secondary" :dark="false" :layout="layout">
@@ -20,12 +39,18 @@ import BackgroundCard from '@/components/home/BackgroundCard.vue'
 export default {
     name: 'MyComponent',
     components:{BackgroundCard},
-    props: {
-        background: {
-            type: Object,
-            default: () => {}
-        },
-    },
+    data: () => ({
+        background: [],
+    }),
+    created() {
+
+        this.$api
+            .post('collections/get/background')
+            .then( res => res.data?.entries )
+            .then(d => {  this.background = d; })
+            .catch( e => console.log(e));
+
+  },
     computed:{
         layout: function () {
             return this.$q.screen.lt.sm ? 'dense' : (this.$q.screen.lt.md ? 'comfortable' : 'loose')
@@ -39,7 +64,6 @@ export default {
     padding-top: 1rem;
     padding-right: 3rem;
     padding-left: 3rem;
-    width: 100%;
     background-color: white;
 
     .q-timeline.q-timeline--dark{
