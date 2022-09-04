@@ -8,7 +8,7 @@ declare module '@vue/runtime-core' {
 }
 
 
-const api = axios.create({ baseURL: 'https://api.casillas.dev/api/' });
+const api = axios.create({ baseURL: 'https://api-old.casillas.dev/api/' });
 
 //Look at permissions for the given permission key at restadmin on the api website
 api.defaults.headers.common = {

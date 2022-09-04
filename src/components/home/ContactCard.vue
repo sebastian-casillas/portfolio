@@ -61,7 +61,8 @@ export default {
       -webkit-box-shadow: 0px 48px 317px 59px rgba(255,255,255,0.05);
       -moz-box-shadow: 0px 48px 317px 59px rgba(255,255,255,0.05);
 
-      margin-bottom: 10rem;
+      margin-bottom: 4rem;
+      margin-top: 4rem;
     }
 
 

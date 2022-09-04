@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="full-width row wrap justify-center content-start q-py-lg q-px-md">
 
       <!-- Loading div: centered and with a min ratio -->
@@ -17,10 +16,10 @@
             class="q-ma-md column q-my-md"
           />
 
-      </div> 
+      </div>
 
       <!-- Grid of results -->
-       <div class="full-width row" style="max-width: 1200px; min-width: 500px;">
+      <div class="full-width row" style="max-width: 1200px; min-width: 500px;">
 
         <div class="column col-12 col-md-6 col-lg-4 col-xl-4 q-px-sm q-my-md" v-for="p of projects" :key="p._id">
           <project-card  :project="p" />
@@ -47,8 +46,6 @@
 import ProjectCard from '@/components/portfolio/ProjectCard.vue'
 import ProjectView from '@/components/portfolio/ProjectView.vue'
 
-import { useDataStore } from '@/store/Data';
-
 export default {
   components:{
     ProjectCard,
@@ -59,12 +56,17 @@ export default {
     projects: [],
     selected_project: null,
   }),
+
   created(){
     this.load_portfolio()
   },
   methods:{
-    async load_portfolio(){
-      this.projects = await useDataStore().getDataProjects.then(e=> e.entries)
+    load_portfolio(){
+      this.$api
+          .post('collections/get/project', { populate: 1 })
+          .then( res => res.data )
+          .then( d => {  this.projects = d.entries; })
+          .catch( e => console.log(e));
     },
   },
   computed:{

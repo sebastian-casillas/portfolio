@@ -7,7 +7,7 @@
         :color="(side === 'left')? 'accent': 'positive'"
     >
 
-        <template #>
+        <template>
             <div >
                 <p class="content_title">{{data.title}}</p>
 

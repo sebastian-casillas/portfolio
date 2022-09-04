@@ -7,18 +7,37 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { 
-        path: '', 
+        path: '/', 
         component: () => import('pages/Index.vue'),
         children: [
-          { path: '', name: 'Contact', component:  () => import('pages/Contact.vue')},
-          { path: 'portfolio/:slug?', name: 'Portfolio', component:  () => import('pages/Portfolio.vue')},
-          { path: 'projects/slug', name: 'Project', component:  () => import('pages/Project.vue')},
+          { 
+            path: '', 
+            name: 'Workflow', 
+            component:  () => import('pages/Workflow.vue')
+          },
+          { 
+            path: 'background', 
+            name: 'Bakcground', 
+            component:  () => import('pages/Background.vue')
+          },
+          { 
+            path: 'portfolio/:slug?', 
+            name: 'Portfolio', 
+            component:  () => import('pages/Portfolio.vue')
+          },
         ]
-    
-    },
-      { path: '/cv', name: 'CV', component: () => import('pages/Curriculum.vue') },
+      },
+      { 
+        path: '/cv', 
+        name: 'CV', 
+        component: () => import('pages/Curriculum.vue') 
+      },
      
-      { path: '/explorative', name: 'Explorative', component: () => import('pages/ExpViz.vue')}
+      { 
+        path: '/explorative', 
+        name: 'Explorative', 
+        component: () => import('pages/ExpViz.vue')
+      }
     ],
   },
 
