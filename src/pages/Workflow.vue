@@ -1,7 +1,7 @@
 <template>
 <div id="competences_div" class="q-pt-lg">
 
-
+    <p class="text-h4 text-grey-10 q-py-md q-ml-xl">Workflow</p>
 
     <div class="row q-mb-xl q-pa-md">
 

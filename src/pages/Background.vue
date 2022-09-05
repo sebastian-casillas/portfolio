@@ -1,6 +1,6 @@
 <template>
     <div id="background_div">
-        <h2 style="color: #000;">Background</h2>
+        <p class="text-h4 text-grey-10 q-py-md">Background</p>
         
         <div class="q-px-lg q-pb-md">
             <q-timeline color="secondary" :dark="false" :layout="layout">
