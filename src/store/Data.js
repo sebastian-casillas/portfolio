@@ -12,7 +12,7 @@ export const useDataStore = defineStore('Data', {
       if(state.DataWorkflow === undefined)
   
         state.DataWorkflow = await axios
-                    .post('https://api-old.casillas.dev/api/singletons/get/contact', { populate: 1 })
+                    .get('https://api.casillas.dev/api/content/item/workflow')
                     .then( res => res.data )
                     .catch( e => console.log(e));
     

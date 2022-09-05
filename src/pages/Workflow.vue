@@ -1,11 +1,11 @@
 <template>
 <div id="competences_div" class="q-pt-lg">
 
-    <p class="text-h4 text-grey-10 q-py-md q-ml-xl">Workflow</p>
-
+    <div class="title_div">
+        <p class="text-h4 text-grey-10">Workflow</p>
+    </div>
+    
     <div class="row q-mb-xl q-pa-md">
-
-
 
         <template v-if="!competences.length">
             <div v-for="i in 5" :key="i" class="col-md-6 col-sm-12 col-xs-12 q-px-xl q-my-sm competence_card">
@@ -16,8 +16,8 @@
 
         <div v-for="c of competences" :key="c._id" 
                 class="col-md-6 col-sm-12 col-xs-12 q-px-xl q-my-sm competence_card">
-            <h5 class="q-my-md" style="line-height: 2rem;"> {{c.value.title}}</h5>
-            <p style="line-height: 1rem;">{{c.value.content}}</p>
+            <h5 class="q-my-md" style="line-height: 2rem;"> {{c.title}}</h5>
+            <p style="line-height: 1rem;">{{c.content}}</p>
         </div>
 
 
@@ -32,11 +32,10 @@
             
         </div>
 
-
     </div>
 
 
-     <div class="row">
+    <div class="row">
 
         <div class="col-md-6 col-sm-12 col-xs-12 q-pa-xl" id="language_icon_p">
             <h4 class="q-mt-sm" >Programming languages</h4>
@@ -47,28 +46,12 @@
 
                 <technologies-graph :graph_data="programming_lang"></technologies-graph>
 
-                <!-- <div v-for="l of programming_lang" :key="l" class="row wrap items-center content-center q-mb-md">
-
-
-                    <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.value.language}}</span>
-
-                    
-
-                    <span class="col-grow"></span>
-
-                    <q-rating  class="col-shrink q-mx-sm" icon="mdi-label-variant" readonly  v-model='l.value.level' size='1.3rem' color='deep-orange-3' :max='4'/>
-                    <q-icon name="mdi-clock" size='1.3rem'></q-icon>
-
-
-                </div> -->
-
-                <!-- <p class="text-overline q-mt-xl q-mb-md" style="line-height: 1rem;">{{programming_lang_note}}</p> -->
             </template>
 
 
         </div>
 
-         <div class="col-md-6 col-sm-12 col-xs-12 q-pa-xl" id="language_icon_l">
+        <div class="col-md-6 col-sm-12 col-xs-12 q-pa-xl" id="language_icon_l">
 
             <h4 class="q-mt-sm" >Languages</h4>
 
@@ -79,14 +62,14 @@
                 <div v-for="l of international_lang" :key="l" class="row wrap items-center content-center q-mb-md">
 
 
-                    <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.value.language}}</span>
+                    <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.title}}</span>
 
                     <span class="col-grow"></span>
 
-                    <span class="col-shrink text-overline q-mx-sm" style="color: #fffA" v-if="l.value.level >= 2">{{l.value.subtitle}}</span>
+                    <span class="col-shrink text-overline q-mx-sm" style="color: #fffA" v-if="l.value >= 2">{{l.content}}</span>
                     <span class="col-shrink text-overline q-mx-sm " v-else  >...In progress</span>
 
-                    <q-rating  class="col-shrink q-mx-sm" v-if="l.value.level >= 2" readonly   v-model='l.value.level' size='1.3rem' color='deep-orange-3' :max='4'/>
+                    <q-rating  class="col-shrink q-mx-sm" v-if="l.value >= 2" readonly   v-model='l.value' size='1.3rem' color='deep-orange-3' :max='4'/>
 
 
                 </div>
@@ -115,10 +98,7 @@ export default {
     data: () => ({
         competences: [],
         programming_lang: [],
-        programming_lang_note: [],
         international_lang: [],
-        international_lang_note: []
-        
     }),
     created(){
         this.init()
@@ -126,17 +106,22 @@ export default {
     methods: {
         async init(){
             let data = await useDataStore().getDataWorkflow
+            console.log(data)
             this.competences = data.competences
-            this.programming_lang = data.programming_lang
-            this.programming_lang_note = data.programming_lang_note
-            this.international_lang = data.international_lang
-            this.international_lang_note = data.international_lang_note
+            this.programming_lang = data.lang_programming
+            this.international_lang = data.lang_communication
         }
     },
 }
 </script>
 
 <style lang="scss" scoped>
+
+.title_div{
+    padding-top: 1rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
+}
 
 #competences_div{
     background-color: #EEE;
