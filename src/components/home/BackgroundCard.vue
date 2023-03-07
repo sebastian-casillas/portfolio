@@ -22,15 +22,15 @@
         <div>
 
             <div class="content_notes"> 
-                <q-chip dense color="grey-9" outline >
+                <q-chip dense color="white" class="shadow-1" >
                     <span class="text-subtitle2">{{ data.subtitle }}</span>
                 </q-chip>
                 <q-chip 
                     v-for="d in data.tags" :key="d.content"
-                    color="grey-9" dense 
+                    color="darkaccent" dense  style="background-color: #454953"
                     >
-                    <q-avatar color="white" text-color="grey-9"> 
-                        <q-icon :name="d.icon" size="15px"></q-icon>
+                    <q-avatar color="white" class="shadow-1"> 
+                        <q-icon :name="d.icon" size="15px" style="color: #353943"></q-icon>
                     </q-avatar>
                     <span class="q-px-xs text-grey-1" >{{d.content}}</span>
                     
