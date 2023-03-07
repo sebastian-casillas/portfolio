@@ -20,18 +20,19 @@
 
 
         <div>
-            <div>
-                {{ data.subtitle }}
-            </div>
-            <div class="content_notes">  
+
+            <div class="content_notes"> 
+                <q-chip dense color="grey-9" outline >
+                    <span class="text-subtitle2">{{ data.subtitle }}</span>
+                </q-chip>
                 <q-chip 
                     v-for="d in data.tags" :key="d.content"
-                    color="grey-9" size="sm" 
+                    color="grey-9" dense 
                     >
                     <q-avatar color="white" text-color="grey-9"> 
                         <q-icon :name="d.icon" size="15px"></q-icon>
                     </q-avatar>
-                    <span class="q-pl-xs text-grey-1" >{{d.content}}</span>
+                    <span class="q-px-xs text-grey-1" >{{d.content}}</span>
                     
                         
                 </q-chip>
@@ -130,9 +131,6 @@ export default {
         justify-content: flex-start;
         flex-wrap: wrap;
 
-        span{
-            font-size: 1.2em;
-        }
 
     }
 
