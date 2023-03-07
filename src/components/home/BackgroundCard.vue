@@ -27,10 +27,10 @@
                 </q-chip>
                 <q-chip 
                     v-for="d in data.tags" :key="d.content"
-                    color="darkaccent" dense  style="background-color: #454953"
+                    color="darkaccent" dense  style="background-color: #555973"
                     >
                     <q-avatar color="white" class="shadow-1"> 
-                        <q-icon :name="d.icon" size="15px" style="color: #353943"></q-icon>
+                        <q-icon :name="d.icon" size="15px" style="color: #454953"></q-icon>
                     </q-avatar>
                     <span class="q-px-xs text-grey-1" >{{d.content}}</span>
                     
