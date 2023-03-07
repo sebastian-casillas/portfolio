@@ -47,7 +47,7 @@
 
         <q-card-section class="q-mt-sm q-pa-lg">
 
-            <q-bar class="q-pa-none q-mb-md">
+            <q-bar class="q-pa-none q-mb-md bg-transparent">
                 <h4 class="q-ma-none">
                     {{selected_project.title}}
                 </h4>
