@@ -22,16 +22,18 @@
             to="/portfolio"
           />
 
-          <q-btn name="tab5" label="CV" 
-            color="primary"
-            unelevated   
+          <q-btn name="tab5"
+            color="blue-grey-1"  
+            text-color="dark" 
             size="small"
             round
             class="q-mx-sm"
             :disable="link_to_cv_pdf === ''"
             target="_blank"
             :href="link_to_cv_pdf"
-            />
+            >
+            <span class="text-weight-bolder">CV</span>
+            </q-btn>
         </q-tabs>
       </div>
 
