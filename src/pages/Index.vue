@@ -1,9 +1,13 @@
 <template>
   <div id="home">
     <q-scroll-area style="height: 100vh; max-width: 100vw;">
-      <div class="row justify-center q-py-xl">
+      <div class="row justify-center q-mt-xl q-mb-lg">
         <contact-card/>
       </div>
+
+
+
+
 
       <div class="row justify-center" style="width: 100%;">
         <q-tabs class="text-white">

@@ -20,11 +20,17 @@
                 </div>
 
             </div>
+
+            
         </div>
 
+
         <div class="card_motto">
-            <p class="text-italic text-center q-my-sm"> A good computer system implementation involves much more than just code</p>  
+            <p class="text-overline text-italic text-grey-2 text-center q-my-xs">A successful implementation requires more than just code</p>  
         </div>
+
+
+
 
     </div>
 
@@ -148,13 +154,6 @@ export default {
                 text-align: center;
             }
         }
-
-        .card_motto{
-            margin: 0 20px;
-            width: 95%;
-            text-align: center;
-        }
-
 
     }
 
