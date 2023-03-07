@@ -6,7 +6,7 @@
       </div>
 
       <div class="row justify-center" style="width: 100%;">
-        <q-tabs>
+        <q-tabs class="text-white">
           <q-route-tab
             icon="mdi-console-network"
             to="/"
