@@ -38,7 +38,7 @@
     <div class="row">
 
         <div class="col-md-6 col-sm-12 col-xs-12 q-pa-xl" id="language_icon_p">
-            <h4 class="q-mt-sm" >Programming languages</h4>
+            <h4 class="q-mt-sm text-white" >Programming languages</h4>
 
             <q-skeleton v-if="!programming_lang.length" type="rect" />
 
@@ -53,7 +53,7 @@
 
         <div class="col-md-6 col-sm-12 col-xs-12 q-pa-xl" id="language_icon_l">
 
-            <h4 class="q-mt-sm" >Languages</h4>
+            <h4 class="q-mt-sm text-white" >Languages</h4>
 
 
             <q-skeleton v-if="!international_lang.length" type="rect" />
@@ -62,7 +62,7 @@
                 <div v-for="l of international_lang" :key="l" class="row wrap items-center content-center q-mb-md">
 
 
-                    <span class="col-shrink text-h5 q-mx-sm" align='left'>{{l.title}}</span>
+                    <span class="col-shrink text-h5 q-mx-sm text-white" align='left'>{{l.title}}</span>
 
                     <span class="col-grow"></span>
 
