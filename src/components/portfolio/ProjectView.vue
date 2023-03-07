@@ -3,9 +3,11 @@
 
 <div id="project_window_layout">
 
-    <q-card id="project_window_card" class="text-black col" >
+    <q-card id="project_window_card" class="col" v-if="!!selected_project">
 
-        <q-card-section v-if="!!selected_project" class="fill-width row justify-center" style="background-color: #222">
+
+        <q-card-section class="fill-width row justify-center" style="background-color: #222">
+
                     <q-carousel
                         class="col-md-8 col-sm-12"
                         swipeable
@@ -15,10 +17,10 @@
                         >
 
                         <q-carousel-slide 
-                                v-for="i in selected_project.gallery" 
-                                :key="i.meta.asset" 
-                                :name="i.meta.asset">
-                                <q-img :src="'https://api.casillas.dev/' + i.path" :alt="i.meta.title" />
+                                v-for="i in gallery" 
+                                :key="i._id" 
+                                :name="i._id">
+                                <q-img :src="'https://api.casillas.dev/storage/uploads' + i.path" :alt="i.title" />
                         </q-carousel-slide>
 
                     </q-carousel>
@@ -29,12 +31,12 @@
 
                             <q-img class="q-mx-sm q-mb-md col-sm-6 col-md-4" img-class="my-button"
                             
-                                    v-for="i in selected_project.gallery" 
-                                    :key="i.meta.asset"
+                                    v-for="i in gallery" 
+                                    :key="i._id"
                                     style="max-height: 100px; width: 100px;"
                                     :ratio="4/3"
-                                    :src="'https://api.casillas.dev/' + i.path" 
-                                    @click="slide = i.meta.asset" >
+                                    :src="'https://api.casillas.dev/storage/uploads' + i.path" 
+                                    @click="slide = i._id" >
 
                             </q-img>
 
@@ -43,11 +45,10 @@
                 </div>
         </q-card-section>
 
-
         <q-card-section class="q-mt-sm q-pa-lg">
 
             <q-bar class="q-pa-none q-mb-md">
-                <h4 v-if="!!selected_project" class="q-ma-none">
+                <h4 class="q-ma-none">
                     {{selected_project.title}}
                 </h4>
 
@@ -59,44 +60,36 @@
                     />
             </q-bar>
 
-            <template v-if="!!selected_project">
-                <p v-if="selected_project" class="text-overline" style="color:black">{{selected_project.context}}</p>
+            <template>
+                <p class="text-overline" style="color:black">{{selected_project.context}}</p>
                 <div>
                     <vue3-markdown-it :source="selected_project.description" />
                 </div>
                 <!-- <p v-if="selected_project" style="color:black">{{selected_project.description}}</p> -->
-                <div v-if="selected_project" class="row wrap q-mt-md">
+                <!-- <div class="row wrap q-mt-md">
                         <q-chip v-for="c of selected_project.knowledge_applied" :key="c" color="#505050">
                         {{c}}
                     </q-chip>
-                </div>
+                </div> -->
             </template>
 
         </q-card-section>
 
         <q-separator size="2" color="grey" inset/>
 
-        <template v-if="!!selected_project && !!selected_project.blocks">
-             <q-card-section v-for="(block, index) in selected_project.blocks" :key="selected_project._id + '_block_' + index" class="q-px-lg q-py-md">
-                <template v-if="block.field.type === 'text'">
-                    <p>
-                        {{block.value}}
-                    </p>
-                </template>
-                <template v-else-if="block.field.type === 'markdown'">
-                    <Markdown :source="block.value"/>
-                </template>
-                <template v-else-if="block.field.type === 'html'">
-                    <div v-html="block.value"></div>
-                </template>
-                <template v-else-if="block.field.type === 'code'">
-                    <component :is="'script'" >
-                        {{block.value}}
-                    </component>
-                </template>
 
-            </q-card-section>
-        </template >
+        <q-card-section  class="q-px-lg q-py-md" 
+                v-for="(block, index) in selected_project.content_blocks" 
+                :key="selected_project._id + '_block_' + index"
+                >
+
+            <div v-if="block.type === 'text'" v-text="block.content"></div>
+            <div v-if="block.type === 'html'" v-html="block.content"></div>
+            <Markdown v-if="block.type === 'markdown'" :source="block.content"/>
+
+        </q-card-section>
+
+
 
 
     </q-card>
@@ -125,6 +118,7 @@ export default {
   data: () => ({
     selected_project: null,
     nothing_found: false,
+    gallery: [],
 
     slide: undefined,
 
@@ -134,15 +128,20 @@ export default {
   },
   methods:{
     load_project(slug){
+
+        
         this.$api
-            .post('collections/get/project?filter[slug][$eq]=' + slug, { populate: 1 })
+            .get('/content/items/portfolio', { filter: {slug: this.selected_slug }, populate: 1 })
             .then( res => res.data )
             .then( d => { 
                 console.log(d)
-                if(d.entries.length > 0){
-                    this.selected_project = d.entries[0]
-                    if(this.selected_project.gallery.length)
-                        this.slide = this.selected_project.gallery[0].meta.asset;
+                if(d && d.length > 0){
+                    this.selected_project = d[0]
+
+                    if(this.selected_project.gallery.length >= 0){
+                        this.gallery = this.selected_project.gallery
+                        this.slide = this.gallery[0]._id
+                    }
                 }  
                 else
                     this.nothing_found = true
@@ -150,6 +149,8 @@ export default {
             .catch( e => console.log(e));
         },
     
+    
+
     init_panzoom(el, parent){
         
         if (this.panzoom_instance)

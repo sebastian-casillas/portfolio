@@ -4,7 +4,7 @@
     <div class="full-width row wrap justify-center content-start q-py-lg q-px-md">
 
       <!-- Loading div: centered and with a min ratio -->
-      <div v-show="!projects.length" class="full-width row justify-center q-py-lg">
+      <div v-show="!projects && !projects.length" class="full-width row justify-center q-py-lg">
 
         <q-circular-progress
           
@@ -64,7 +64,8 @@ export default {
   },
   methods:{
     async load_portfolio(){
-      this.projects = await useDataStore().getDataProjects.then(e=> e.entries)
+      this.projects = await useDataStore().getDataProjects.then(e=> e)
+      console.log(this.projects)
     },
   },
   computed:{

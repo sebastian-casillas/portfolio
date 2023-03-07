@@ -28,7 +28,9 @@
             size="small"
             round
             class="q-mx-sm"
-            to="/cv"
+            :disable="link_to_cv_pdf === ''"
+            target="_blank"
+            :href="link_to_cv_pdf"
             />
         </q-tabs>
       </div>
@@ -50,12 +52,34 @@
 <script>
 
 import ContactCard from '@/components/home/ContactCard.vue'
+import { useDataStore } from '@/store/Data';
 
 export default {
   name: 'Home',
+  data: () => ({
+        generalCVData: undefined,
+    }),
   components: {
     ContactCard: ContactCard
+  },
+  created(){
+    this.init()
+  },
+  methods: {
+      async init(){
+          this.generalCVData = await useDataStore().getDataGeneral
+          console.log(this.generalCVData)
+      }
+  },
+  computed:{
+    link_to_cv_pdf() {
+      if(this.generalCVData && this.generalCVData.cv_pdf_link)
+        return 'https://api.casillas.dev/storage/uploads' + this.generalCVData.cv_pdf_link.path
+      else
+        return ''
+    }
   }
+
 }
 
 </script>

@@ -3,14 +3,23 @@ import axios from 'axios'
 
 export const useDataStore = defineStore('Data', {
   state: () => ({
+    DataCVGeneral: undefined,
     DataWorkflow: undefined,
     DataBackground: undefined,
-    DataProjects: undefined    
+    DataProjects: undefined
   }),
   getters: {
+    getDataGeneral: async (state) => {
+      if(state.DataCVGeneral === undefined)
+        state.DataCVGeneral = await axios
+                    .get('https://api.casillas.dev/api/content/item/curriculum')
+                    .then( res => res.data )
+                    .catch( e => console.log(e));
+    
+      return state.DataCVGeneral
+    },
     getDataWorkflow: async (state) => {
       if(state.DataWorkflow === undefined)
-  
         state.DataWorkflow = await axios
                     .get('https://api.casillas.dev/api/content/item/workflow')
                     .then( res => res.data )
@@ -20,12 +29,10 @@ export const useDataStore = defineStore('Data', {
     },
     getDataBackground: async (state) => {
       if(state.DataBackground === undefined)
-  
-      state.DataBackground = await axios
-                  .post('https://api-old.casillas.dev/api/collections/get/background', { populate: 1 })
-                  .then( res => res.data )
-                  .catch( e => console.log(e));
-
+        state.DataBackground = await axios
+                    .get('https://api.casillas.dev/api/content/item/background')
+                    .then( res => res.data )
+                    .catch( e => console.log(e));
 
       return state.DataBackground
     },
@@ -33,7 +40,7 @@ export const useDataStore = defineStore('Data', {
       if(state.DataProjects === undefined)
   
         state.DataProjects = await axios
-                    .post('https://api-old.casillas.dev/api/collections/get/project', { populate: 1 })
+                    .get('https://api.casillas.dev/api/content/items/portfolio')
                     .then( res => res.data )
                     .catch( e => console.log(e));
 

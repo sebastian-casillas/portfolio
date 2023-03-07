@@ -140,9 +140,6 @@ export default {
     max-width: 100vw;
     width: 100vw;
 
-    & .competence_card > *{
-        color: black;
-    }
 }
 
 #language_icon_p{

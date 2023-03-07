@@ -1,6 +1,6 @@
 <template>
     <div id="background_div">
-        <h2 style="color: #000;">Background</h2>
+        <h2>Background</h2>
 
         <div class="q-px-lg q-pb-md">
             <q-timeline color="secondary" :dark="false" :layout="layout">
@@ -45,18 +45,15 @@ export default {
     .q-timeline.q-timeline--dark{
 
         & > .q-timeline__entry{
-            color: #111 !important;
+
 
             .q-timeline__title{
-                color: #111 !important;
+
                 font-size: 2rem !important;
                 line-height: 1.6rem !important;
                 font-weight: 300;
             }
 
-            .q-timeline__subtitle{
-                color: #333 !important;
-            }
         }
 
 

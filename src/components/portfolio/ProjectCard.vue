@@ -4,7 +4,7 @@
         <div>
             <q-skeleton class="abs-full" v-show="!showImg" style="z-index: 5;"/>
 
-            <img :src="'https://api.casillas.dev/' + project.cover.path" class="abs-full" style="object-fit: cover;" v-show="showImg" @load="showImg = true" />
+            <img :src="'https://api.casillas.dev/storage/uploads' + project.cover.path" class="abs-full" style="object-fit: cover;" v-show="showImg" @load="showImg = true" />
 
 
             <div class="abs-full p-card-overlay" @mouseover="cardHover = true" @mouseleave="cardHover = false">

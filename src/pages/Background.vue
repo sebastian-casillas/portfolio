@@ -1,12 +1,11 @@
 <template>
     <div id="background_div">
+        
         <p class="text-h4 text-grey-10 q-py-md">Background</p>
         
-        <div class="q-px-lg q-pb-md">
+        <div class="q-px-lg q-pb-md">            
             <q-timeline color="secondary" :dark="false" :layout="layout">
-
-                <background-card v-for="(value, name) of background" :key="name" :data="value" />
-
+                <background-card v-for="item in background.item" :key="item._id" :data="item" />
             </q-timeline>
         </div>
 
@@ -19,7 +18,7 @@ import BackgroundCard from '@/components/home/BackgroundCard.vue'
 import { useDataStore } from '@/store/Data';
 
 export default {
-    name: 'MyComponent',
+    name: 'Background',
     components:{BackgroundCard},
     data: () => ({
         background: {}
@@ -29,7 +28,7 @@ export default {
     },
     methods:{
         async load_background(){
-            this.background = await useDataStore().getDataBackground.then(e => e.entries)
+            this.background = await useDataStore().getDataBackground
         },
     },
     computed:{

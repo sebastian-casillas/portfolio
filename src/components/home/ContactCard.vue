@@ -70,7 +70,6 @@ export default {
 
     .presentation_card{
         background-color: white; 
-        color: black;
         vertical-align: middle;
 
         height: 340px; 
@@ -92,7 +91,6 @@ export default {
         .card_text{
             display: inline-block;
             width: 300px;
-            color: #333;
             padding: 0 .5rem;
             margin-left: 24px;
             margin-top: 10px;
