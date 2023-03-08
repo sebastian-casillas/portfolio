@@ -122,7 +122,7 @@ export default {
 }
 
 #language_icon_p{
-    background-color: #456;
+    background-color: rgb(63, 83, 105);
 
     background-image: url(/assets/background_coding.svg);
 
@@ -137,7 +137,7 @@ export default {
 }
 
 #language_icon_l{
-    background-color: #654;
+    background-color: rgb(119, 98, 78);
 
     background-image: url(/assets/background_lang.svg);
 
