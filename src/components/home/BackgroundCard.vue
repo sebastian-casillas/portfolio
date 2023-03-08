@@ -167,12 +167,20 @@ export default {
 
 .q-timeline--loose, .q-timeline--comfortable{
 
-    .subtitle_div span{
-        display: block;
-        &:nth-child(2){
-            margin-left: 0rem;
+    .subtitle_div{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height:38px;
+
+        span{
+            display: block;
+            &:nth-child(2){
+                margin-left: 0rem;
+            }
         }
-    }
+    } 
 
     .q-timeline__content{
         padding-top: 0 !important;
