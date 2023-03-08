@@ -13,8 +13,8 @@
 
         <template #subtitle>
             <div class="subtitle_div">
-                <span class="subtitle_span" v-show="data.date_init">{{data.date_init}}</span>
                 <span class="subtitle_span" v-show="data.date_end">{{data.date_end}}</span>
+                <span class="subtitle_span" v-show="data.date_init">{{data.date_init}}</span>
             </div>
         </template>
 
