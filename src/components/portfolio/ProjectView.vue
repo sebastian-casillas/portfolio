@@ -54,7 +54,7 @@
 
                 <q-space />
 
-                <q-btn outline round size=".8rem" color="#505050"
+                <q-btn round size=".9rem" color="grey-10"
                     icon="close" 
                     @click="$router.push({name: 'Portfolio'})"
                     />
