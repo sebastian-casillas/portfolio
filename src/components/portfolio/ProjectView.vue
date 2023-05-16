@@ -134,16 +134,19 @@ export default {
             .get('/content/items/portfolio', { filter: {slug: this.selected_slug }, populate: 1 })
             .then( res => res.data )
             .then( d => { 
+                this.selected_project = null
                 console.log(d)
-                if(d && d.length > 0){
-                    this.selected_project = d[0]
+                console.log(d)
 
-                    if(this.selected_project.gallery.length >= 0){
+                if (d && d.length >= 1){
+                    this.selected_project = d.find( o => o.slug ===  this.selected_slug)
+
+                    if(this.selected_project.gallery.length >= 1){
                         this.gallery = this.selected_project.gallery
                         this.slide = this.gallery[0]._id
                     }
-                }  
-                else
+
+                } else
                     this.nothing_found = true
                 })
             .catch( e => console.log(e));
