@@ -32,7 +32,6 @@ module.exports = configure(function (ctx) {
     boot: [
       'axios',
       'markdown_it',
-      'easyLightbox',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css

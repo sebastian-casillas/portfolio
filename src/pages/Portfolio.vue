@@ -88,7 +88,6 @@ import ProjectView from '@/components/portfolio/ProjectView.vue'
 import Panzoom from '@panzoom/panzoom'
 
 import { useDataStore } from '@/store/Data';
-import { zoom } from 'd3';
 
 export default {
   components:{
