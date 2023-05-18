@@ -73,7 +73,9 @@
         maximized
         position="bottom"
         >
-          <project-view :selected_project="selected_project" :nothing_found="nothing_found" @launchLightbox="launchLightbox"></project-view>
+        <q-scroll-area style="max-height: 100%; max-width: 100%; overflow: hidden;">
+          <project-view  :selected_project="selected_project" :nothing_found="nothing_found" @launchLightbox="launchLightbox"></project-view>
+        </q-scroll-area>
     </q-dialog>
 
       

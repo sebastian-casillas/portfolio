@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <q-scroll-area style="height: 100vh; max-width: 100vw;">
+    <q-scroll-area style="height: 100dvh; max-width: 100dvw;">
       <div class="row justify-center q-mt-xl q-mb-lg">
         <contact-card/>
       </div>

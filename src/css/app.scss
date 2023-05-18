@@ -39,3 +39,19 @@
     transform: translateX(10px);
     opacity: 0;
   }
+
+  .q-dialog.fullscreen {
+    width: 100dvw;
+    height: 100dvh;
+    max-width: 100dvw;
+    max-height: 100dvh;
+    overflow: hidden;
+
+    .q-dialog__inner{
+      width: 100dvw;
+      height: 100dvh;
+      max-width: 100dvw;
+      max-height: 100dvh;
+      overflow: hidden;
+    }
+  }
