@@ -8,22 +8,22 @@
 
         <q-card-section class="fill-width row justify-center" style="background-color: #222">
 
-                    <q-carousel
-                        class="col-md-8 col-sm-12"
-                        swipeable
-                        animated
-                        v-model="slide"
-                        infinite
-                        >
+                <q-carousel
+                    class="col-md-8 col-sm-12"
+                    swipeable
+                    animated
+                    v-model="slideKey"
+                    infinite
+                    >
 
-                        <q-carousel-slide 
-                                v-for="i in gallery" 
-                                :key="i._id" 
-                                :name="i._id">
-                                <q-img :src="'https://api.casillas.dev/storage/uploads' + i.path" :alt="i.title" />
-                        </q-carousel-slide>
+                    <q-carousel-slide 
+                            v-for="i in selected_project.gallery" 
+                            :key="i._id" 
+                            :name="i._id">
+                            <q-img :src="i.path" :alt="i.title" @click="launchLightbox(i)"/>
+                    </q-carousel-slide>
 
-                    </q-carousel>
+                </q-carousel>
 
                     <div class="col-md-4 col-sm-12">
                         <div class="row q-my-sm">
@@ -31,12 +31,12 @@
 
                             <q-img class="q-mx-sm q-mb-md col-sm-6 col-md-4" img-class="my-button"
                             
-                                    v-for="i in gallery" 
-                                    :key="i._id"
+                                    v-for="item in selected_project.gallery" 
+                                    :key="item._id"
                                     style="max-height: 100px; width: 100px;"
                                     :ratio="4/3"
-                                    :src="'https://api.casillas.dev/storage/uploads' + i.path" 
-                                    @click="slide = i._id" >
+                                    :src="item.path" 
+                                    @click="slideKey = item._id" >
 
                             </q-img>
 
@@ -102,7 +102,6 @@
 
 <script>
 
-import panzoom from '@panzoom/panzoom'
 import IntersectionImg from '@/components/home/IntersectionImg.vue'
 import Markdown from 'vue3-markdown-it'
 
@@ -110,60 +109,32 @@ export default {
   name: 'ProjectView',
   components: {IntersectionImg, Markdown},
   props: {
-      selected_slug :{
-          type: String,
-          required: true
+      selected_project: {
+          type: Object,
+          default: () => {}
+      },
+      nothing_found: {
+          type: Boolean,
+          default: false
       }
   },
+
   data: () => ({
-    selected_project: null,
-    nothing_found: false,
-    gallery: [],
-
-    slide: undefined,
-
+    slideKey: {
+        type: String,
+        default: null
+    },
   }),
-  mounted(){
-      this.load_project(this.selected_slug)
-  },
-  methods:{
-    load_project(slug){
-
-        
-        this.$api
-            .get('/content/items/portfolio', { filter: {slug: this.selected_slug }, populate: 1 })
-            .then( res => res.data )
-            .then( d => { 
-                this.selected_project = null
-                console.log(d)
-                console.log(d)
-
-                if (d && d.length >= 1){
-                    this.selected_project = d.find( o => o.slug ===  this.selected_slug)
-
-                    if(this.selected_project.gallery.length >= 1){
-                        this.gallery = this.selected_project.gallery
-                        this.slide = this.gallery[0]._id
-                    }
-
-                } else
-                    this.nothing_found = true
-                })
-            .catch( e => console.log(e));
-        },
-    
-    
-
-    init_panzoom(el, parent){
-        
-        if (this.panzoom_instance)
-            this.panzoom_instance.destroy()
-
-        this.panzoom_instance = panzoom(el.$el, { maxScale: 3, minScale: 1 })
-
-        parent.$el.addEventListener('wheel', this.panzoom_instance.zoomWithWheel)
+  watch:{
+    selected_project(){
+        this.slideKey = this.selected_project.gallery[0]?._id;
     }
-  }
+  },
+  methods: {
+    launchLightbox(image){
+        this.$emit('launchLightbox', image);
+    },
+  },
 }
 
 </script>
