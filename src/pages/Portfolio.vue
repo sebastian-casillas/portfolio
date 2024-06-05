@@ -28,6 +28,15 @@
 
       </div>
 
+      <div v-show="nothing_found" class="full-width">
+        <q-card class="q-ma-md q-pa-md text-center">
+          <q-card-section>
+            <q-icon name="error" size="100px" color="red" />
+            <h2 class="text-h6">Project not found</h2>
+          </q-card-section>
+        </q-card>
+      </div>  
+
     </div>
 
     <q-dialog 
@@ -35,6 +44,7 @@
         persistent
         maximized
         @show="manageLightbox"
+        @before-hide="manageCloseLightbox"
         >
 
       <div class="lightboxParent" ref="lightboxParent"  >
@@ -98,7 +108,7 @@ export default {
     selected_image: null,
     nothing_found: false,
     panzoom: null,
-
+    wheelDomElementReference: null
   }),
   created(){
     this.load_portfolio()
@@ -116,36 +126,35 @@ export default {
     load_project(slug){
       this.selected_project = null
       this.nothing_found = false
+      try{
+        let data = this.$api.get('/content/items/portfolio', { filter: {slug: slug}, populate: 1 })
+                            .then( res => res.data )
 
-      this.$api
-          .get('/content/items/portfolio', { filter: {slug: slug}, populate: 1 })
-          .then( res => res.data )
-          .then( d => { 
+        if (data?.length >= 1) {
+          this.selected_project = d.find( o => o.slug ===  this.selected_slug)
+
+          if (!this.selected_project.gallery)
+            this.selected_project.gallery = [];
           
-            if (d && d.length >= 1){
-                this.selected_project = d.find( o => o.slug ===  this.selected_slug)
-
-                if (!this.selected_project.gallery)
-                  this.selected_project.gallery = [];
-                
-                this.selected_project.gallery = this.selected_project.gallery.map( 
-                    (item, index) =>  
-                      { 
-                        return { 
-                            ...item, 
-                            path: 'https://api.casillas.dev/storage/uploads' + item.path, 
-                            index: index
-                            } 
+          this.selected_project.gallery = this.selected_project.gallery.map( 
+              (item, index) =>  
+                { 
+                  return { 
+                      ...item, 
+                      path: 'https://api.casillas.dev/storage/uploads' + item.path, 
+                      index: index
                       } 
-                    )
-            }
-
-              })
-          .catch( e => console.log(e));
+                } 
+              )
+        }
+      }
+      catch(e) {
+        console.log(e)
+        this.nothing_found = true
+      }
     },
 
-    manageLightbox(){
-      console.log('run Panzoom')
+    manageLightbox() {
       
       this.panzoom = Panzoom(this.$refs.lightbox, {
         maxScale: 2.5,
@@ -161,8 +170,19 @@ export default {
           return true
         }
       })
-      
-      this.$refs.lightbox.parentElement.addEventListener('wheel', this.panzoom.zoomWithWheel)
+      this.wheelDomElementReference = this.$refs.lightbox.parentElement
+      this.wheelDomElementReference.addEventListener('wheel', this.panzoom.zoomWithWheel)
+    },
+
+    manageCloseLightbox(){
+      try {
+        if (!!this.wheelDomElementReference) {
+          this.wheelDomElementReference.removeEventListener('wheel', this.panzoom.zoomWithWheel)
+        }
+        this.panzoom.destroy()
+      } catch (error) {
+        console.log(error)
+      }
     },
 
     launchLightbox (slide) {
@@ -211,10 +231,6 @@ export default {
     selected_slug: function(){
       return this.$route.params.slug || undefined
     },
-  },
-  unmounted(){
-    this.$refs.lightbox.parentElement.removeEventListener('wheel', this.panzoom.zoomWithWheel)
-    this.panzoom.destroy()
   }
 }
 </script>

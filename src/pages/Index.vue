@@ -7,19 +7,22 @@
 
       <div class="row justify-center" style="width: 100%;">
         <q-tabs class="text-white">
+          
           <q-route-tab
             icon="mdi-console-network"
             to="/"
             exact
           />
+
+          <q-route-tab
+            icon="mdi-folder-network"
+            to="/portfolio"
+          />
+
           <q-route-tab
             icon="mdi-check-network"
             to="/background"
             exact
-          />
-          <q-route-tab
-            icon="mdi-folder-network"
-            to="/portfolio"
           />
 
           <q-btn name="tab5"

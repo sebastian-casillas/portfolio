@@ -89,12 +89,7 @@
 
         </q-card-section>
 
-
-
-
     </q-card>
-
-    
 
 </div>
 
