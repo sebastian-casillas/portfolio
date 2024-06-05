@@ -15,7 +15,7 @@
                 <div class="contact_buttons">
                     <q-btn @click='to_clipboard' flat dense size="12px" icon="email"  label="sebastian.casillas@outlook.com" />
                     <q-btn @click="open_link('https://linkedin.com/in/sebastian-casillas')" flat dense size="12px"  icon="mdi-linkedin"  label="linkedin.com/in/sebastian-casillas" />
-                    <q-btn @click="open_link('https://github.com/Bastian-Kass')" flat dense size="12px"  icon="mdi-github" label="github.com/Bastian-Kass" />
+                    <q-btn @click="open_link('https://github.com/sebastian-casillas')" flat dense size="12px"  icon="mdi-github" label="github.com/sebastian-casillas" />
                     <!-- <q-btn @click="open_link('https://www.hackerrank.com/bastian_kass')" flat dense size="12px"  icon="mdi-code-greater-than-or-equal" label="hackerrank.com/bastian_kass" /> -->
                 </div>
 

@@ -5,10 +5,6 @@
         <contact-card/>
       </div>
 
-
-
-
-
       <div class="row justify-center" style="width: 100%;">
         <q-tabs class="text-white">
           <q-route-tab
@@ -41,7 +37,6 @@
         </q-tabs>
       </div>
 
-
       <router-view v-slot="{ Component }">
         <transition name="slide-fade">
           <component :is="Component" />
@@ -49,14 +44,10 @@
       </router-view>
     </q-scroll-area>
 
-
-
-
   </div>
 </template>
 
 <script>
-
 import ContactCard from '@/components/home/ContactCard.vue'
 import { useDataStore } from '@/store/Data';
 
@@ -72,10 +63,10 @@ export default {
     this.init()
   },
   methods: {
-      async init(){
-          this.generalCVData = await useDataStore().getDataGeneral
-          console.log(this.generalCVData)
-      }
+    async init(){
+      this.generalCVData = await useDataStore().getDataGeneral
+      console.log(this.generalCVData)
+    }
   },
   computed:{
     link_to_cv_pdf() {

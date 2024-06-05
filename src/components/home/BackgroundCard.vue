@@ -13,8 +13,8 @@
 
         <template #subtitle>
             <div class="subtitle_div">
-                <span class="subtitle_span" v-show="data.date_end">{{data.date_end}}</span>
-                <span class="subtitle_span" v-show="data.date_init">{{data.date_init}}</span>
+                <span class="subtitle_span" v-if="data.date_end">{{data.date_end}}</span>
+                <span class="subtitle_span" v-if="data.date_init">{{data.date_init}}</span>
             </div>
         </template>
 
@@ -61,7 +61,6 @@ export default {
             default: () => {},
         },
     },
-
     computed:{
         icon: function(){
             if ( !this.data.date_init) return undefined
@@ -82,7 +81,8 @@ export default {
             }
             return res;
                 
-        }
+        },
+
     }
 }
 </script>

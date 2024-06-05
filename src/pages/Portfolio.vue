@@ -126,26 +126,24 @@ export default {
           .get('/content/items/portfolio', { filter: {slug: slug }, populate: 1 })
           .then( res => res.data )
           .then( d => { 
-              
-              console.log(d)
+          
+            if (d && d.length >= 1){
+                this.selected_project = d.find( o => o.slug ===  this.selected_slug)
 
-              if (d && d.length >= 1){
-                  this.selected_project = d.find( o => o.slug ===  this.selected_slug)
-
-                  if (!this.selected_project.gallery)
-                    this.selected_project.gallery = [];
-                  
-                  this.selected_project.gallery = this.selected_project.gallery.map( 
-                      (item, index) =>  
-                        { 
-                          return { 
-                              ...item, 
-                              path: 'https://api.casillas.dev/storage/uploads' + item.path, 
-                              index: index
-                              } 
-                        } 
-                      )
-              }
+                if (!this.selected_project.gallery)
+                  this.selected_project.gallery = [];
+                
+                this.selected_project.gallery = this.selected_project.gallery.map( 
+                    (item, index) =>  
+                      { 
+                        return { 
+                            ...item, 
+                            path: 'https://api.casillas.dev/storage/uploads' + item.path, 
+                            index: index
+                            } 
+                      } 
+                    )
+            }
 
               })
           .catch( e => console.log(e));
