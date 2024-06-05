@@ -30,17 +30,12 @@
 
     </div>
 
-
-
-
     <q-dialog 
         :model-value="!!selected_image"   
         persistent
         maximized
         @show="manageLightbox"
         >
-
-
 
       <div class="lightboxParent" ref="lightboxParent"  >
 
@@ -123,7 +118,7 @@ export default {
       this.nothing_found = false
 
       this.$api
-          .get('/content/items/portfolio', { filter: {slug: slug }, populate: 1 })
+          .get('/content/items/portfolio', { filter: {slug: slug}, populate: 1 })
           .then( res => res.data )
           .then( d => { 
           

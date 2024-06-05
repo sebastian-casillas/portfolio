@@ -18,30 +18,27 @@
             </div>
         </template>
 
-
         <div>
-
             <div class="content_notes"> 
-                <q-chip dense color="white" class="shadow-1" >
-                    <span class="text-subtitle2">{{ data.subtitle }}</span>
+
+                <q-chip dense color="white" class="shadow-1" :clickable="false" :ripple="false">
+                    <span class="text-subtitle2 q-px-xs">{{ data.subtitle }}</span>
                 </q-chip>
-                <q-chip 
-                    v-for="d in data.tags" :key="d.content"
-                    color="darkaccent" dense  style="background-color: #555973"
-                    >
+
+                <q-chip v-for="d in data.tags" :key="d.content" 
+                        :clickable="d.icon === 'mdi-web'" :ripple="d.icon === 'mdi-web'"
+                        color="darkaccent" dense  style="background-color: #555973"
+                        >
                     <q-avatar color="white" class="shadow-1"> 
                         <q-icon :name="d.icon" size="15px" style="color: #454953"></q-icon>
                     </q-avatar>
                     <span class="q-px-xs text-grey-1" >{{d.content}}</span>
                     
-                        
                 </q-chip>
 
             </div>
 
-            <div class="block_item" v-if="data.content" v-html="data.content">
-
-            </div>
+            <div class="block_item" v-if="data.content" v-html="data.content"></div>
 
         </div>
 
