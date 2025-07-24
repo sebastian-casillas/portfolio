@@ -47,7 +47,7 @@
             <q-skeleton v-if="!international_lang.length" type="rect" />
 
             <template v-else>
-                <div v-for="l of international_lang" :key="l" class="row wrap items-center content-center q-mb-md">
+                <div v-for="l of international_lang" :key="l.title" class="row wrap items-center content-center q-mb-md">
 
 
                     <span class="col-shrink text-h5 q-mx-sm text-white" align='left'>{{l.title}}</span>
@@ -80,24 +80,56 @@ import TechnologiesGraph from '@/components/home/TechnologiesGraph.vue'
 
 import { useDataStore } from '@/store/Data';
 
+// Define interfaces for the data structures
+interface Competence {
+  _id: string;
+  title: string;
+  content: string;
+}
+
+interface Language {
+  title: string;
+  content: string;
+  value: number;
+}
+
+interface ProgrammingLang {
+  // Add properties based on what TechnologiesGraph expects
+  [key: string]: unknown;
+}
+
+interface WorkflowData {
+  competences?: Competence[];
+  lang_programming?: ProgrammingLang[];
+  lang_communication?: Language[];
+}
+
 export default {
   components: { TechnologiesGraph },
     name: 'WorkflowPage',
-    data: () => ({
+    data(): {
+      competences: Competence[];
+      programming_lang: ProgrammingLang[];
+      international_lang: Language[];
+    } {
+      return {
         competences: [],
         programming_lang: [],
         international_lang: [],
-    }),
+      };
+    },
     created(){
         this.init()
     },
     methods: {
         async init(){
-            const data = await useDataStore().getDataWorkflow
-            console.log(data)
-            this.competences = data.competences
-            this.programming_lang = data.lang_programming
-            this.international_lang = data.lang_communication
+            const data = await useDataStore().getDataWorkflow as WorkflowData | undefined;
+            console.log(data);
+            if (data) {
+              this.competences = data.competences || [];
+              this.programming_lang = data.lang_programming || [];
+              this.international_lang = data.lang_communication || [];
+            }
         }
     },
 }
