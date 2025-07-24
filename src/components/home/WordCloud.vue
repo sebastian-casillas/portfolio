@@ -25,13 +25,13 @@ export default {
     methods:{
 
         async LoadData(){
-            let data = await this.$api
+            const data = await this.$api
                 .get('collections/get/expertise')
                 .then( res => res.data )
                 .then( d => d.entries )
                 .catch( e => console.log(e));
 
-            for(let d of data){
+            for(const d of data){
                 this.word_data.push([d.title, d.weight])
                 this.data_thing.push([d.title, 6+d.weight])
             }

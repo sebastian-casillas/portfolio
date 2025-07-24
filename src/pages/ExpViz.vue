@@ -110,6 +110,13 @@ import CountryData from '@/components/data_viz/CountryData.vue'
 
 import { colors } from 'quasar'
 
+// Import JSON files
+import depressionDataGeneral from '@/assets/depression_data_general.json'
+import depressionDataCatalog from '@/assets/depression_data_catalog.json'
+import countryCodes from '@/assets/countries.json'
+import worldData from '@/assets/world.json'
+import activityCatalogue from '@/assets/activity_catalogue.json'
+
 export default {
     components: {
         Country: Country,
@@ -197,14 +204,14 @@ export default {
     },
     methods:{
         load_json(){
-            this.other_data = require('../assets/depression_data_general.json');
-            this.depression_data = require('../assets/depression_data_catalog.json');
-            this.country_codes = require('../assets/countries.json');
+            this.other_data = depressionDataGeneral;
+            this.depression_data = depressionDataCatalog;
+            this.country_codes = countryCodes;
 
-            this.temp = require('../assets/world.json');
+            this.temp = worldData;
             this.countries = this.temp.features.filter( d => this.country_data.includes(d.id))
 
-            this.activity = require('../assets/activity_catalogue.json');
+            this.activity = activityCatalogue;
 
             // this.countries = this.countries
         },
@@ -263,8 +270,8 @@ export default {
 
         },
         download(contentType = 'text/plain') {
-            var a = document.createElement('a');
-            var file = new Blob([JSON.stringify(this.test)], {type: contentType});
+            const a = document.createElement('a');
+            const file = new Blob([JSON.stringify(this.test)], {type: contentType});
             a.href = URL.createObjectURL(file);
             a.download = this.file_name;
             a.click();

@@ -64,8 +64,8 @@ export default {
     },
     methods:{
         hour_to_12(val){
-            let items = val.split(':')
-            let percentage = (parseInt(items[0]) + items[1]/60) * 100 / 12
+            const items = val.split(':')
+            const percentage = (parseInt(items[0]) + items[1]/60) * 100 / 12
             return percentage 
         }
     },
@@ -74,8 +74,8 @@ export default {
             return this.path(this.country)
         },
         capital(){
-            let loc = this.capitals[this.country.id]
-            let x = this.my_projection([loc.long, loc.lat])
+            const loc = this.capitals[this.country.id]
+            const x = this.my_projection([loc.long, loc.lat])
             return x
         },
         value_obs(){

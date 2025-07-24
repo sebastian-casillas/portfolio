@@ -101,7 +101,7 @@
 
 <script>
 
-import TechGraph from '@/components/home/TechnologiesGraph.vue'
+// import TechGraph from '@/components/home/TechnologiesGraph.vue'
 import TechnologiesGraph from '@/components/home/TechnologiesGraph.vue'
 
 export default {

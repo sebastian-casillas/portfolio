@@ -73,16 +73,16 @@
 </div>
 </template>
 
-<script>
+<script lang="ts">
 
-import TechGraph from '@/components/home/TechnologiesGraph.vue'
+// import TechGraph from '@/components/home/TechnologiesGraph.vue'
 import TechnologiesGraph from '@/components/home/TechnologiesGraph.vue'
 
 import { useDataStore } from '@/store/Data';
 
 export default {
   components: { TechnologiesGraph },
-    name: 'Workflow',
+    name: 'WorkflowPage',
     data: () => ({
         competences: [],
         programming_lang: [],
@@ -93,7 +93,7 @@ export default {
     },
     methods: {
         async init(){
-            let data = await useDataStore().getDataWorkflow
+            const data = await useDataStore().getDataWorkflow
             console.log(data)
             this.competences = data.competences
             this.programming_lang = data.lang_programming

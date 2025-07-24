@@ -127,7 +127,7 @@ export default {
       this.selected_project = null
       this.nothing_found = false
       try{
-        let data = this.$api.get('/content/items/portfolio', { filter: {slug: slug}, populate: 1 })
+        const data = this.$api.get('/content/items/portfolio', { filter: {slug: slug}, populate: 1 })
                             .then( res => res.data )
 
         if (data?.length >= 1) {
@@ -176,7 +176,7 @@ export default {
 
     manageCloseLightbox(){
       try {
-        if (!!this.wheelDomElementReference) {
+        if (this.wheelDomElementReference) {
           this.wheelDomElementReference.removeEventListener('wheel', this.panzoom.zoomWithWheel)
         }
         this.panzoom.destroy()

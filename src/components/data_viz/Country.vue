@@ -46,7 +46,7 @@ export default {
             if (   this.country.id in this.data 
                     && this.filter_year in this.data[this.country.id]
                     && this.filter_sex in this.data[this.country.id][this.filter_year]){
-                let red = parseInt(40 + this.data[this.country.id][this.filter_year][this.filter_sex]['OBS_VALUE'] * 7)
+                const red = parseInt(40 + this.data[this.country.id][this.filter_year][this.filter_sex]['OBS_VALUE'] * 7)
                 return colors.rgbToHex({r: red, g: 120, b: 30})
                     }
 

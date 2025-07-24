@@ -5,15 +5,9 @@
 
                 <g v-for="node of test_data.nodes" :key="node.id" :id="node.id">
                     <circle cx="0" cy="-5" :r="node.radius" class="circle_background" :fill="tech_groups[node.group].color" >
-
                     </circle>
-
                     <text fill="white" class="node_style">{{node.id}}</text>
-
                 </g>
-
-
-                
             </g>
 
             <!-- <g id="link_group" ref="node_group">
@@ -35,7 +29,7 @@ export default {
     props: {
         graph_data: {
             type: Object,
-            default: _ => {}
+            default: () => {}
         },
         canvas_height: {
             type: Number,

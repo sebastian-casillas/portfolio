@@ -110,12 +110,15 @@
 <script>
 
     import MySection from '@components/cv/MySection';
-    import MyTag from '@components/cv/tags';
+    // import MyTag from '@components/cv/tags';
     import WordCloud from 'wordcloud'
 
     export default {
         name: 'CurriculuVitae',
-        components: {MySection, MyTag},
+        components: {
+            MySection, 
+            //MyTag
+        },
         data: () => ({
             cv_data :{
 
@@ -494,7 +497,7 @@
 
         mounted(){
 
-            let options = {
+            const options = {
                 list: this.cv_data.competences,
                 gridSize: Math.round(7 * this.rate),
                 weightFactor: size => (60 + Math.pow(size, 1.9)) * this.rate,

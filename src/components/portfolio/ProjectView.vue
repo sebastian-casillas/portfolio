@@ -97,12 +97,15 @@
 
 <script>
 
-import IntersectionImg from '@/components/home/IntersectionImg.vue'
+// import IntersectionImg from '@/components/home/IntersectionImg.vue'
 import Markdown from 'vue3-markdown-it'
 
 export default {
   name: 'ProjectView',
-  components: {IntersectionImg, Markdown},
+  components: {
+    // IntersectionImg,
+    Markdown
+  },
   props: {
       selected_project: {
           type: Object,

@@ -17,8 +17,8 @@ export default {
         }
     },
     mounted(){
-        let element = this.$refs[this.asset]
-        let parent = element.$parent
+        const element = this.$refs[this.asset]
+        const parent = element.$parent
         this.$emit('mounted_element', element, parent)
     }
 }

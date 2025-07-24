@@ -46,11 +46,11 @@
 </template>
 
 <script>
-import Markdown from 'vue3-markdown-it';
+// import Markdown from 'vue3-markdown-it';
 
 export default {
     components: {
-        Markdown
+        // Markdown
     },
     props:{
         data: {
