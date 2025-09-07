@@ -16,11 +16,6 @@ const routes: RouteRecordRaw[] = [
             component:  () => import('src/pages/WorkflowPage.vue')
           },
           { 
-            path: 'background', 
-            name: 'Bakcground', 
-            component:  () => import('pages/Background.vue')
-          },
-          { 
             path: 'portfolio/:slug?', 
             name: 'Portfolio', 
             component:  () => import('pages/Portfolio.vue')
@@ -32,7 +27,6 @@ const routes: RouteRecordRaw[] = [
         name: 'CV', 
         component: () => import('pages/Curriculum.vue') 
       },
-     
       { 
         path: '/explorative', 
         name: 'Explorative', 

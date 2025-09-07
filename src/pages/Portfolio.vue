@@ -110,23 +110,23 @@ export default {
     panzoom: null,
     wheelDomElementReference: null
   }),
-  created(){
+  created() {
     this.load_portfolio()
   },
-  mounted(){
-    if(this.selected_slug)
+  mounted() {
+    if (this.selected_slug)
       this.load_project(this.selected_slug)
   },
   methods:{
-    async load_portfolio(){
+    async load_portfolio() {
       this.projects = await useDataStore().getDataProjects.then(e=> e)
       console.log(this.projects)
     },
 
-    load_project(slug){
+    load_project(slug) {
       this.selected_project = null
       this.nothing_found = false
-      try{
+      try {
         const data = this.$api.get('/content/items/portfolio', { filter: {slug: slug}, populate: 1 })
                             .then( res => res.data )
 
@@ -236,22 +236,22 @@ export default {
 </script>
 
 <style type="scss">
-.lightboxParent{
-  height: 100%; 
-  width:100%;
-}
+  .lightboxParent{
+    height: 100%; 
+    width:100%;
+  }
 
-.lightboxMenu{
-  position: absolute;
-  bottom: 1rem;
-  height: 2rem;
+  .lightboxMenu{
+    position: absolute;
+    bottom: 1rem;
+    height: 2rem;
 
-  width: 100%;
+    width: 100%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 
-}
+  }
 </style>

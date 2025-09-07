@@ -1,29 +1,35 @@
 <template>
     <div id="background_div">
-        <h2>Background</h2>
-
-        <div class="q-px-lg q-pb-md">
+        
+        <p class="text-h4 text-grey-10 q-py-md">Background</p>
+        
+        <div class="q-px-lg q-pb-md">            
             <q-timeline color="secondary" :dark="false" :layout="layout">
-
-                <background-card v-for="(value, name) of background" :key="name" :data="value" />
-
+                <background-card v-for="item in background.item" :key="item._id" :data="item" />
             </q-timeline>
         </div>
-        
+
     </div>
 </template>
 
 <script>
 
 import BackgroundCard from '@/components/home/BackgroundCard.vue'
+import { useDataStore } from '@/store/Data';
 
 export default {
-    name: 'MyComponent',
+    name: 'Background',
     components:{BackgroundCard},
-    props: {
-        background: {
-            type: Object,
-            default: () => {}
+    data: () => ({
+        background: {}
+    }),
+    created(){
+        console.log("load background");
+        this.load_background();
+    },
+    methods:{
+        async load_background(){
+            this.background = await useDataStore().getDataBackground
         },
     },
     computed:{
@@ -45,15 +51,18 @@ export default {
     .q-timeline.q-timeline--dark{
 
         & > .q-timeline__entry{
-
+            color: #111 !important;
 
             .q-timeline__title{
-
+                color: #111 !important;
                 font-size: 2rem !important;
                 line-height: 1.6rem !important;
                 font-weight: 300;
             }
 
+            .q-timeline__subtitle{
+                color: #333 !important;
+            }
         }
 
 

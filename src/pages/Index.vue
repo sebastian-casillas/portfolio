@@ -19,12 +19,6 @@
             to="/portfolio"
           />
 
-          <q-route-tab
-            icon="mdi-check-network"
-            to="/background"
-            exact
-          />
-
           <q-btn name="tab5"
             color="blue-grey-1"  
             text-color="dark" 
@@ -51,37 +45,35 @@
 </template>
 
 <script>
-import ContactCard from '@/components/home/ContactCard.vue'
-import { useDataStore } from '@/store/Data';
+  import ContactCard from '@/components/home/ContactCard.vue'
+  import { useDataStore } from '@/store/Data';
 
-export default {
-  name: 'Home',
-  data: () => ({
-        generalCVData: undefined,
-    }),
-  components: {
-    ContactCard: ContactCard
-  },
-  created(){
-    this.init()
-  },
-  methods: {
-    async init(){
-      this.generalCVData = await useDataStore().getDataGeneral
-      console.log(this.generalCVData)
-    }
-  },
-  computed:{
-    link_to_cv_pdf() {
-      if(this.generalCVData && this.generalCVData.cv_pdf_link)
-        return 'https://api.casillas.dev/storage/uploads' + this.generalCVData.cv_pdf_link.path
-      else
-        return ''
+  export default {
+    name: 'Home',
+    data: () => ({
+          generalCVData: undefined,
+      }),
+    components: {
+      ContactCard: ContactCard
+    },
+    created(){
+      this.init()
+    },
+    methods: {
+      async init(){
+        this.generalCVData = await useDataStore().getDataGeneral
+        console.log(this.generalCVData)
+      }
+    },
+    computed:{
+      link_to_cv_pdf() {
+        if(this.generalCVData && this.generalCVData.cv_pdf_link)
+          return 'https://api.casillas.dev/storage/uploads' + this.generalCVData.cv_pdf_link.path
+        else
+          return ''
+      }
     }
   }
-
-}
-
 </script>
 
 <style lang="scss">
